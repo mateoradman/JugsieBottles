@@ -1,0 +1,11 @@
+.nav {
+  @apply navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box;
+}
+
+.logo_container {
+  @apply flex-none px-2 mx-2;
+}
+
+.jugsie_text {
+  @apply text-lg font-bold;
+}
