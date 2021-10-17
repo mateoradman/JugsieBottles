@@ -1,7 +1,8 @@
-import {Navbar} from "../components/navigation/Navbar";
-import Hero from "../components/hero/Hero";
-import ThreeSixtyDisplay from "../components/bottlePhotos/360viewer";
 import Script from 'next/script';
+
+import Navbar from "../components/navigation";
+import Hero from "../components/hero";
+import ThreeSixtyDisplay from "../components/bottlePhotos/360viewer";
 import BottleDisplay from "../components/bottlePhotos/BottleDisplay";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="relative bg-white h-full w-full overflow-hidden">
         <Navbar/>
         <Hero/>
+        <RunningText/>
         <BottleDisplay/>
         <ThreeSixtyDisplay/>
       </div>

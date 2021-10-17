@@ -5,7 +5,7 @@ import {ShoppingCartIcon} from "@heroicons/react/solid";
 import Link from "next/link";
 
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <div className="relative pb-8 bg-white max-w-7xl mx-auto">
       <Popover>
@@ -117,3 +117,5 @@ const NavbarLinks = (props) => {
     </div>
   );
 }
+
+export default Navbar;
