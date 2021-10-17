@@ -9,11 +9,8 @@ export default function Home() {
     <>
       <title>Jugsie Bottles</title>
       <Script src="https://scripts.sirv.com/sirv.js"/>
-      <div className="relative bg-white overflow-hidden">
-        <div
-          className="relative pb-8 bg-white max-w-7xl mx-auto">
-          <Navbar/>
-        </div>
+      <div className="relative bg-white h-full w-full overflow-hidden">
+        <Navbar/>
         <Hero/>
         <BottleDisplay/>
         <ThreeSixtyDisplay/>
