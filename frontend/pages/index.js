@@ -4,6 +4,8 @@ import Navbar from "../components/navigation";
 import Hero from "../components/hero";
 import ThreeSixtyDisplay from "../components/bottlePhotos/360viewer";
 import BottleDisplay from "../components/bottlePhotos/BottleDisplay";
+import RunningText from "../components/runningText";
+
 
 export default function Home() {
   return (

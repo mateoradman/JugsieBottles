@@ -20,11 +20,11 @@ const bottles = [
 
 const BottleDisplay = () => {
   return (
-    <div className="mb-10 bg-blue-100 py-20">
+    <div className="mb-10 bg-blue-100 py-15 md:py-20">
       <div className="w-full items-center p-4 space-x-1 carousel">
         {bottles.map((item) => (
           <div key={item.bottleName}
-               className="carousel-item max-h-96 w-1/3">
+               className="carousel-item max-h-72 md:max-h-96 w-1/3">
             <Image
               src={item.bottle}
               alt={item.bottleName + " Jugsie Bottle"}
