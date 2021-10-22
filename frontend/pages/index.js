@@ -4,7 +4,7 @@ import Navbar from "../components/navigation";
 import Hero from "../components/hero";
 import ThreeSixtyDisplay from "../components/bottlePhotos/360viewer";
 import BottleDisplay from "../components/bottlePhotos/BottleDisplay";
-import RunningText from "../components/runningText";
+import MarqueeRunningText from "../components/runningText";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <div className="relative bg-white h-full w-full overflow-hidden">
         <Navbar/>
         <Hero/>
-        <RunningText/>
+        <MarqueeRunningText/>
         <BottleDisplay/>
         <ThreeSixtyDisplay/>
       </div>
