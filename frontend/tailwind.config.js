@@ -3,14 +3,19 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    maxHeight: {
+      '120': '30rem',
+    },
+    width: {
+      '2/7': '28.5714286%',
+    },
     fontFamily: {
       'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
         'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
     },
     extend: {
-
       animation: {
-        marquee: 'marquee 20s linear infinite',
+        marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
       },
       keyframes: {
