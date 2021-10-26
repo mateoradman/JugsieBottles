@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="hero h-screen"
+    <div className="hero h-120 md:h-160"
          style={{
            backgroundImage: `url(${HeroPhoto.src})`
          }}>
