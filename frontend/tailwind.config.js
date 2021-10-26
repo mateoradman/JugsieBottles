@@ -3,20 +3,24 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    maxHeight: {
-      '120': '30rem',
-    },
-    width: {
-      '2/7': '28.5714286%',
-    },
-    fontFamily: {
-      'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
-        'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
-    },
     extend: {
+      maxHeight: {
+        '120': '30rem',
+      },
+      width: {
+        '2/7': '28.5714286%',
+      },
+      height: {
+        '120': '30rem',
+        '160': '40rem',
+      },
+      fontFamily: {
+        'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
+          'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
+      },
       animation: {
-        marquee: 'marquee 25s linear infinite',
-        marquee2: 'marquee2 25s linear infinite',
+        marquee: 'marquee 30s linear infinite',
+        marquee2: 'marquee2 30s linear infinite',
       },
       keyframes: {
         marquee: {
@@ -42,7 +46,7 @@ module.exports = {
     themes: true,
     base: true,
     utils: true,
-    logs: true,
+    logs: false,
     rtl: false,
   },
 }
