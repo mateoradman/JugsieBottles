@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import Head from 'next/head';
 
 import Navbar from "../components/navigation";
 import Hero from "../components/hero";
@@ -10,7 +11,9 @@ import MarqueeRunningText from "../components/runningText";
 export default function Home() {
   return (
     <>
-      <title>Jugsie Bottles</title>
+      <Head>
+        <title>Jugsie Bottles</title>
+      </Head>
       <Script src="https://scripts.sirv.com/sirv.js"/>
       <div className="relative bg-white h-full w-full overflow-hidden">
         <Navbar/>
