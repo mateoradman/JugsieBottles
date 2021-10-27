@@ -43,7 +43,10 @@ module.exports = {
   ],
   daisyui: {
     styled: true,
-    themes: true,
+    themes: [
+      'cupcake',
+      'emerald'
+    ],
     base: true,
     utils: true,
     logs: false,
