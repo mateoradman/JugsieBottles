@@ -3,5 +3,5 @@
 }
 
 .custom-card {
-    @apply h-120 md:h-160 rounded-lg shadow-2xl
+    @apply h-120 md:h-160 rounded-3xl shadow-2xl
 }
