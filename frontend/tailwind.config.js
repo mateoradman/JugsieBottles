@@ -3,6 +3,10 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
+        'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
+    },
     extend: {
       maxHeight: {
         '120': '30rem',
@@ -13,10 +17,6 @@ module.exports = {
       height: {
         '120': '30rem',
         '160': '40rem',
-      },
-      fontFamily: {
-        'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
-          'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
