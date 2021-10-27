@@ -1,0 +1,7 @@
+.card-button-text {
+    @apply text-gray-700 font-bold uppercase text-sm
+}
+
+.custom-card {
+    @apply h-120 md:h-160 rounded-lg shadow-2xl
+}
