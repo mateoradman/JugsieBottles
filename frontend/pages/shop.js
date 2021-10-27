@@ -1,6 +1,11 @@
+import TechnicalSpecs from "../components/cards/TechnicalSpecs";
+import {ProductCard} from "../components/product";
 
 export default function Shop() {
- return (
-   <h1>Shop</h1>
- )
+  return (
+    <>
+      <ProductCard/>
+      <TechnicalSpecs/>
+    </>
+  )
 }

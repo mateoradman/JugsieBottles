@@ -8,6 +8,9 @@ module.exports = {
         'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
     },
     extend: {
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
       maxHeight: {
         '120': '30rem',
       },
@@ -38,6 +41,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('daisyui'),
   ],
