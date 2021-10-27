@@ -29,6 +29,7 @@ const BottleDisplay = () => {
               src={item.bottle}
               alt={item.bottleName + " Jugsie Bottle"}
               objectFit={"contain"}
+              priority={"true"}
             />
           </div>
         ))}
