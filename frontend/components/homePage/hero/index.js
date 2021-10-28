@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroPhoto from '../../public/Hero/Hero.jpg';
+import HeroPhoto from '../../../public/Hero/Hero.jpg';
 import Link from "next/link";
 
 

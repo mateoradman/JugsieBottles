@@ -1,6 +1,5 @@
 import ThreeSixtyDisplay from "../bottlePhotos/360viewer";
 import {AiOutlineRight} from "react-icons/ai";
-import {Md360} from "react-icons/md";
 
 const ThreeSixtyCard = (props) => {
   return (

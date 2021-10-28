@@ -1,5 +1,5 @@
-import TechnicalSpecs from "../components/cards/TechnicalSpecs";
-import {ProductCard} from "../components/product";
+import {ProductCard} from "../components/shopPage/productDetail";
+import TechnicalSpecs from "../components/shopPage/productTechnicalSpecs";
 
 export default function Shop() {
   return (

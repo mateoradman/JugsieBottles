@@ -1,10 +1,10 @@
 import Script from 'next/script';
 import Head from 'next/head';
-import Hero from "../components/hero";
-import BottleDisplay from "../components/bottlePhotos/BottleDisplay";
-import MarqueeRunningText from "../components/runningText";
-import ThreeSixtyCard from "../components/cards/360Card";
-import HomePageCard from "../components/cards/HomePageCard";
+import Hero from "../components/homePage/hero";
+import BottleDisplay from "../components/homePage/bottlePhotos/BottleDisplay";
+import MarqueeRunningText from "../components/homePage/runningText";
+import ThreeSixtyCard from "../components/homePage/cards/360Card";
+import HomePageCard from "../components/homePage/cards/HomePageCard";
 import CardPhotoOne from "../public/ContentPhotos/IMG_9820.JPG"
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js"/>
       <div
-        className="relative bg-white min-h-screen min-w-full overflow-hidden">
+        className="relative min-h-screen min-w-full overflow-hidden">
         <Hero/>
         <MarqueeRunningText/>
         <BottleDisplay/>

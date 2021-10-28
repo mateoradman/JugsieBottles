@@ -1,5 +1,5 @@
 import Image from "next/image";
-import JugsieLogo from "../public/Logos/logo.svg";
+import JugsieLogo from "../../public/Logos/logo.svg";
 
 const JugsieBottlesLogo = () => {
   return (
