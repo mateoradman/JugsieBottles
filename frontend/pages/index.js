@@ -1,14 +1,11 @@
 import Script from 'next/script';
 import Head from 'next/head';
-
-import Navbar from "../components/navigation";
 import Hero from "../components/hero";
 import BottleDisplay from "../components/bottlePhotos/BottleDisplay";
 import MarqueeRunningText from "../components/runningText";
 import ThreeSixtyCard from "../components/cards/360Card";
 import HomePageCard from "../components/cards/HomePageCard";
 import CardPhotoOne from "../public/ContentPhotos/IMG_9820.JPG"
-import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -19,7 +16,6 @@ export default function Home() {
       <Script src="https://scripts.sirv.com/sirv.js"/>
       <div
         className="relative bg-white min-h-screen min-w-full overflow-hidden">
-        <Navbar/>
         <Hero/>
         <MarqueeRunningText/>
         <BottleDisplay/>
@@ -33,8 +29,6 @@ export default function Home() {
           />
           <ThreeSixtyCard/>
         </div>
-
-        <Footer/>
       </div>
     </>
   )
