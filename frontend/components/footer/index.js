@@ -1,12 +1,16 @@
 import {FaFacebook, FaInstagram} from "react-icons/fa";
+import JugsieBottlesLogo from "../logo";
 
 const Footer = () => {
   return (
-    <footer className="p-10 footer bg-gradient-to-r from-red-600 to-red-300 text-base-content">
+    <footer className="p-10 footer text-base-content">
       <div>
-        <p className="font-extrabold self-center">Jugsie Bottles
+        <JugsieBottlesLogo/>
+        <p className="font-extrabold font-mono self-center">
+          Jugsie Bottles
         </p>
-        <span className="font-normal">Vaš svakodnevni prijatelj od 2020. godine.</span>
+        <span
+          className="font-normal font-mono tracking-tight">Vaš svakodnevni prijatelj od 2020. godine.</span>
       </div>
       <div>
         <span className="footer-title">Company</span>
@@ -19,10 +23,10 @@ const Footer = () => {
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>
       </div>
-      <div>
-        <span className="footer-title">Social</span>
-        <a className="link link-hover"><FaInstagram/></a>
-        <a className="link link-hover"><FaFacebook/></a>
+      <div className="grid grid-cols-2 grid-rows-2">
+        <span className="footer-title col-span-2">Social</span>
+        <a className=""><FaInstagram/></a>
+        <a className=""><FaFacebook/></a>
       </div>
     </footer>
   )

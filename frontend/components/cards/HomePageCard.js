@@ -5,12 +5,12 @@ const HomePageCard = (props) => {
   return (
     <div
       className="custom-card relative">
-      <div className="image-container shadow-2xl z-0">
+      <div className="image-container z-0">
         <Image
           src={props.cardImageSrc}
           layout="fill"
           alt={"Jugsie Bottles"}
-          className="image rounded-3xl shadow-2xl"
+          className="image shadow-2xl rounded-3xl"
           objectFit="cover"
         />
       </div>

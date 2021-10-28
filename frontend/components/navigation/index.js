@@ -3,6 +3,8 @@ import {MenuIcon, XIcon} from "@heroicons/react/outline";
 import {Fragment} from "react";
 import {ShoppingCartIcon} from "@heroicons/react/solid";
 import NavbarLinks from "./NavbarLinks";
+import Link from "next/link";
+import JugsieBottlesLogo from "../logo";
 
 
 const Navbar = () => {
@@ -17,12 +19,9 @@ const Navbar = () => {
               className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
               <div
                 className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Jugsie bottle logo"/>
-                </a>
+                <Link href="/">
+                  <JugsieBottlesLogo/>
+                </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <ShoppingCartIcon
                     className="flex px-4 py-1 rounded-md h-8 justify-inline
@@ -65,11 +64,7 @@ const Navbar = () => {
               className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="px-5 pt-4 flex items-center justify-between">
                 <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt=""
-                  />
+                  <JugsieBottlesLogo/>
                 </div>
                 <div className="-mr-2">
                   <Popover.Button
