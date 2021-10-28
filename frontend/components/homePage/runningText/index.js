@@ -3,14 +3,14 @@ import React from 'react';
 const MarqueeRunningText = () => {
   return (
     <div className="relative flex overflow-x-hidden">
-      <div className="mt-5 md:mt-10 py-12 animate-marquee">
+      <div className="mt-5 md:mt-10 py-6 md:py-12 animate-marquee">
         <RunningText/>
         <RunningText/>
         <RunningText/>
         <RunningText/>
       </div>
 
-      <div className="mt-5 md:mt-10 absolute top-0 py-12 animate-marquee2">
+      <div className="mt-5 md:mt-10 absolute top-0 py-6 md:py-12 animate-marquee2">
         <RunningText/>
         <RunningText/>
         <RunningText/>
