@@ -15,16 +15,22 @@ const HomePageCard = (props) => {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center mx-auto space-y-28">
-        <span className="prose text-white font-bold capitalize text-xl">
-          {props.cardBody}
-        </span>
-        <button
-          className="btn btn-primary">
+      <div
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center mx-auto space-y-28">
+        {props.cardBody ?
+          <span className="prose text-white font-bold capitalize text-xl">
+            {props.cardBody}
+          </span> : null
+        }
+
+        {props.cardTitle ?
+          <button
+            className="btn btn-primary">
           <span className="card-button-text">
             {props.cardTitle}
           </span>
-        </button>
+          </button> : null
+        }
       </div>
     </div>
   )
