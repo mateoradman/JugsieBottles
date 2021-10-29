@@ -20,7 +20,9 @@ const Navbar = () => {
               <div
                 className="flex items-center justify-between w-full md:w-auto">
                 <Link href="/">
-                  <JugsieBottlesLogo/>
+                  <a>
+                    <JugsieBottlesLogo/>
+                  </a>
                 </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <ShoppingCartIcon
