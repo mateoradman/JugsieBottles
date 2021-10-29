@@ -1,21 +1,13 @@
-import React from 'react';
-import Green from '../../../public/BottlePhotos/Green.png';
-import Blue from '../../../public/BottlePhotos/Blue.PNG';
-import White from '../../../public/BottlePhotos/White.PNG';
-import Turquoise from '../../../public/BottlePhotos/Turquoise.png';
-import Pink from '../../../public/BottlePhotos/Pink.PNG';
-import Black from '../../../public/BottlePhotos/Black.PNG';
-import Lilac from '../../../public/BottlePhotos/Lilac.PNG';
 import Image from "next/image";
 
 const bottles = [
-  {bottle: Green, bottleName: "Green"},
-  {bottle: Black, bottleName: "Black"},
-  {bottle: White, bottleName: "White"},
-  {bottle: Blue, bottleName: "Blue"},
-  {bottle: Pink, bottleName: "Hot Pink"},
-  {bottle: Lilac, bottleName: "Lilac"},
-  {bottle: Turquoise, bottleName: "Turquoise"},
+  {bottle: "/BottlePhotos/Green.png", bottleName: "Green"},
+  {bottle: "/BottlePhotos/Black.PNG", bottleName: "Black"},
+  {bottle: "/BottlePhotos/White.PNG", bottleName: "White"},
+  {bottle: "/BottlePhotos/Blue.PNG", bottleName: "Blue"},
+  {bottle: "/BottlePhotos/Pink.PNG", bottleName: "Hot Pink"},
+  {bottle: "/BottlePhotos/Lilac.PNG", bottleName: "Lilac"},
+  {bottle: "/BottlePhotos/Turquoise.png", bottleName: "Turquoise"},
 ]
 
 const BottleDisplay = () => {
@@ -24,11 +16,12 @@ const BottleDisplay = () => {
       <div className="w-full items-center p-4 space-x-1 carousel">
         {bottles.map((item) => (
           <div key={item.bottleName}
-               className="carousel-item w-2/7 h-60 md:h-auto md:max-h-120">
+               className="carousel-item w-2/7 h-60 md:h-auto md:max-h-120 relative">
             <Image
               src={item.bottle}
               alt={item.bottleName + " Jugsie Bottle"}
               objectFit={"contain"}
+              layout={"fill"}
               priority={"true"}
             />
           </div>
