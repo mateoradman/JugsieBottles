@@ -13,7 +13,7 @@ export default function Home() {
       <BottleDisplay/>
 
       <div
-        className="p-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        className="pb-16 px-8 pt-8 grid grid-cols-1 gap-y-10 md:px-5 md:pt-2 md:grid-cols-2 md:gap-x-16">
         <HomePageCard
           cardImageSrc={"/ContentPhotos/IMG_9820.JPG"}
           cardTitle={"Some Title"}
