@@ -13,7 +13,7 @@ const bottles = [
 const BottleDisplay = () => {
   return (
     <div className="bg-transparent md:pt-10 md:pb-20">
-      <div className="w-full items-center p-4 space-x-1 carousel space-x-10">
+      <div className="w-full items-center p-4 carousel space-x-10">
         {bottles.map((item) => (
           <div key={item.bottleName}
                className="carousel-item w-2/7 h-60 md:h-120 relative">
