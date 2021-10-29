@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {RadioGroup} from '@headlessui/react'
 import {IoStar, IoStarHalf, IoStarOutline} from "react-icons/io5";
-import ImageGallery from "./ImageGallery";
+import ProductImageGallery from "./ImageGallery";
 
 const product = {
   name: 'Jugsie Bottle',
@@ -20,10 +20,28 @@ const product = {
     {name: 'Green', class: 'bg-green-700', selectedClass: 'ring-gray-400'},
     {name: 'Blue', class: 'bg-blue-700', selectedClass: 'ring-gray-400'},
   ],
+  images: [
+    {
+      src: "/ContentPhotos/IMG_9823.JPG",
+      alt: 'Jugsie Bottle',
+    },
+    {
+      src: "/ContentPhotos/IMG_9824.JPG",
+      alt: 'Model wearing plain black basic tee.',
+    },
+    {
+      src: "/ContentPhotos/IMG_9825.JPG",
+      alt: 'Model wearing plain gray basic tee.',
+    },
+    {
+      src: "/ContentPhotos/IMG_9826.JPG",
+      alt: 'Model wearing plain white basic tee.',
+    },
+  ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
   highlights: [
-    '',
+    'Something goes here',
     'Dyed with our proprietary colors',
     'Pre-washed & pre-shrunk',
     'Ultra-soft 100% cotton',
@@ -54,7 +72,7 @@ export const ProductCard = () => {
     <div className="bg-white">
       <div>
         {/* Image gallery */}
-        <ImageGallery/>
+        <ProductImageGallery images={product.images}/>
 
         {/* Product info */}
         <div
@@ -133,8 +151,7 @@ export const ProductCard = () => {
                 </label>
                 <input type="text"
                        maxLength={8}
-                       required={"true"}
-                       placeholder="Personalizacija"
+                       placeholder="Personalizacija (max. 8 znakova)"
                        className="input input-bordered"
                        onChange={handleKeyPress}>
                 </input>
