@@ -22,8 +22,8 @@ const MarqueeRunningText = () => {
 
 const RunningText = () => {
   return (
-    <span className="mx-5 whitespace-nowrap text-4xl tracking-wide md:text-9xl text-transparent
-    font-bold bg-gradient-to-r bg-clip-text from-blue-500 to-red-500">
+    <span className="mx-5 whitespace-nowrap text-5xl tracking-wide md:text-9xl text-transparent
+    font-bold bg-gradient-to-r bg-clip-text from-blue-500 via-yellow-600 to-red-500">
       48h cold 24h hot.
     </span>
   )
