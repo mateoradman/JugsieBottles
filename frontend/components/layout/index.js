@@ -5,7 +5,7 @@ import Script from "next/script";
 
 export default function Layout({children}) {
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-full">
       <Head>
         <title>Jugsie Bottles</title>
         <link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg"/>
