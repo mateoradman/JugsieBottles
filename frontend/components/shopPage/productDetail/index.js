@@ -1,28 +1,35 @@
-import {useState} from 'react'
-import {RadioGroup} from '@headlessui/react'
 import {IoStar, IoStarHalf, IoStarOutline} from "react-icons/io5";
 import ProductImageGallery from "./ImageGallery";
+import {PersonalizationToggle} from "./Personalization";
+import {bottleInformation, reviews} from "../../../utils/constants";
+import {useState} from "react";
+import ColourPicker from "./ColourPicker";
 
 const product = {
   name: 'Jugsie Bottle',
   price: '130 kn',
   href: '#',
-  breadcrumbs: [
-    {id: 1, name: 'Men', href: '#'},
-    {id: 2, name: 'Clothing', href: '#'},
-  ],
-  colors: [
-    {name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400'},
-    {name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900'},
-    {name: 'Hot Pink', class: 'bg-pink-200', selectedClass: 'ring-gray-400'},
-    {name: 'Turquoise', class: 'bg-green-500', selectedClass: 'ring-gray-400'},
-    {name: 'Lilac', class: 'bg-indigo-400', selectedClass: 'ring-gray-400'},
-    {name: 'Green', class: 'bg-green-700', selectedClass: 'ring-gray-400'},
-    {name: 'Blue', class: 'bg-blue-700', selectedClass: 'ring-gray-400'},
-  ],
   images: [
     {
       src: "/ContentPhotos/IMG_9823.JPG",
+      alt: 'Jugsie Bottle',
+    },
+    {
+      src: "/ContentPhotos/IMG_9824.JPG",
+      alt: 'Model wearing plain black basic tee.',
+    },
+    {
+      src: "/ContentPhotos/IMG_9825.JPG",
+      alt: 'Model wearing plain gray basic tee.',
+    },
+    {
+      src: "/BottlePhotos/Black.PNG",
+      alt: 'Model wearing plain white basic tee.',
+    },
+  ],
+  noLogoImages: [
+    {
+      src: "/BottlePhotos/WithoutLogo/Black.png",
       alt: 'Jugsie Bottle',
     },
     {
@@ -50,29 +57,24 @@ const product = {
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 }
 
-const reviews = {
-  href: 'https://www.trustpilot.com/review/jugsie.com',
-  average: 4.4,
-  totalCount: 12
-}
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 
 export const ProductCard = () => {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
+  const [selectedBottle, setSelectedBottle] = useState(bottleInformation[0]);
+  const handleSelectedBottle = (radioPickedBottle) => {
+    setSelectedBottle(radioPickedBottle);
+  }
 
-  const handleKeyPress = (e) => {
-    console.log('this is:', e.target.value);
+  const defaultPersonalization = {icon: "", text: ""};
+  const [selectedPersonalization, setSelectedPersonalization] = useState(defaultPersonalization);
+  const handleSelectedPersonalization = (personalization) => {
+    setSelectedPersonalization(personalization);
   }
 
   return (
     <div className="bg-white">
       <div>
         {/* Image gallery */}
-        <ProductImageGallery images={product.images}/>
+        <ProductImageGallery bottle={selectedBottle} personalization={selectedPersonalization}/>
 
         {/* Product info */}
         <div
@@ -84,12 +86,11 @@ export const ProductCard = () => {
 
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <h2 className="sr-only">Product information</h2>
             <p className="text-3xl text-gray-900">{product.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
-              <h3 className="sr-only">Reviews</h3>
+              <h3 className="sr-only">Recenzija</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
                   {getStarsArray(reviews.average)}
@@ -104,59 +105,11 @@ export const ProductCard = () => {
               </div>
             </div>
 
+            {/* Colour and Personalization Form */}
             <form className="mt-10">
-              {/* Colors */}
-              <div>
-                <h3 className="text-sm text-gray-900 font-medium">Color</h3>
-
-                <RadioGroup value={selectedColor} onChange={setSelectedColor}
-                            className="mt-4">
-                  <RadioGroup.Label className="sr-only">Choose a
-                    color</RadioGroup.Label>
-                  <div className="flex items-center space-x-3">
-                    {product.colors.map((color) => (
-                      <RadioGroup.Option
-                        key={color.name}
-                        value={color}
-                        className={({active, checked}) =>
-                          classNames(
-                            color.selectedClass,
-                            active && checked ? 'ring ring-offset-1' : '',
-                            !active && checked ? 'ring-2' : '',
-                            '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
-                          )
-                        }
-                      >
-                        <RadioGroup.Label as="p" className="sr-only">
-                          {color.name}
-                        </RadioGroup.Label>
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            color.class,
-                            'h-8 w-8 border border-black border-opacity-10 rounded-full'
-                          )}
-                        />
-                      </RadioGroup.Option>
-                    ))}
-                  </div>
-                </RadioGroup>
-              </div>
-
-              <div className="mt-10 form-control">
-                <label className="label">
-                  <span className="text-sm text-gray-900 font-medium">
-                    Personalizacija
-                  </span>
-                </label>
-                <input type="text"
-                       maxLength={8}
-                       placeholder="Personalizacija (max. 8 znakova)"
-                       className="input input-bordered"
-                       onChange={handleKeyPress}>
-                </input>
-              </div>
-
+              <ColourPicker onBottleChange={handleSelectedBottle}/>
+              <PersonalizationToggle defaultPersonalization={defaultPersonalization}
+                                     onPersonalizationChange={handleSelectedPersonalization}/>
               <button
                 type="submit"
                 className="mt-10 w-full btn btn-primary"
@@ -167,7 +120,8 @@ export const ProductCard = () => {
           </div>
 
           <div
-            className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+            className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r
+            lg:border-gray-200 lg:pr-8">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>

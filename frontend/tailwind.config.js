@@ -1,9 +1,24 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}',
+    './utils/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        bottle: {
+          green: '#4E6636',
+          turquoise: '#72F2E5',
+          lilac: '#E6ACE6',
+          hotpink: '#FF4AA1',
+          black: '#000000',
+          blue: '#3B82F6',
+          white: '#FFFFFF',
+        }
+      },
+      fill: {
+        personalization: "#9CA3AF"
+      },
       fontFamily: {
         'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
           'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
