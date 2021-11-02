@@ -22,7 +22,7 @@ const BottleDisplay = () => {
               alt={item.bottleName + " Jugsie Bottle"}
               objectFit={"contain"}
               layout={"fill"}
-              priority={"true"}
+              priority
               className={"bg-transparent"}
             />
           </div>
