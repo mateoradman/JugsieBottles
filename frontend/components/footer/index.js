@@ -1,5 +1,5 @@
 import {FaFacebook, FaInstagram} from "react-icons/fa";
-import JugsieBottlesLogo from "../logo";
+import JugsieBottlesLogo from "../../public/Logos/logo";
 
 const Footer = () => {
   return (

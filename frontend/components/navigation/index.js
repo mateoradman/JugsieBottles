@@ -6,6 +6,7 @@ import NavbarLinks from "./NavbarLinks";
 import Link from "next/link";
 import JugsieBottlesLogo from "../logo";
 
+import JugsieBottlesLogo from "../../public/Logos/logo";
 
 const Navbar = () => {
   return (
