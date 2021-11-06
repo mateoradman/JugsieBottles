@@ -21,9 +21,9 @@ const ColourPicker = (props) => {
             value={bottle}
             className={({active, checked}) =>
               classNames(
-                active && checked ? 'ring ring-offset-1' : '',
-                !active && checked ? 'ring-2' : '',
-                'ring-blue-300 -m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none',
+                active && checked ? 'ring-1 ring-offset-1' : '',
+                !active && checked ? 'ring-1' : '',
+                'ring-black relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none',
               )
             }
           >
