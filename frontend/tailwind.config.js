@@ -1,3 +1,6 @@
+const personalizationColor = '#C0C0C0';
+const personalizationColorDarker = 'rgb(134,134,134)'
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}',
@@ -14,10 +17,21 @@ module.exports = {
           black: '#000000',
           blue: '#3B82F6',
           white: '#FFFFFF',
-        }
+        },
+        personalization: {
+          'standard': personalizationColor,
+          'dark': personalizationColorDarker,
+        },
       },
       fill: {
-        personalization: "#9CA3AF"
+        personalization: {
+          'standard': personalizationColor,
+          'dark': personalizationColorDarker,
+        },
+      },
+      margin: {
+        '15%': '15%',
+        '12%': '12%'
       },
       fontFamily: {
         'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',

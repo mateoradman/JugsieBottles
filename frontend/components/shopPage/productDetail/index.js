@@ -68,13 +68,19 @@ export const ProductCard = () => {
   const [selectedPersonalization, setSelectedPersonalization] = useState(defaultPersonalization);
   const handleSelectedPersonalization = (personalization) => {
     setSelectedPersonalization(personalization);
+    if (personalization.icon || personalization.text) {
+      product.price = '170 kn';
+    } else {
+      product.price = '130 kn';
+    }
   }
 
   return (
     <div className="bg-white">
       <div>
         {/* Image gallery */}
-        <ProductImageGallery bottle={selectedBottle} personalization={selectedPersonalization}/>
+        <ProductImageGallery bottle={selectedBottle}
+                             personalization={selectedPersonalization}/>
 
         {/* Product info */}
         <div
@@ -108,8 +114,9 @@ export const ProductCard = () => {
             {/* Colour and Personalization Form */}
             <form className="mt-10">
               <ColourPicker onBottleChange={handleSelectedBottle}/>
-              <PersonalizationToggle defaultPersonalization={defaultPersonalization}
-                                     onPersonalizationChange={handleSelectedPersonalization}/>
+              <PersonalizationToggle
+                defaultPersonalization={defaultPersonalization}
+                onPersonalizationChange={handleSelectedPersonalization}/>
               <button
                 type="submit"
                 className="mt-10 w-full btn btn-primary"

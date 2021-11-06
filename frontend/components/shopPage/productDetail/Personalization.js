@@ -53,7 +53,7 @@ export const Personalization = (props) => {
         <input type="text"
                maxLength={8}
                placeholder="Personalizacija (max. 8 znakova)"
-               className="input input-bordered"
+               className="input input-bordered text-center"
                onChange={handleKeyPress}>
         </input>
       </div>
@@ -73,16 +73,16 @@ const IconTabRadioGroup = (props) => {
   return (
     <RadioGroup value={selectedIcon} onChange={setSelectedIcon}
                 className="mt-4">
-      <div className="grid grid-cols-5 gap-5">
+      <div className="grid grid-cols-7 gap-2.5">
         {personalizationIcons.map((iconObject) => (
           <RadioGroup.Option
             key={iconObject.name}
             value={iconObject.name}
             className={({active, checked}) =>
               classNames(
-                active && checked ? 'ring ring-offset-1' : '',
-                !active && checked ? 'ring-2' : '',
-                'ring-gray-400 relative p-2 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
+                active && checked ? 'ring-1' : '',
+                !active && checked ? 'ring-1' : '',
+                'ring-black relative p-2 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
               )
             }
           >

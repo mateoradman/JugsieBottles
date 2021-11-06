@@ -45,16 +45,22 @@ const ProductImageGallery = (props) => {
         ref={bottleRef}
       >
         {props.personalization.text || props.personalization.icon ?
-          <div className={"flex flex-col-reverse"}>
-            <h2
-              className={"text-center z-10 mb-20 sm:mb-0 md:mb-0 text-gray-400 text-lg"}>{props.personalization.text}</h2>
-            {Icon && <Icon fill="fill-personalization"
-                           className={classNames(
-                             "z-10 fill-personalization self-center h-6 w-6 md:h-6 md:w-6",
-                             !props.personalization.text ? 'mb-20' : 'mb-1')
-                           }/>}
-            <IndividualImage image={props.bottle.emptyPhoto} className={"scale-150 -translate-y-1/3"}/>
-          </div>
+          <>
+            <div className="flex flex-col-reverse z-10">
+              <h2
+              className={classNames(
+                "text-center mb-12% lg:mb-15% text-sm md:text-base",
+                props.bottle.name === 'White' ? 'text-personalization-dark' : 'text-personalization-standard',
+              )}>{props.personalization.text}</h2>
+              {Icon && <Icon className={classNames(
+                "self-center h-6 w-6",
+                !props.personalization.text ? 'mb-2' : '',
+                props.bottle.name === 'White' ? 'fill-personalization-dark': 'fill-personalization-standard',
+              )
+              }/>}
+            </div>
+            <IndividualImage image={props.bottle.emptyPhoto}/>
+          </>
           :
           <IndividualImage image={props.bottle.mainPhoto}/>
         }
