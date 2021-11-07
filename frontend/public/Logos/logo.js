@@ -4,7 +4,6 @@ function JugsieBottlesLogo(props) {
   return (
       <svg
         viewBox="28.439 13.438 43.124 71.248"
-        preserveAspectRatio="true"
         y={229.593}
         x={446.371}
         height={63}

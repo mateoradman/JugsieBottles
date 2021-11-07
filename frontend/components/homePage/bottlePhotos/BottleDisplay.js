@@ -1,13 +1,13 @@
 import Image from "next/image";
 
 const bottles = [
-  {bottle: "/BottlePhotos/Green.png", bottleName: "Green"},
-  {bottle: "/BottlePhotos/Black.PNG", bottleName: "Black"},
-  {bottle: "/BottlePhotos/White.PNG", bottleName: "White"},
-  {bottle: "/BottlePhotos/Blue.PNG", bottleName: "Blue"},
-  {bottle: "/BottlePhotos/Pink.PNG", bottleName: "Hot Pink"},
-  {bottle: "/BottlePhotos/Lilac.PNG", bottleName: "Lilac"},
-  {bottle: "/BottlePhotos/Turquoise.png", bottleName: "Turquoise"},
+  {bottle: "/bottles/Green.png", bottleName: "Green"},
+  {bottle: "/bottles/Black.PNG", bottleName: "Black"},
+  {bottle: "/bottles/White.PNG", bottleName: "White"},
+  {bottle: "/bottles/Blue.PNG", bottleName: "Blue"},
+  {bottle: "/bottles/Pink.PNG", bottleName: "Hot Pink"},
+  {bottle: "/bottles/Lilac.PNG", bottleName: "Lilac"},
+  {bottle: "/bottles/Turquoise.png", bottleName: "Turquoise"},
 ]
 
 const BottleDisplay = () => {

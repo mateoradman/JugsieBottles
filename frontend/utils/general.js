@@ -2,9 +2,9 @@ const path = require('path');
 
 export function getBottlePaths(name, noLogo = false) {
   if (noLogo) {
-    return path.join('/BottlePhotos/WithoutLogo', `${name}.png`)
+    return path.join('/bottles/withoutLogo', `${name}.png`)
   } else {
-    return path.join('/BottlePhotos', `${name}.png`)
+    return path.join('/bottles', `${name}.png`)
   }
 }
 
