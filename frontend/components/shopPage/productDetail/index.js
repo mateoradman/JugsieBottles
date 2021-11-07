@@ -87,7 +87,7 @@ export const ProductCard = () => {
           className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1
-              className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+              className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{`${selectedBottle.name} Jugsie Bottle`}</h1>
           </div>
 
           {/* Options */}
@@ -96,13 +96,10 @@ export const ProductCard = () => {
 
             {/* Reviews */}
             <div className="mt-6">
-              <h3 className="sr-only">Recenzija</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
                   {getStarsArray(reviews.average)}
                 </div>
-                <p className="sr-only">{reviews.average} od 5 zvjezdica na
-                  Trustpilot-u.</p>
                 <a href={reviews.href}
                    target="_blank"
                    className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
@@ -131,7 +128,6 @@ export const ProductCard = () => {
             lg:border-gray-200 lg:pr-8">
             {/* Description and details */}
             <div>
-              <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900">{product.description}</p>

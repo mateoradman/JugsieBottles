@@ -18,7 +18,6 @@ const IndividualImage = (props) => {
 }
 
 const ProductImageGallery = (props) => {
-  const bottleRef = useRef(null);
 
   let Icon;
   if (props.personalization.icon) {
@@ -42,14 +41,13 @@ const ProductImageGallery = (props) => {
       </div>
       <div
         className="aspect-w-4 aspect-h-4 rounded-xl overflow-hidden lg:aspect-w-3 lg:aspect-h-4"
-        ref={bottleRef}
       >
         {props.personalization.text || props.personalization.icon ?
           <>
             <div className="flex flex-col-reverse z-10">
               <h2
               className={classNames(
-                "text-center mb-12% lg:mb-15% text-sm md:text-base",
+                "text-center mb-15% lg:mb-22% text-sm md:text-base",
                 props.bottle.name === 'White' ? 'text-personalization-dark' : 'text-personalization-standard',
               )}>{props.personalization.text}</h2>
               {Icon && <Icon className={classNames(
