@@ -2,6 +2,7 @@ import Navbar from "../navigation";
 import Footer from "../footer";
 import Head from "next/head";
 import Script from "next/script";
+import {CartProvider} from "../../context/Context";
 
 export default function Layout({children}) {
   return (
@@ -12,8 +13,10 @@ export default function Layout({children}) {
         <link rel="icon" type="image/png" href="/Favicon/favicon.png"/>
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js"/>
-      <Navbar/>
-      <main>{children}</main>
+      <CartProvider>
+        <Navbar/>
+        <main>{children}</main>
+      </CartProvider>
       <Footer/>
     </div>
   )

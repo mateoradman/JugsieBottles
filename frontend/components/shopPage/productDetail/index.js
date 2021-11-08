@@ -4,47 +4,12 @@ import {PersonalizationToggle} from "./Personalization";
 import {bottleInformation, reviews} from "../../../utils/constants";
 import {useState} from "react";
 import ColourPicker from "./ColourPicker";
+import {useCartItems} from "../../../context/Context";
 
 const product = {
   name: 'Jugsie Bottle',
-  price: '130 kn',
+  price: 130,
   href: '#',
-  images: [
-    {
-      src: "/ContentPhotos/IMG_9823.JPG",
-      alt: 'Jugsie Bottle',
-    },
-    {
-      src: "/ContentPhotos/IMG_9824.JPG",
-      alt: 'Model wearing plain black basic tee.',
-    },
-    {
-      src: "/ContentPhotos/IMG_9825.JPG",
-      alt: 'Model wearing plain gray basic tee.',
-    },
-    {
-      src: "/BottlePhotos/Black.PNG",
-      alt: 'Model wearing plain white basic tee.',
-    },
-  ],
-  noLogoImages: [
-    {
-      src: "/BottlePhotos/WithoutLogo/Black.png",
-      alt: 'Jugsie Bottle',
-    },
-    {
-      src: "/ContentPhotos/IMG_9824.JPG",
-      alt: 'Model wearing plain black basic tee.',
-    },
-    {
-      src: "/ContentPhotos/IMG_9825.JPG",
-      alt: 'Model wearing plain gray basic tee.',
-    },
-    {
-      src: "/ContentPhotos/IMG_9826.JPG",
-      alt: 'Model wearing plain white basic tee.',
-    },
-  ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
   highlights: [
@@ -69,10 +34,22 @@ export const ProductCard = () => {
   const handleSelectedPersonalization = (personalization) => {
     setSelectedPersonalization(personalization);
     if (personalization.icon || personalization.text) {
-      product.price = '170 kn';
+      product.price = 170;
     } else {
-      product.price = '130 kn';
+      product.price = 130;
     }
+  }
+
+  const {updateCartItems} = useCartItems()
+
+  const handleSubmitBottle = (e) => {
+    e.preventDefault();
+    let cartItem = {
+      ...selectedBottle,
+      ...selectedPersonalization,
+      price: product.price,
+    }
+    updateCartItems(cartItem);
   }
 
   return (
@@ -92,7 +69,7 @@ export const ProductCard = () => {
 
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <p className="text-3xl text-gray-900">{product.price}</p>
+            <p className="text-3xl text-gray-900">{`${product.price} kn`}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -109,7 +86,7 @@ export const ProductCard = () => {
             </div>
 
             {/* Colour and Personalization Form */}
-            <form className="mt-10">
+            <form onSubmit={handleSubmitBottle} className="mt-10">
               <ColourPicker onBottleChange={handleSelectedBottle}/>
               <PersonalizationToggle
                 defaultPersonalization={defaultPersonalization}
