@@ -1,7 +1,6 @@
 import Image from "next/image";
 import {getPersonalizationIcon} from "../../../utils/constants";
 import {classNames} from "../../../utils/general";
-import {useRef} from "react";
 
 const IndividualImage = (props) => {
   return (
@@ -18,7 +17,6 @@ const IndividualImage = (props) => {
 }
 
 const ProductImageGallery = (props) => {
-
   let Icon;
   if (props.personalization.icon) {
     Icon = getPersonalizationIcon(props.personalization.icon);
@@ -46,14 +44,14 @@ const ProductImageGallery = (props) => {
           <>
             <div className="flex flex-col-reverse z-10">
               <h2
-              className={classNames(
-                "text-center mb-15% lg:mb-22% text-sm md:text-base",
-                props.bottle.name === 'White' ? 'text-personalization-dark' : 'text-personalization-standard',
-              )}>{props.personalization.text}</h2>
+                className={classNames(
+                  "text-center mb-15% lg:mb-22% text-sm md:text-base",
+                  props.bottle.name === 'White' ? 'text-personalization-dark' : 'text-personalization-standard',
+                )}>{props.personalization.text}</h2>
               {Icon && <Icon className={classNames(
                 "self-center h-6 w-6",
                 !props.personalization.text ? 'mb-2' : '',
-                props.bottle.name === 'White' ? 'fill-personalization-dark': 'fill-personalization-standard',
+                props.bottle.name === 'White' ? 'fill-personalization-dark' : 'fill-personalization-standard',
               )
               }/>}
             </div>

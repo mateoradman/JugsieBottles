@@ -22,6 +22,15 @@ module.exports = {
           'standard': personalizationColor,
           'dark': personalizationColorDarker,
         },
+        bottleBg: {
+          black: '#4b4b4b',
+          blue: '#4fa3da',
+          green: '#607464',
+          hotpink: '#fb87a9',
+          lilac: '#d6c5db',
+          turquoise: '#c5dad7',
+          white: '#d7d7d7',
+          },
       },
       fill: {
         personalization: {

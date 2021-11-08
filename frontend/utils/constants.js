@@ -14,42 +14,49 @@ export const bottleInformation = [
   {
     name: 'White',
     class: 'bg-bottle-white',
+    backgroundColor: "bg-bottleBg-white",
     mainPhoto: getBottlePaths('White'),
     emptyPhoto: getBottlePaths('White', true)
   },
   {
     name: 'Black',
     class: 'bg-bottle-black',
+    backgroundColor: "bg-bottleBg-black",
     mainPhoto: getBottlePaths('Black'),
     emptyPhoto: getBottlePaths('Black', true)
   },
   {
     name: 'Blue',
     class: 'bg-bottle-blue',
+    backgroundColor: "bg-bottleBg-blue",
     mainPhoto: getBottlePaths('Blue'),
     emptyPhoto: getBottlePaths('Blue', true)
   },
   {
     name: 'Hot Pink',
     class: 'bg-bottle-hotpink',
+    backgroundColor: "bg-bottleBg-hotpink",
     mainPhoto: getBottlePaths('Pink'),
     emptyPhoto: getBottlePaths('Pink', true)
   },
   {
     name: 'Lilac',
     class: 'bg-bottle-lilac',
+    backgroundColor: "bg-bottleBg-lilac",
     mainPhoto: getBottlePaths('Lilac'),
     emptyPhoto: getBottlePaths('Lilac', true)
   },
   {
     name: 'Turquoise',
     class: 'bg-bottle-turquoise',
+    backgroundColor: "bg-bottleBg-turquoise",
     mainPhoto: getBottlePaths('Turquoise'),
     emptyPhoto: getBottlePaths('Turquoise', true)
   },
   {
     name: 'Green',
     class: 'bg-bottle-green',
+    backgroundColor: "bg-bottleBg-green",
     mainPhoto: getBottlePaths('Green'),
     emptyPhoto: getBottlePaths('Green', true)
   },

@@ -48,7 +48,7 @@ export default function TechnicalSpecs() {
             cardImageSrc={"/ContentPhotos/IMG_9819.JPG"}
           />
           <HomePageCard
-            cardImageSrc={"/ContentPhotos/IMG_9819.JPG"}
+            cardImageSrc={"/ContentPhotos/IMG_9832.JPG"}
           />
         </div>
       </div>
