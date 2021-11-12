@@ -18,10 +18,10 @@ export function getFormattedPrice(price, currency = 'kn') {
 }
 
 export function getPersonalizationIcon(iconName) {
-  return personalizationIcons.find(x => x.name === iconName).icon;
+  let finding = personalizationIcons.find(x => x.name === iconName);
+  if (finding) return finding.icon;
 }
 
 export function getBottleInformationObject(bottleName) {
   return bottleInformation.find(x => x.name === bottleName);
 }
-

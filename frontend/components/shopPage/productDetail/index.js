@@ -5,6 +5,8 @@ import {bottleInformation, reviews} from "../../../utils/constants";
 import {useState} from "react";
 import ColourPicker from "./ColourPicker";
 import {useCartItems} from "../../../context/Context";
+import CartModal from "../../cart/CartModal";
+import {getFormattedPrice} from "../../../utils/general";
 
 const product = {
   name: 'Jugsie Bottle',
@@ -24,6 +26,8 @@ const product = {
 
 
 export const ProductCard = () => {
+  const [isOpenCartModal, setOpenCartModal] = useState(false);
+
   const [selectedBottle, setSelectedBottle] = useState(bottleInformation[0]);
   const handleSelectedBottle = (radioPickedBottle) => {
     setSelectedBottle(radioPickedBottle);
@@ -41,15 +45,19 @@ export const ProductCard = () => {
   }
 
   const {updateCartItems} = useCartItems()
+  const getCompleteBottleObject = () => {
+    let bottleObject = {
+      ...selectedBottle,
+      ...selectedPersonalization,
+      price: product.price
+    }
+    return bottleObject;
+  }
 
   const handleSubmitBottle = (e) => {
     e.preventDefault();
-    let cartItem = {
-      ...selectedBottle,
-      ...selectedPersonalization,
-      price: product.price,
-    }
-    updateCartItems(cartItem);
+    updateCartItems(getCompleteBottleObject());
+    setOpenCartModal(true);
   }
 
   return (
@@ -59,6 +67,8 @@ export const ProductCard = () => {
         <ProductImageGallery bottle={selectedBottle}
                              personalization={selectedPersonalization}/>
 
+        <CartModal isOpen={isOpenCartModal} setOpen={setOpenCartModal}
+                   bottle={getCompleteBottleObject()}/>
         {/* Product info */}
         <div
           className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
@@ -69,7 +79,7 @@ export const ProductCard = () => {
 
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <p className="text-3xl text-gray-900">{`${product.price} kn`}</p>
+            <p className="text-3xl text-gray-900">{getFormattedPrice(product.price)}</p>
 
             {/* Reviews */}
             <div className="mt-6">

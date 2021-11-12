@@ -1,8 +1,7 @@
-import {Fragment, useEffect} from 'react'
+import {Fragment} from 'react'
 import {Dialog, Transition} from '@headlessui/react'
 import {XIcon} from '@heroicons/react/outline'
 import CartProduct from "./CartProduct";
-import {useCartItems} from "../../context/Context";
 
 const exampleProduct = [
   {
@@ -68,7 +67,6 @@ export default function Cart(props) {
                           className="-m-2 p-2 text-gray-400 hover:text-gray-500"
                           onClick={props.onClose}
                         >
-                          <span className="sr-only">Close panel</span>
                           <XIcon className="h-6 w-6" aria-hidden="true"/>
                         </button>
                       </div>
@@ -80,7 +78,7 @@ export default function Cart(props) {
                           <ul role="list"
                               className="-my-6 divide-y divide-gray-200">
                             {props.cartItemsArray.map((product) => (
-                              <CartProduct key={product.id} product={product}/>
+                              <CartProduct key={product.id} bottle={product}/>
                             ))}
                           </ul>
                         </div>

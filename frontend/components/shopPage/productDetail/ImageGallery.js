@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {getPersonalizationIcon} from "../../../utils/constants";
+import {getPersonalizationIcon} from "../../../utils/general";
 import {classNames} from "../../../utils/general";
 
 const IndividualImage = (props) => {
