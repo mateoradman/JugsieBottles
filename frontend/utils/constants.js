@@ -79,7 +79,3 @@ export const personalizationIcons = [
   {name: 'tooth', icon: Tooth},
 ]
 
-export function getPersonalizationIcon(iconName) {
-  return personalizationIcons.find(x => x.name === iconName).icon
-}
-
