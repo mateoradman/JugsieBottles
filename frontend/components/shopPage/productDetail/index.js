@@ -45,12 +45,11 @@ export const ProductCard = () => {
 
   const {updateCartItems} = useCartItems()
   const getCompleteBottleObject = () => {
-    let bottleObject = {
+    return {
       ...selectedBottle,
       ...selectedPersonalization,
       price: product.price
-    }
-    return bottleObject;
+    };
   }
 
   const handleSubmitBottle = (e) => {
