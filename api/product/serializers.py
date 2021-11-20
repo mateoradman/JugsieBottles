@@ -1,14 +1,15 @@
 from rest_framework import serializers
-from .models import Bottle, Collection
+
+from .models import Bottle
 
 
-class BottleSerializer(serializers.Serializer):
+class BottleSerializerOrder(serializers.ModelSerializer):
     class Meta:
         model = Bottle
-        fields = '__all__'
+        fields = ['name', 'colour']
 
 
-class CollectionSerializer(serializers.Serializer):
+class BottleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Collection
+        model = Bottle
         fields = '__all__'
