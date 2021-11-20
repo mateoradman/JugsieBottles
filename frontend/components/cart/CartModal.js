@@ -4,7 +4,6 @@ import CartProduct from "./CartProduct";
 import {XIcon} from "@heroicons/react/outline";
 
 export default function CartModal(props) {
-  console.log(props.bottle)
 
   return (
     <Transition.Root show={props.isOpen} as={Fragment}>
