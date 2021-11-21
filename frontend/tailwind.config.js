@@ -55,10 +55,12 @@ module.exports = {
       },
       width: {
         '2/7': '28.5714286%',
+        '60vw': '60vw'
       },
       height: {
         '120': '30rem',
         '160': '40rem',
+        '70vh': '70vh',
       },
       animation: {
         marquee: 'marquee 30s linear infinite',

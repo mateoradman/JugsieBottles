@@ -133,3 +133,4 @@ dmypy.json
 
 # Frontend node packages
 node_modules/
+test_resources/
