@@ -25,3 +25,9 @@ export function getPersonalizationIcon(iconName) {
 export function getBottleInformationObject(bottleName) {
   return bottleInformation.find(x => x.name === bottleName);
 }
+
+export function getCartTotalPrice(cartItemsArray) {
+  if (cartItemsArray.length > 0) {
+    return cartItemsArray.map(item => item.price).reduce((prev, next) => prev + next);
+  } else return 0;
+}
