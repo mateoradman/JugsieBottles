@@ -12,6 +12,7 @@ export const reviews = {
 
 export const bottleInformation = [
   {
+    id: 1,
     name: 'White',
     class: 'bg-bottle-white',
     backgroundColor: "bg-bottleBg-white",
@@ -19,6 +20,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('White', true)
   },
   {
+    id: 2,
     name: 'Black',
     class: 'bg-bottle-black',
     backgroundColor: "bg-bottleBg-black",
@@ -26,6 +28,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('Black', true)
   },
   {
+    id: 3,
     name: 'Blue',
     class: 'bg-bottle-blue',
     backgroundColor: "bg-bottleBg-blue",
@@ -33,6 +36,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('Blue', true)
   },
   {
+    id: 4,
     name: 'Hot Pink',
     class: 'bg-bottle-hotpink',
     backgroundColor: "bg-bottleBg-hotpink",
@@ -40,6 +44,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('Pink', true)
   },
   {
+    id: 5,
     name: 'Lilac',
     class: 'bg-bottle-lilac',
     backgroundColor: "bg-bottleBg-lilac",
@@ -47,6 +52,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('Lilac', true)
   },
   {
+    id: 6,
     name: 'Turquoise',
     class: 'bg-bottle-turquoise',
     backgroundColor: "bg-bottleBg-turquoise",
@@ -54,6 +60,7 @@ export const bottleInformation = [
     emptyPhoto: getBottlePaths('Turquoise', true)
   },
   {
+    id: 7,
     name: 'Green',
     class: 'bg-bottle-green',
     backgroundColor: "bg-bottleBg-green",
