@@ -55,30 +55,14 @@ export default function Cart(props) {
                       </div>
                     </div>
 
-                    <div className="mt-8">
-                      {props.cartItemsArray.length > 0 ?
-                        <div className="flow-root">
-                          <ul role="list"
-                              className="-my-6 divide-y divide-gray-200">
-                            {props.cartItemsArray.map((product) => (
-                              <CartProduct key={product.id} bottle={product}/>
-                            ))}
-                          </ul>
-                        </div>
-                        :
-                        <p
-                          className="text-base font-medium text-gray-900">
-                          Košarica je prazna.
-                        </p>
-                      }
-                    </div>
+                    <CartProducts cartItemsArray={props.cartItemsArray}/>
                   </div>
 
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div
                       className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>{`${getTotalPrice()} kn`}</p>
+                      <p>{`${getCartTotalPrice(props.cartItemsArray)} kn`}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">Shipping and
                       taxes calculated at checkout.</p>
