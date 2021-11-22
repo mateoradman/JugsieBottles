@@ -24,7 +24,8 @@ const CartProduct = (props) => {
           </div>
           <p
             className="flex mt-1 text-sm text-gray-500">
-            <span className="font-bold">Colour: </span>
+              <span className="font-bold"><span
+                className="mr-1">{'Colour:'}</span></span>
             {props.bottle.name}
           </p>
           {props.bottle.icon || props.bottle.text ?
@@ -47,7 +48,8 @@ const CartProduct = (props) => {
               Remove
             </button> :
             <Link href="/cart">
-              <button type="button" className="mt-5 btn btn-primary btn-xs">
+              <button type="button"
+                      className="mt-5 btn btn-primary text-2xs btn-xs">
                 View full cart
               </button>
             </Link>

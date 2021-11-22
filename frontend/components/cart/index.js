@@ -1,29 +1,11 @@
 import {Fragment} from 'react'
 import {Dialog, Transition} from '@headlessui/react'
 import {XIcon} from '@heroicons/react/outline'
-import CartProduct from "./CartProduct";
-
-const exampleProduct = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  // More products...
-]
+import Link from 'next/link';
+import {getCartTotalPrice} from "../../utils/general";
+import CartProducts from "./CartProducts";
 
 export default function Cart(props) {
-
-  const getTotalPrice = () => {
-    if (props.cartItemsArray.length > 0) {
-      return props.cartItemsArray.map(item => item.price).reduce((prev, next) => prev + next);
-    } else return 0;
-  }
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -59,8 +41,9 @@ export default function Cart(props) {
                   <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
                     <div className="flex items-start justify-between">
                       <Dialog.Title
-                        className="text-lg font-medium text-gray-900">Shopping
-                        cart</Dialog.Title>
+                        className="text-lg font-medium text-gray-900">
+                        Shopping cart
+                      </Dialog.Title>
                       <div className="ml-3 h-7 flex items-center">
                         <button
                           type="button"
@@ -100,12 +83,14 @@ export default function Cart(props) {
                     <p className="mt-0.5 text-sm text-gray-500">Shipping and
                       taxes calculated at checkout.</p>
                     <div className="mt-6">
-                      <a
-                        href="#"
-                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                      >
-                        Checkout
-                      </a>
+                      <Link href='/cart'>
+                        <a
+                          className="flex justify-center items-center px-6 py-3
+                          border border-transparent rounded-md shadow-sm
+                          text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                          View Full Cart
+                        </a>
+                      </Link>
                     </div>
                     <div
                       className="mt-6 flex justify-center text-sm text-center text-gray-500">
