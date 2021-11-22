@@ -1,25 +1,21 @@
-import {createContext, useContext, useEffect, useState} from 'react'
-
-const CartStateContext = createContext({cartItemsArray: []});
+import {createContext, useContext, useState} from 'react'
 
 const getCartItemsFromLocalStorage = () => {
-  let localStorageCartItems = localStorage.getItem('JugsieBottlesCartItems');
-  if (localStorageCartItems) {
-    console.log(JSON.parse(localStorageCartItems));
+  if (typeof window !== "undefined") {
+    let localStorageCartItems = localStorage.getItem('JugsieBottlesCartItems');
+    if (localStorageCartItems) {
+      console.log(JSON.parse(localStorageCartItems));
+    }
   } else return [];
 }
 
-export const CartProvider = ({children}) => {
-  const [cartItemsArray, setCartItems] = useState([]);
+const CartStateContext = createContext({cartItemsArray: []});
 
-  const updateCartItems = (cartItem) => {
-   setCartItems(oldCartItemsArray => [...oldCartItemsArray, cartItem]);
-  }
+export const CartProvider = ({children}) => {
+  const [cartItemsArray, setCartItemsArray] = useState([]);
 
   return (
-    <CartStateContext.Provider
-      value={{cartItemsArray, updateCartItems}}
-    >
+    <CartStateContext.Provider value={{cartItemsArray, setCartItemsArray}}>
       {children}
     </CartStateContext.Provider>
   )
