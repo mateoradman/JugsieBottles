@@ -1,6 +1,6 @@
 import {useCartItems} from "../context/Context";
 import Link from "next/link";
-import {getCartTotalPrice} from "../utils/general";
+import {getCartTotalPrice, ID} from "../utils/general";
 import CartProducts from "../components/cart/CartProducts";
 
 export default function Cart() {
@@ -28,7 +28,7 @@ export default function Cart() {
             <p className="mt-0.5 text-sm text-gray-500">Shipping and
               taxes calculated at checkout.</p>
             <div className="mt-6">
-              <Link href='/checkout'>
+              <Link href='/checkout/[id]' as={`/checkout/${ID()}`}>
                 <a
                   className="flex max-w-md btn bg-green-800 hover:btn-success rounded-md mx-auto justify-center">
                   Checkout
