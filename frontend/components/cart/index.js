@@ -70,10 +70,11 @@ export default function Cart(props) {
                     </p>
                     <div className="mt-6">
                       <Link href='/cart'>
-                        <a
-                          className="flex justify-center btn rounded-md">
+                        <button
+                          className="flex w-3/4 mx-auto justify-center btn rounded-md"
+                          onClick={props.onClose}>
                           View Full Cart
-                        </a>
+                        </button>
                       </Link>
                     </div>
                     <div
