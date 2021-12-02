@@ -52,7 +52,7 @@ const CartProduct = (props) => {
             <Link href="/cart">
               <button type="button"
                       className="mt-5 btn btn-primary text-2xs btn-xs">
-                View full cart
+                View Full Cart
               </button>
             </Link>
           }

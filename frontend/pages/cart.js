@@ -2,6 +2,7 @@ import {useCartItems} from "../context/Context";
 import Link from "next/link";
 import {getCartTotalPrice, ID} from "../utils/general";
 import CartProducts from "../components/cart/CartProducts";
+import ContinueShoppingButton from "../components/cart/ContinueShoppingButton";
 
 export default function Cart() {
   const {cartItemsArray} = useCartItems();
@@ -25,12 +26,13 @@ export default function Cart() {
               <p>Subtotal</p>
               <p>{`${getCartTotalPrice(cartItemsArray)} kn`}</p>
             </div>
-            <p className="mt-0.5 text-sm text-gray-500">Shipping and
-              taxes calculated at checkout.</p>
+            <p className="mt-0.5 text-sm text-gray-500">
+              Free shipping included in the price.
+            </p>
             <div className="mt-6">
               <Link href='/checkout/[id]' as={`/checkout/${ID()}`}>
                 <a
-                  className="flex max-w-md btn bg-green-800 hover:btn-success rounded-md mx-auto justify-center">
+                  className="flex max-w-md btn bg-green-800 hover:btn-success border-none rounded-md mx-auto justify-center">
                   Checkout
                 </a>
               </Link>
@@ -39,15 +41,7 @@ export default function Cart() {
               className="mt-6 flex justify-center text-sm text-center text-gray-500">
               <p>
                 or{' '}
-                <Link href='/shop'>
-                  <button
-                    type="button"
-                    className="text-indigo-600 font-medium hover:text-indigo-500"
-                  >
-                    Continue Shopping<span
-                    aria-hidden="true"> &rarr;</span>
-                  </button>
-                </Link>
+                <ContinueShoppingButton/>
               </p>
             </div>
           </div>
