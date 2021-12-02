@@ -6,7 +6,6 @@ const CartProducts = (props) => {
   const {cartItemsArray, setCartItemsArray} = useCartItems();
   const handleRemoveItemFromCart = (bottleItem) => {
     setCartItemsArray(cartItemsArray.filter((item) => item !== bottleItem));
-    console.log(cartItemsArray);
   }
 
   return (
