@@ -8,8 +8,8 @@ const ContinueShoppingButton = (props) => {
         className="text-indigo-600 font-medium hover:text-indigo-500"
         onClick={props.handleOnClose}
       >
-        Continue Shopping<span
-        aria-hidden="true"> &rarr;</span>
+        Continue Shopping
+        <span aria-hidden="true"> &rarr;</span>
       </button>
     </Link>
   );
