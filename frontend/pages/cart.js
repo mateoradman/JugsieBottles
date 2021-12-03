@@ -30,7 +30,7 @@ export default function Cart() {
               Free shipping included in the price.
             </p>
             <div className="mt-6">
-              <Link href='/checkout/[id]' as={`/checkout/${ID()}`}>
+              <Link href='/checkout'>
                 <a
                   className="flex max-w-md btn bg-green-800 hover:btn-success border-none rounded-md mx-auto justify-center">
                   Checkout
