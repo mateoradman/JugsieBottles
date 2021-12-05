@@ -1,5 +1,6 @@
 const personalizationColor = '#C0C0C0';
 const personalizationColorDarker = 'rgb(134,134,134)'
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -44,8 +45,7 @@ module.exports = {
         '12%': '12%'
       },
       fontFamily: {
-        'sans': ['"Modern Era"', 'system-ui', '-apple-system', '"Segoe UI"',
-          'Roboto', 'Ubuntu', 'Cantarell', '"Noto Sans"', 'sans-serif']
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       gridTemplateRows: {
         '[auto,auto,1fr]': 'auto auto 1fr',

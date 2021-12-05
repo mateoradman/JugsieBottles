@@ -6,11 +6,18 @@ import {CartProvider} from "../../context/Context";
 
 export default function Layout({children}) {
   return (
-    <div className="bg-white w-full h-screen min-h-full">
+    <div className="bg-white w-full h-max min-h-full">
       <Head>
         <title>Jugsie Bottles</title>
         <link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg"/>
         <link rel="icon" type="image/png" href="/Favicon/favicon.png"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect"
+              href="https://fonts.gstatic.com"
+              crossOrigin="anonymous"/>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          rel="stylesheet"/>
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js"/>
       <Script type="text/javascript" src="https://2pay-js.2checkout.com/v1/2pay.js"/>
