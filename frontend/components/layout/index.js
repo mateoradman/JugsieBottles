@@ -6,7 +6,7 @@ import {CartProvider} from "../../context/Context";
 
 export default function Layout({children}) {
   return (
-    <div className="bg-white w-full h-max min-h-full">
+    <div className="mx-auto bg-white w-full h-max min-h-full max-w-screen-2xl">
       <Head>
         <title>Jugsie Bottles</title>
         <link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg"/>

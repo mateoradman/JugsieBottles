@@ -7,7 +7,7 @@ import HomePageCard from "../components/homePage/cards/HomePageCard";
 export default function Home() {
   return (
     <div
-      className="relative min-h-screen min-w-full overflow-hidden">
+      className="relative min-h-screen overflow-hidden">
       <Hero/>
       <MarqueeRunningText/>
       <BottleDisplay/>
