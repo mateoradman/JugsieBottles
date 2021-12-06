@@ -3,7 +3,7 @@ import JugsieBottlesLogo from "../../public/Logos/logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-white p-10 footer text-base-content">
+    <footer className="bg-white p-10 footer text-base-content place-items-center">
       <div>
         <JugsieBottlesLogo/>
         <p className="font-extrabold font-mono self-center">
