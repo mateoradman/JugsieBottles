@@ -131,6 +131,9 @@ dmypy.json
 # PyCharm specific
 .idea/
 
+# VSCode specific
+.vscode/
+
 # Frontend node packages
 node_modules/
 test_resources/
