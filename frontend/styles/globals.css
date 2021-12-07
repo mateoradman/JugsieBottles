@@ -6,11 +6,6 @@
     @apply h-120 md:h-160 rounded-3xl shadow-2xl
 }
 
-#spin-figure > img {
-    display: none !important;
-    position: relative !important;
-}
-
 [id^=sirv] > img {
     display: none !important;
     position: relative !important;
