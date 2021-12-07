@@ -3,14 +3,14 @@ import JugsieBottlesLogo from "../../public/Logos/logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-white p-10 footer text-base-content place-items-center">
+    <footer className="bg-white p-10 footer text-base-content">
       <div>
         <JugsieBottlesLogo/>
         <p className="font-extrabold font-mono self-center">
           Jugsie Bottles
         </p>
         <span
-          className="font-normal font-mono tracking-tight">Vaš svakodnevni prijatelj od 2020. godine.</span>
+          className="font-normal font-mono tracking-tight">Quenching your thirst since 2020</span>
       </div>
       <div>
         <span className="footer-title">Company</span>
