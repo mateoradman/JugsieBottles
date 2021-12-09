@@ -48,11 +48,13 @@ export const StandardSelectField = (props) => {
 };
 
 export const ContinueButton = (props) => {
-  return <div className="col-span-1 md:col-span-2 justify-center">
-    <button type="submit"
-      className="w-full btn btn-info rounded-lg"
-    >
-      Continue
-    </button>
-  </div>;
-}
+  return (
+    <div className="col-span-1 md:col-span-2 justify-center">
+      <button type="submit"
+        className="flex space-x-10 w-full btn btn-info rounded-lg"
+      >
+        Continue
+      </button>
+    </div>
+  );
+};
