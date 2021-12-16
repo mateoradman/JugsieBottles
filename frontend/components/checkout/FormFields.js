@@ -2,7 +2,7 @@ import { classNames } from "../../utils/general";
 
 export const emptyStringValidation = (stringToValidate) => stringToValidate.trim() !== '';
 export const emptyEmailValidation = (stringToValidate) => new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/).test(stringToValidate);
-export const emptyPhoneNumberValidation = (stringToValidate) => new RegExp(/([+/()-\s])\w+\d/).test(stringToValidate);
+export const emptyPhoneNumberValidation = (stringToValidate) => new RegExp(/^[+0-9]+$/).test(stringToValidate);
 
 export const StandardInputField = (props) => {
 
@@ -16,6 +16,7 @@ export const StandardInputField = (props) => {
         id={ props.inputID }
         type={ props.inputType }
         required
+        ref={ props.inputRef }
         defaultValue={ props.inputValue }
         onBlur={ props.blurHandler }
         onChange={ props.changeHandler }
@@ -38,10 +39,12 @@ export const StandardSelectField = (props) => {
         htmlFor={ props.inputID }>
         <span className="label-text">{ props.inputLabel }</span>
       </label>
-      <select defaultValue={ props.options[0] }
+      <select
         id={ props.inputID }
+        defaultValue={ props.selectedCountry }
+        onChange={ props.changeSelectedCountryHandler }
         className="select select-bordered rounded-lg select-info w-full max-w-xs">
-        { props.options.map((country) => (<option key={ country }>{ country }</option>)) }
+        { props.options.map((country) => (<option label={ country.label } key={ country.value }>{ country.value }</option>)) }
       </select>
     </div>
   );
