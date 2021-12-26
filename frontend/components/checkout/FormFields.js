@@ -8,7 +8,7 @@ export const StandardInputField = (props) => {
 
   return (
     <div className="form-control">
-      <label className="label mb-1 block text-sm font-medium text-gray-700"
+      <label className="label block text-sm font-medium text-gray-700"
         htmlFor={ props.inputID }>
         <span className="label-text">{ props.inputLabel }</span>
       </label>
@@ -24,7 +24,7 @@ export const StandardInputField = (props) => {
           props.hasError ? 'input-error' : 'input-info') }
       />
       { props.hasError ?
-        <label className="label mb-1 block text-sm font-medium text-gray-500">
+        <label className="label block text-sm font-medium text-gray-500">
           <span className="label-text-alt">Data is invalid.</span>
         </label> : null
       }
@@ -50,14 +50,23 @@ export const StandardSelectField = (props) => {
   );
 };
 
-export const ContinueButton = (props) => {
+export const FormButton = (props) => {
   return (
     <div className="col-span-1 md:col-span-2 justify-center">
-      <button type="submit"
-        className="flex space-x-10 w-full btn btn-info rounded-lg"
-      >
-        Continue
-      </button>
+      { props.back ?
+        <button type="submit"
+          className="flex space-x-10 w-full btn btn-warning rounded-lg"
+          onClick={props.previousStepHandler}
+        >
+          Back
+        </button>
+        :
+        <button type="submit"
+          className="flex space-x-10 w-full btn btn-info rounded-lg"
+        >
+          Continue
+        </button>
+      }
     </div>
   );
 };

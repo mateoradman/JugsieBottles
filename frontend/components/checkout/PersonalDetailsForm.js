@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import { ContinueButton, emptyEmailValidation, emptyPhoneNumberValidation, emptyStringValidation, StandardInputField, StandardSelectField } from './FormFields';
-import useInput from '../../hooks/useInput'
+import { FormButton, emptyEmailValidation, emptyPhoneNumberValidation, emptyStringValidation, StandardInputField, StandardSelectField } from './FormFields';
+import useInput from '../../hooks/useInput';
+import countryList from 'react-select-country-list';
 
 export default function PersonalDetailsForm(props) {
     const [checkedTandC, setCheckedTandC] = useState(false);
 
-    const supportedShippingCountries = ['Croatia']
+    const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }
+    const [selectedCountry, setSelectedCountry] = useState(Croatia.value);
+    const countryOptions = [Croatia];
+    const changeSelectedCountryHandler = country => {
+        setSelectedCountry(country);
+    };
 
     const {
         value: enteredFirstName,
@@ -72,6 +78,7 @@ export default function PersonalDetailsForm(props) {
         enteredStreetReset();
         enteredCityReset();
         enteredZIPReset();
+        setSelectedCountry(Croatia.value);
         setCheckedTandC(false);
     }
 
@@ -80,30 +87,29 @@ export default function PersonalDetailsForm(props) {
     let formIsValid = formValidityArray.every(Boolean);
 
     const formData = {
-        firstName: enteredFirstName,
-        lastName: enteredLastName,
-        email: enteredEmail,
-        phone: enteredPhone,
-        address: enteredStreet,
-        city: enteredCity,
-        zip: enteredZIP,
-        country: supportedShippingCountries[0]
+        FirstName: enteredFirstName,
+        LastName: enteredLastName,
+        Email: enteredEmail,
+        Phone: enteredPhone,
+        Address1: enteredStreet,
+        City: enteredCity,
+        Zip: enteredZIP,
+        CountryCode: selectedCountry
     }
 
     const handleFormSubmit = (event) => {
         if (!formIsValid) return;
         event.preventDefault();
         // add validation
+        props.updateFormData({ShippingDetails: formData})
         resetAllFields();
-        props.updateFormData(formData)
         props.handleGoToNextStep();
-        console.log(formData);
     }
     return (
         <div className="px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
             <div className="my-6 sm:my-10 bg-white card py-8 px-3 md:shadow-lg rounded-lg sm:px-10">
-                <h1 className="mb-4 text-capitalize font-extrabold text-2xl text-center">
-                    Shipping Details
+                <h1 className="mb-4 text-capitalize font-bold text-2xl text-center">
+                    Personal Details
                 </h1>
                 <form
                     className="grid grid-cols-1 px-5 md:px-0 md:grid-cols-2 gap-y-3 md:gap-x-10"
@@ -175,27 +181,30 @@ export default function PersonalDetailsForm(props) {
                         inputValue={ enteredZIP }
                     />
                     <StandardSelectField
-                        inputID='country'
-                        inputLabel='Country'
-                        options={ supportedShippingCountries }
+                        inputLabel={ 'Country' }
+                        inputID={ 'country' }
+                        options={ countryOptions }
+                        selectedCountry={ selectedCountry }
+                        onChange={ changeSelectedCountryHandler }
                     />
 
-                    <div className="my-3 card bordered rounded-lg md:col-span-2 w-full sm:w-3/4 place-self-center">
+                    <div className="flex my-3 md:col-span-2 w-full">
                         <div className="form-control">
                             <label className="cursor-pointer label">
-                                <span className="label-text font-bold p-1 ">
+                                <span className="label-text font-bold p-1">
                                     I agree to Terms and Conditions
                                 </span>
                                 <input
                                     type="checkbox"
-                                    className="checkbox checkbox-sm checkbox-primary"
+                                    required
+                                    className="justify-start ml-3 checkbox checkbox-primary"
                                     onClick={ () => setCheckedTandC(!checkedTandC) }
                                     defaultChecked={ checkedTandC } />
                             </label>
                         </div>
                     </div>
 
-                    <ContinueButton />
+                    <FormButton />
                 </form>
             </div>
         </div>

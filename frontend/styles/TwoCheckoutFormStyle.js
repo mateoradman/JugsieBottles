@@ -16,8 +16,6 @@ export const PaymentFormStyle = {
     },
     '.form': {
         marginTop: '2rem',
-        border: '1px solid #000000',
-        borderRadius: '.5rem',
         paddingLeft: '1.75rem'
     },
     '.row': {
