@@ -21,6 +21,8 @@ const product = {
   ],
   details:
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
+  Quantity: 1,
+  Code: "SX8GPAUNF5"
 }
 
 
