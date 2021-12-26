@@ -89,10 +89,7 @@ module.exports = {
   ],
   daisyui: {
     styled: true,
-    themes: [
-      'cupcake',
-      'emerald'
-    ],
+    themes: false,
     base: true,
     utils: true,
     logs: false,
