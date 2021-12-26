@@ -9,10 +9,10 @@ export default function Cart() {
 
   return (
     <>
-      <div className="mx-auto h-70vh container">
+      <div className="mx-auto h-screen container">
         <div
-          className="h-full flex flex-col bg-transparent overflow-y-scroll">
-          <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+          className="h-full flex flex-col bg-transparent">
+          <div className="py-6 px-4 sm:px-6 overflow-y-auto">
             <div
               className="text-xl font-extrabold text-gray-900">
               Shopping cart

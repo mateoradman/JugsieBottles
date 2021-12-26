@@ -22,8 +22,8 @@ const CartProducts = (props) => {
         </div>
         :
         <p
-          className="text-base font-medium text-gray-900">
-          Košarica je prazna.
+          className="text-base text-gray-900">
+          The cart is empty.
         </p>
       }
 

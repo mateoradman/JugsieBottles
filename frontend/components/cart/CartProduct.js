@@ -18,7 +18,7 @@ const CartProduct = (props) => {
       <div className="ml-3 flex-1 flex flex-col">
         <div>
           <div
-            className="flex justify-between text-base font-medium text-gray-900">
+            className="flex justify-between text-sm sm:text-base font-medium text-gray-900">
             <h3>Jugsie Bottle</h3>
             <p className="ml-4">{getFormattedPrice(props.bottle.price)}</p>
           </div>
@@ -34,14 +34,14 @@ const CartProduct = (props) => {
               <span className="font-bold">Personalization: </span>
               {Icon ? <span className="flex">
                 <span>{props.bottle.text || null}</span>
-              <span className="pl-2"><Icon/></span>
+              <span className="pl-2 self-center"><Icon/></span>
             </span>
                 :
                 <span>{props.bottle.text}</span>}
             </p>
             : null}
         </div>
-        <div className="flex justify-end">
+        <div className="sm:justify-end sm:flex">
           {!props.hideRemove ?
             <button type="button"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
