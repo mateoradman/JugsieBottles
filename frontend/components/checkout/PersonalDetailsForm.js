@@ -91,7 +91,7 @@ export default function PersonalDetailsForm(props) {
         LastName: enteredLastName,
         Email: enteredEmail,
         Phone: enteredPhone,
-        Address1: enteredStreet,
+        Address: enteredStreet,
         City: enteredCity,
         Zip: enteredZIP,
         CountryCode: selectedCountry
