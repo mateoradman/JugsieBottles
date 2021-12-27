@@ -4,7 +4,7 @@ import { FormButton, emptyStringValidation, StandardInputField, StandardSelectFi
 import { Switch } from "@headlessui/react";
 import useInput from '../../hooks/useInput';
 import countryList from 'react-select-country-list';
-
+import { env } from 'process';
 
 export default function PaymentForm(props) {
     const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
@@ -15,18 +15,11 @@ export default function PaymentForm(props) {
     };
 
     const {
-        value: enteredCardholderFirstName,
-        hasError: enteredCardholderFirstNamehasError,
-        valueChangeHandler: enteredCardholderFirstNameChangeHandler,
-        inputBlurHandler: enteredCardholderFirstNameBlurHandler,
-        reset: enteredCardholderFirstNameReset
-    } = useInput(emptyStringValidation)
-    const {
-        value: enteredCardholderLastName,
-        hasError: enteredCardholderLastNamehasError,
-        valueChangeHandler: enteredCardholderLastNameChangeHandler,
-        inputBlurHandler: enteredCardholderLastNameBlurHandler,
-        reset: enteredCardholderLastNameReset
+        value: enteredCardholderName,
+        hasError: enteredCardholderNamehasError,
+        valueChangeHandler: enteredCardholderNameChangeHandler,
+        inputBlurHandler: enteredCardholderNameBlurHandler,
+        reset: enteredCardholderNameReset
     } = useInput(emptyStringValidation)
     const {
         value: enteredStreet,
@@ -58,7 +51,9 @@ export default function PaymentForm(props) {
         component.mount('#card-element');
     }, [])
     const generatePaymentToken = () => {
-        PaymentClient.tokens.generate(component, bd).then((response) => {
+        let BillingDetails = getBillingDetails()
+        let isValid = false;
+        PaymentClient.tokens.generate(component, BillingDetails).then((response) => {
             console.log(response.token);
             const Items = [{ Code: "someCode" }]
             const PaymentDetails = {
@@ -71,16 +66,14 @@ export default function PaymentForm(props) {
                 }
             }
             props.updateFormData({ Items: Items, BillingDetails: BillingDetails, PaymentDetails: PaymentDetails })
-            return true;
+            isValid = true;
         }).catch((error) => {
             console.error(error);
-            return false;
         });
     }
 
     const resetAllFields = () => {
-        enteredCardholderFirstNameReset();
-        enteredCardholderLastNameReset();
+        enteredCardholderNameReset();
         enteredStreetReset();
         enteredCityReset();
         enteredZIPReset();
@@ -88,19 +81,28 @@ export default function PaymentForm(props) {
         setSelectedCountry('');
     };
 
-    const BillingDetails = {
-        "FirstName": enteredCardholderFirstName,
-        "LastName": enteredCardholderLastName,
-        "Address": enteredStreet | props.formData.Address,
-        "City": enteredCity | props.formData.City,
-        "Zip": enteredZIP | props.formData.Zip,
-        "CountryCode": selectedCountry | props.formData.CountryCode,
-    };
-    const bd = {
-        name: enteredCardholderFirstName
+    const getBillingDetails = () => {
+        if (isBillingAddressSame) {
+            return {
+                name: enteredCardholderName,
+                Address: props.formData.ShippingDetails.Address,
+                City: props.formData.ShippingDetails.City,
+                Zip: props.formData.ShippingDetails.Zip,
+                CountryCode: props.formData.ShippingDetails.CountryCode,
+            };
+        }
+        else {
+            return {
+                name: enteredCardholderName,
+                Address: enteredStreet,
+                City: enteredCity,
+                Zip: enteredZIP,
+                CountryCode: selectedCountry,
+            };
+        }
     }
 
-    const handleFormSubmit = (event, j) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault();
         resetAllFields();
         if (!generatePaymentToken()) return;
@@ -123,28 +125,15 @@ export default function PaymentForm(props) {
                 >
                     <div className="form-group">
                         <StandardInputField
-                            inputLabel={ "Cardholder First Name" }
+                            inputLabel={ "Cardholder" }
                             typeOfInput={ "text" }
-                            inputID={ "cardholderFirstName" }
-                            blurHandler={ enteredCardholderFirstNameBlurHandler }
-                            changeHandler={ enteredCardholderFirstNameChangeHandler }
-                            hasError={ enteredCardholderFirstNamehasError }
-                            inputValue={ enteredCardholderFirstName }
+                            inputID={ "cardholder" }
+                            blurHandler={ enteredCardholderNameBlurHandler }
+                            changeHandler={ enteredCardholderNameChangeHandler }
+                            hasError={ enteredCardholderNamehasError }
+                            inputValue={ enteredCardholderName }
                         />
                     </div>
-
-                    <div className="form-group">
-                        <StandardInputField
-                            inputLabel={ "Cardholder Last Name" }
-                            typeOfInput={ "text" }
-                            inputID={ "cardholderLastName" }
-                            blurHandler={ enteredCardholderLastNameBlurHandler }
-                            changeHandler={ enteredCardholderLastNameChangeHandler }
-                            hasError={ enteredCardholderLastNamehasError }
-                            inputValue={ enteredCardholderLastName }
-                        />
-                    </div>
-
                     <Switch.Group>
                         <div className="flex items-center my-2 md:justify-between">
                             <Switch.Label className="mr-2">Billing address same as shipping address</Switch.Label>
