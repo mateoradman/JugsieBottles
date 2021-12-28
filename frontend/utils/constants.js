@@ -86,3 +86,4 @@ export const personalizationIcons = [
   {name: 'tooth', icon: Tooth},
 ]
 
+export const LocalStorageCartItems = 'JugsieBottlesCartItems';

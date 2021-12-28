@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { LocalStorageCartItems } from '../utils/constants';
 
 const CartStateContext = createContext({ cartItemsArray: [] });
 
 export const CartProvider = ({ children }) => {
   const getCartItemsFromLocalStorage = () => {
     if (typeof window !== "undefined") {
-      let localStorageCartItems = window.localStorage.getItem('JugsieBottlesCartItems');
+      let localStorageCartItems = window.localStorage.getItem(LocalStorageCartItems);
       if (typeof localStorageCartItems === 'string') {
         let parsedJSONArray = JSON.parse(localStorageCartItems);
         if (typeof parsedJSONArray === 'object') {
@@ -19,7 +20,7 @@ export const CartProvider = ({ children }) => {
   useEffect(() => setCartItemArray(getCartItemsFromLocalStorage()), [])
   const setCartItemsArray = (newCartItemsArray) => {
     setCartItemArray(newCartItemsArray);
-    window.localStorage.setItem('JugsieBottlesCartItems', JSON.stringify(newCartItemsArray));
+    window.localStorage.setItem(LocalStorageCartItems, JSON.stringify(newCartItemsArray));
   }
 
   return (
