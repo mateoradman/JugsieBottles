@@ -29,7 +29,6 @@ export default function CheckoutForm() {
 
     const componentToRender = () => {
         // Immediately don't render anything if there is nothing in the cart
-        console.log(cartItemsArray)
         if (!cartItemsArray || cartItemsArray.length === 0) return null;
 
         switch (step) {
