@@ -4,7 +4,6 @@ import { FormButton, emptyStringValidation, StandardInputField, StandardSelectFi
 import { Switch } from "@headlessui/react";
 import useInput from '../../hooks/useInput';
 import countryList from 'react-select-country-list';
-import { env } from 'process';
 
 export default function PaymentForm(props) {
     const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
@@ -43,7 +42,7 @@ export default function PaymentForm(props) {
         reset: enteredZIPReset
     } = useInput(emptyStringValidation)
 
-    const [PaymentClient, setPaymentClient] = useState(new TwoPayClient(process.env.REACT_APP_MERCHANT_CODE))
+    const [PaymentClient, setPaymentClient] = useState(new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE))
     // TODO: Add translation
     PaymentClient.setup.setLanguage('hr');
     const [component, setComponent] = useState(PaymentClient.components.create('card', PaymentFormStyle))
@@ -69,7 +68,9 @@ export default function PaymentForm(props) {
             isValid = true;
         }).catch((error) => {
             console.error(error);
+            isValid = false;
         });
+        return isValid;
     }
 
     const resetAllFields = () => {
@@ -105,7 +106,8 @@ export default function PaymentForm(props) {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         resetAllFields();
-        if (!generatePaymentToken()) return;
+        let paymentTokenIsValid = generatePaymentToken()
+        if (!paymentTokenIsValid) return;
         props.handleGoToNextStep();
     }
 
