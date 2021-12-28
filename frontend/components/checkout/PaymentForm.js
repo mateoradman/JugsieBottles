@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import { PaymentFormStyle } from '../../styles/TwoCheckoutFormStyle';
-import { FormButton, emptyStringValidation, StandardInputField, StandardSelectField, FormErrorAlert } from './FormFields';
+import { FormButton, emptyStringValidation, StandardInputField, StandardSelectField } from './FormFields';
 import { Switch } from "@headlessui/react";
 import useInput from '../../hooks/useInput';
 import countryList from 'react-select-country-list';
