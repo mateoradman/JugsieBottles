@@ -98,13 +98,14 @@ export default function PersonalDetailsForm(props) {
     }
 
     const handleFormSubmit = (event) => {
-        if (!formIsValid) return;
         event.preventDefault();
-        // add validation
-        props.updateFormData({ShippingDetails: formData})
-        resetAllFields();
-        props.handleGoToNextStep();
+        if (formIsValid) {
+            props.updateFormData({ShippingDetails: formData})
+            resetAllFields();
+            props.handleGoToNextStep();
+        };
     }
+
     return (
         <div className="px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
             <div className="my-6 sm:my-10 bg-white card py-8 px-3 md:shadow-lg rounded-lg sm:px-10">

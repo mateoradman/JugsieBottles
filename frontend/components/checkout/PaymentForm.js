@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import { PaymentFormStyle } from '../../styles/TwoCheckoutFormStyle';
-import { FormButton, emptyStringValidation, StandardInputField, StandardSelectField } from './FormFields';
+import { FormButton, emptyStringValidation, StandardInputField, StandardSelectField, FormErrorAlert } from './FormFields';
 import { Switch } from "@headlessui/react";
 import useInput from '../../hooks/useInput';
 import countryList from 'react-select-country-list';
 
 export default function PaymentForm(props) {
+    let FormIsValid = false;
     const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
     const [selectedCountry, setSelectedCountry] = useState('');
     const countryOptions = useMemo(() => countryList().getData(), []);
@@ -16,6 +17,7 @@ export default function PaymentForm(props) {
     const {
         value: enteredCardholderName,
         hasError: enteredCardholderNamehasError,
+        isValid: enteredCardholderNameIsValid,
         valueChangeHandler: enteredCardholderNameChangeHandler,
         inputBlurHandler: enteredCardholderNameBlurHandler,
         reset: enteredCardholderNameReset
@@ -51,7 +53,6 @@ export default function PaymentForm(props) {
     }, [])
     const generatePaymentToken = () => {
         let BillingDetails = getBillingDetails()
-        let isValid = false;
         PaymentClient.tokens.generate(component, BillingDetails).then((response) => {
             console.log(response.token);
             const Items = [{ Code: "someCode" }]
@@ -65,12 +66,11 @@ export default function PaymentForm(props) {
                 }
             }
             props.updateFormData({ Items: Items, BillingDetails: BillingDetails, PaymentDetails: PaymentDetails })
-            isValid = true;
+            FormIsValid = true;
         }).catch((error) => {
             console.error(error);
-            isValid = false;
+            FormIsValid = false;
         });
-        return isValid;
     }
 
     const resetAllFields = () => {
@@ -105,10 +105,13 @@ export default function PaymentForm(props) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        resetAllFields();
-        let paymentTokenIsValid = generatePaymentToken()
-        if (!paymentTokenIsValid) return;
-        props.handleGoToNextStep();
+        if (enteredCardholderNameIsValid) {
+            generatePaymentToken()
+            if (FormIsValid) {
+                props.handleGoToNextStep();
+                resetAllFields();
+            };
+        };
     }
 
     return (
