@@ -42,7 +42,7 @@ export default function CheckoutForm() {
                     handleGoToPreviousStep={ handleGoToPreviousStep }
                     step={ step } />
             case 3:
-                return <Success handleGoToNextStep={ handleGoToNextStep } />
+                return <Success/>
             default:
                 return null;
         }
@@ -53,7 +53,7 @@ export default function CheckoutForm() {
             <ul className="w-full steps">
                 <li className={ colourStep(step, 1) }><span className="label-text">Personal Details</span></li>
                 <li className={ colourStep(step, 2) }><span className="label-text">Payment</span></li>
-                <li className={ colourStep(step, 4) }><span className="label-text">Order complete</span></li>
+                <li className={ colourStep(step, 3) }><span className="label-text">Order complete</span></li>
             </ul>
             <div className="mt-6 px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
                 <div className="flex flex-col space-y-4 w-full p-2 mx-auto bg-white rounded-2xl">
