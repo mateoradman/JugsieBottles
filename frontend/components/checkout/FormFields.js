@@ -54,7 +54,7 @@ export const FormButton = (props) => {
   return (
     <div className="col-span-1 md:col-span-2 justify-center">
       { props.back ?
-        <button type="submit"
+        <button type="button"
           className="flex space-x-10 w-full btn btn-warning rounded-lg"
           onClick={props.previousStepHandler}
         >
