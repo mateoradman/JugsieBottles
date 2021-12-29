@@ -67,9 +67,6 @@ export default function PaymentForm(props) {
             }
             props.updateFormData({ Items: Items, BillingDetails: BillingDetails, PaymentDetails: PaymentDetails })
             FormIsValid = true;
-        }).catch((error) => {
-            console.error(error);
-            FormIsValid = false;
         });
     }
 
@@ -86,19 +83,18 @@ export default function PaymentForm(props) {
         if (isBillingAddressSame) {
             return {
                 name: enteredCardholderName,
-                Address: props.formData.ShippingDetails.Address,
-                City: props.formData.ShippingDetails.City,
-                Zip: props.formData.ShippingDetails.Zip,
-                CountryCode: props.formData.ShippingDetails.CountryCode,
+                ...props.formData.ShippingDetails
             };
         }
         else {
             return {
                 name: enteredCardholderName,
-                Address: enteredStreet,
+                Address1: enteredStreet,
                 City: enteredCity,
                 Zip: enteredZIP,
                 CountryCode: selectedCountry,
+                Email: props.formData.ShippingDetails.Email,
+                Phone: props.formData.ShippingDetails.Phone
             };
         }
     }
