@@ -49,7 +49,7 @@ const Navbar = () => {
               buttonStyling="font-bold text-lg text-gray-500 hover:text-gray-900"
             />
             <div
-              className="hidden md:border-none md:block md:-mr-2 md:flex md:inline-flex"
+              className="hidden md:border-none md:-mr-2 md:inline-flex"
               onClick={setCartState}>
               <CartIcon numberOfCartItems={cartItemsArray.length}/>
             </div>
