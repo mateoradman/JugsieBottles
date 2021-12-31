@@ -8,25 +8,7 @@ import {useCartItems} from "../../../context/Context";
 import CartModal from "../../cart/CartModal";
 import {getFormattedPrice} from "../../../utils/general";
 
-const product = {
-  name: 'Jugsie Bottle',
-  price: 130,
-  description:
-    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-  highlights: [
-    'Something goes here',
-    'Dyed with our proprietary colors',
-    'Pre-washed & pre-shrunk',
-    'Ultra-soft 100% cotton',
-  ],
-  details:
-    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-  Quantity: 1,
-  Code: "SX8GPAUNF5"
-}
-
-
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
   const [isOpenCartModal, setOpenCartModal] = useState(false);
 
   const [selectedBottle, setSelectedBottle] = useState(bottleInformation[0]);
@@ -121,20 +103,6 @@ export const ProductCard = () => {
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900">{product.description}</p>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                <ul role="list" className="pl-4 list-disc text-sm space-y-2">
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 

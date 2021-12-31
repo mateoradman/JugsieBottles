@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import {
   Aeroplane, Butterfly, Camera, Clover, Crown, Dumbbell, Flower,
   Heart, Lipstick, MusicalNote, Paw, Smile, Star, Tooth
@@ -88,8 +89,6 @@ export const personalizationIcons = [
 
 export const LocalStorageCartItems = 'JugsieBottlesCartItems';
 
-export const APIUrl = 'http://localhost:8000/api/v1/'
-
 export const bottleFeatures = [
   { name: 'Manufacturing country', description: 'China' },
   {
@@ -104,3 +103,16 @@ export const bottleFeatures = [
     description: 'Washing the bottle in the dishwasher may cause damage to the colour coating.'
   },
 ]
+
+export const APIUrl = 'http://0.0.0.0:8000/api/v1/'
+
+export const APIRequestDefaults = {
+  'method': 'GET',
+  'credentials': 'include',
+  'headers': new Headers({
+    'X-CSRFToken': Cookies.get('csrftoken'),
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  }),
+};
