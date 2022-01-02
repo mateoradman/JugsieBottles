@@ -1,7 +1,10 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'), verbose=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -12,7 +15,7 @@ SECRET_KEY = 'django-insecure-$talervr7+nfw9usab(es@hl*v=c&^79!gaj-n6$c4*=#_4s^v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -27,8 +30,8 @@ INSTALLED_APPS = [
     'corsheaders',
     # add rest_framework support to the project
     'rest_framework',
+    'rest_framework_simplejwt',
     'django_countries',
-
     'product',
     'shop',
 ]
@@ -46,6 +49,11 @@ MIDDLEWARE = [
 ]
 # For development purposes.
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000'
+# ]
+
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
@@ -120,6 +128,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
+
+TWOCHECKOUT_API_URL = os.environ.get('TWOCHECKOUT_API_URL')
+TWOCHECKOUT_API_SECRET_KEY = os.environ.get('TWOCHECKOUT_API_SECRET_KEY')
+TWOCHECKOUT_API_MERCHANT_CODE = os.environ.get('TWOCHECKOUT_API_MERCHANT_CODE')
