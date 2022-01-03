@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import { Disclosure, Transition } from '@headlessui/react';
+import { ChevronUpIcon } from '@heroicons/react/solid';
+import React, { useState } from 'react';
+import { useCartItems } from '../../context/Context';
 import { classNames, getCartTotalPrice, getFormattedPrice, ID } from '../../utils/general';
+import CartProducts from '../cart/CartProducts';
 import PaymentForm from './PaymentForm';
 import PersonalDetailsForm from './PersonalDetailsForm';
 import Success from './Success';
-import { Disclosure, Transition } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
-import { useCartItems } from '../../context/Context';
-import CartProducts from '../cart/CartProducts';
-import { LocalStorageCartItems } from '../../utils/constants';
 
 export default function CheckoutForm() {
     const [step, setStep] = useState(1);
@@ -41,10 +40,11 @@ export default function CheckoutForm() {
                     updateFormData={ updateFormData }
                     handleGoToNextStep={ handleGoToNextStep }
                     handleGoToPreviousStep={ handleGoToPreviousStep }
-                    step={ step } />
+                    step={ step }
+                    setCartItemsArray={ setCartItemsArray }
+                />
+
             case 3:
-                setCartItemsArray([])
-                window.localStorage.removeItem(LocalStorageCartItems);
                 return <Success />
             default:
                 return null;
