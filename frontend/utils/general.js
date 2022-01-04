@@ -34,6 +34,27 @@ export function getCartTotalPrice(cartItemsArray) {
   } else return 0;
 }
 
+export function getOrderItemsArray(cartItemsArray) {
+  const productCode = process.env.NEXT_PUBLIC_PRODUCT_CODE;
+  let ItemsArray = [];
+  for (let index = 0; index < cartItemsArray.length; index++) {
+    const bottle = array[index];
+    ItemsArray.push({
+      Code: productCode,
+      Price: {
+        Currency: "HRK",
+        Discount: 0,
+        GrossDiscountedPrice: bottle.price,
+        GrossPrice: bottle.price,
+        NetDiscountedPrice: 0.75 * bottle.price,
+        NetPrice: 0.75 * bottle.price,
+        VAT: 0.25 * bottle.price,
+      },
+    });
+  }
+  return ItemsArray;
+}
+
 export function ID() {
   // Math.random should be unique because of its seeding algorithm.
   // Convert it to base 36 (numbers + letters), and grab the first 9 characters

@@ -1,9 +1,9 @@
 import { Switch } from "@headlessui/react";
-import Cookies from "js-cookie";
 import React, { useEffect, useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
 import { PaymentFormStyle } from "../../styles/TwoCheckoutFormStyle";
+import { getOrderItemsArray } from "../../utils/general";
 import {
   emptyStringValidation,
   FormButton,
@@ -67,7 +67,7 @@ export default function PaymentForm(props) {
       .generate(component, BillingDetails)
       .then((response) => {
         const currency = "HRK";
-        const Items = [{ Code: "someCode" }];
+        const Items = getOrderItemsArray(props.cartItemsArray);
         const PaymentDetails = {
           Type: "TEST",
           Currency: currency,

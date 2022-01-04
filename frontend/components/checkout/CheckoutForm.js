@@ -56,6 +56,7 @@ export default function CheckoutForm() {
             handleGoToNextStep={handleGoToNextStep}
             handleGoToPreviousStep={handleGoToPreviousStep}
             step={step}
+            cartItemsArray={cartItemsArray}
             setCartItemsArray={setCartItemsArray}
           />
         );
