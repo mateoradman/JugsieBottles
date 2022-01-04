@@ -36,7 +36,7 @@ const isBodyValid = async (requestBody) => {
     !body.Source ||
     !body.ExternalCustomerReference ||
     !body.ExternalCustomerReference.startsWith("_") ||
-    !body.ShippingDetails ||
+    !body.DeliveryDetails ||
     !body.BillingDetails ||
     !body.PaymentMethod
   ) {

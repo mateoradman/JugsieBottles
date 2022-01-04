@@ -100,7 +100,7 @@ export default function PersonalDetailsForm(props) {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         if (formIsValid) {
-            props.updateFormData({ShippingDetails: formData})
+            props.updateFormData({DeliveryDetails: formData})
             resetAllFields();
             props.handleGoToNextStep();
         };

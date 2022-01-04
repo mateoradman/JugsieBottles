@@ -66,12 +66,14 @@ export default function PaymentForm(props) {
     PaymentClient.tokens
       .generate(component, BillingDetails)
       .then((response) => {
+        const currency = "HRK";
         const Items = [{ Code: "someCode" }];
         const PaymentDetails = {
           Type: "TEST",
-          Currency: "HRK",
+          Currency: currency,
           PaymentMethod: {
             EesToken: response.token,
+            Currency: currency,
             Vendor3DSReturnURL: "http://google.com",
             Vendor3DSCancelURL: "http://facebook.com",
           },
@@ -98,7 +100,7 @@ export default function PaymentForm(props) {
     if (isBillingAddressSame) {
       return {
         name: enteredCardholderName,
-        ...props.formData.ShippingDetails,
+        ...props.formData.DeliveryDetails,
       };
     } else {
       return {
@@ -107,8 +109,8 @@ export default function PaymentForm(props) {
         City: enteredCity,
         Zip: enteredZIP,
         CountryCode: selectedCountry,
-        Email: props.formData.ShippingDetails.Email,
-        Phone: props.formData.ShippingDetails.Phone,
+        Email: props.formData.DeliveryDetails.Email,
+        Phone: props.formData.DeliveryDetails.Phone,
       };
     }
   };
@@ -125,7 +127,7 @@ export default function PaymentForm(props) {
       props.setCartItemsArray([]);
       fetch("/api/order", {
         method: "POST",
-        body: JSON.stringify(props.formData)
+        body: JSON.stringify(props.formData),
       });
       resetAllFields();
       props.handleGoToNextStep();
