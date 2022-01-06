@@ -37,8 +37,7 @@ export function getCartTotalPrice(cartItemsArray) {
 export function getOrderItemsArray(cartItemsArray) {
   const productCode = process.env.NEXT_PUBLIC_PRODUCT_CODE;
   let ItemsArray = [];
-  for (let index = 0; index < cartItemsArray.length; index++) {
-    const bottle = array[index];
+  cartItemsArray.forEach((bottle) => {
     ItemsArray.push({
       Code: productCode,
       Price: {
@@ -51,7 +50,7 @@ export function getOrderItemsArray(cartItemsArray) {
         VAT: 0.25 * bottle.price,
       },
     });
-  }
+  });
   return ItemsArray;
 }
 
