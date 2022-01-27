@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
 import { PaymentFormStyle } from "../../styles/TwoCheckoutFormStyle";
-import { getOrderItemsArray } from "../../utils/general";
+import { getCartTotalPrice, getOrderItemsArray } from "../../utils/general";
 import {
   emptyStringValidation,
   FormButton,
@@ -71,6 +71,7 @@ export default function PaymentForm(props) {
         const PaymentDetails = {
           Type: "TEST",
           Currency: currency,
+          TotalAmount: getCartTotalPrice(props.cartItemsArray),
           PaymentMethod: {
             EesToken: response.token,
             Currency: currency,
