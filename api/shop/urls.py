@@ -1,10 +1,19 @@
 from django.urls import path
 
-from shop.views import CustomerDetail, CustomerListCreateView, \
-    OrderListCreateView
+from shop import views
 
 urlpatterns = [
-    path('customers/<str:email>', CustomerDetail.as_view(), name='order_item_detail'),
-    path('customers/', CustomerListCreateView.as_view(), name='order_item'),
-    path('orders/', OrderListCreateView.as_view(), name='orders'),
+    path('customers/', views.CustomerListCreateView.as_view()),
+    path('customers/<str:email>', views.CustomerDetail.as_view()),
+    path('order-items/', views.OrderItemListCreateView.as_view()),
+    path('order-items/<int:pk>', views.OrderItemDetail.as_view()),
+    path('addresses/', views.AddressListCreateView.as_view()),
+    path('addresses/<int:pk>', views.AddressDetail.as_view()),
+    path('coupons/', views.CouponListCreateView.as_view()),
+    path('coupons/<int:pk>', views.CouponDetail.as_view()),
+    path('refunds/', views.RefundListCreateView.as_view()),
+    path('refunds/<int:pk>', views.RefundDetail.as_view()),
+    path('orders/', views.OrderListCreateView.as_view()),
+    path('orders/<int:pk>', views.OrderDetail.as_view()),
+    path('pay/', views.pay)
 ]

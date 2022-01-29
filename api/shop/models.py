@@ -3,12 +3,28 @@ import string
 
 from django.db import models
 from django_countries.fields import CountryField
-
 from product.models import Bottle
 
 ADDRESS_CHOICES = (
     ('B', 'Billing'),
     ('S', 'Shipping'),
+)
+
+PERSONALIZATION_ICON_CHOICES = (
+    ('aeroplane', 'Aeroplane'),
+    ('butterfly', 'Butterfly'),
+    ('camera', 'Camera'),
+    ('clover', 'Clover'),
+    ('crown', 'Crown'),
+    ('dumbbell', 'Dumbbell'),
+    ('flower', 'Flower'),
+    ('heart', 'Heart'),
+    ('lipstick', 'Lipstick'),
+    ('musical-note', 'MusicalNote'),
+    ('paw', 'Paw'),
+    ('smile', 'Smile'),
+    ('star', 'Star'),
+    ('tooth', 'Tooth'),
 )
 
 
@@ -17,14 +33,13 @@ def create_ref_code():
 
 
 class Customer(models.Model):
-    twocheckout_customer_id = models.CharField(max_length=50)
     first_name = models.CharField(max_length=254)
     last_name = models.CharField(max_length=254)
     email = models.EmailField()
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name} {self.email}'
+        return f'Customer name: {self.first_name} {self.last_name}\n Customer Email: {self.email}'
 
 
 class OrderItem(models.Model):
@@ -33,7 +48,8 @@ class OrderItem(models.Model):
     personalization_text = models.CharField(max_length=8, default='',
                                             blank=True, null=True)
     personalization_icon = models.CharField(max_length=64, default='',
-                                            blank=True, null=True)
+                                            blank=True, null=True,
+                                            choices=PERSONALIZATION_ICON_CHOICES)
     quantity = models.IntegerField(default=1, blank=True, null=True)
 
     def __str__(self):
@@ -45,8 +61,7 @@ class Order(models.Model):
                                  blank=True)
     items = models.ManyToManyField(OrderItem)
     total_price = models.IntegerField()
-    currency = models.CharField(max_length=3, default='HRK', null=True,
-                                blank=True)
+    currency = models.CharField(max_length=3, default='HRK')
     ref_code = models.CharField(max_length=20, default=create_ref_code,
                                 blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -56,8 +71,6 @@ class Order(models.Model):
     billing_address = models.ForeignKey(
         'Address', related_name='billing_address', on_delete=models.SET_NULL,
         blank=True, null=True)
-    payment = models.ForeignKey(
-        'Payment', on_delete=models.SET_NULL, blank=True, null=True)
     coupon = models.ForeignKey(
         'Coupon', on_delete=models.SET_NULL, blank=True, null=True)
     being_delivered = models.BooleanField(default=False)
@@ -68,30 +81,17 @@ class Order(models.Model):
 
 
 class Address(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    street_address = models.CharField(max_length=100)
-    apartment_address = models.CharField(max_length=100)
+    street_address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
     country = CountryField(multiple=False)
-    zip = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=255)
     address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
-    default = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.address_type}: {self.street_address} " \
-               f"{self.apartment_address} {self.country} {self.zip}"
+        return f"{self.address_type}: {self.street_address} {self.zip_code} {self.city} {self.country}"
 
     class Meta:
         verbose_name_plural = 'Addresses'
-
-
-class Payment(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    twocheckout_charge_id = models.CharField(max_length=50)
-    amount = models.FloatField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.twocheckout_charge_id
 
 
 class Coupon(models.Model):
