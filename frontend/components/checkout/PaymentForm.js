@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
 import { PaymentFormStyle } from "../../styles/TwoCheckoutFormStyle";
+import { DEFAULT_CURRENCY } from "../../utils/constants";
 import { getCartTotalPrice, getOrderItemsArray } from "../../utils/general";
 import {
   emptyStringValidation,
@@ -66,21 +67,20 @@ export default function PaymentForm(props) {
     PaymentClient.tokens
       .generate(component, BillingDetails)
       .then((response) => {
-        const currency = "HRK";
-        const Items = getOrderItemsArray(props.cartItemsArray);
         const PaymentDetails = {
           Type: "TEST",
-          Currency: currency,
+          Currency: DEFAULT_CURRENCY,
           TotalAmount: getCartTotalPrice(props.cartItemsArray),
           PaymentMethod: {
             EesToken: response.token,
-            Currency: currency,
+            Currency: DEFAULT_CURRENCY,
             Vendor3DSReturnURL: "http://google.com",
             Vendor3DSCancelURL: "http://facebook.com",
           },
         };
         props.updateFormData({
-          Items: Items,
+          Items: getOrderItemsArray(props.cartItemsArray),
+          CartData: props.cartItemsArray,
           BillingDetails: BillingDetails,
           PaymentDetails: PaymentDetails,
         });
