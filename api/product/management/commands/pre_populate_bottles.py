@@ -9,7 +9,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         name = "Jugsie Bottle"
         description = "some_text"
-        highlights = "some_text"
         details = "some_text"
         price = 130
         bottles = ["Green", "Blue", "Black", "Hot Pink", "White", "Turquoise",
@@ -20,7 +19,7 @@ class Command(BaseCommand):
                 Bottle(name=name,
                        price=price if colour != "Hot Pink" else 100,
                        colour=colour,
-                       description=description, highlights=highlights,
+                       description=description,
                        details=details))
         Bottle.objects.bulk_create(objs)
         self.stdout.write(self.style.SUCCESS(
