@@ -115,3 +115,5 @@ export const bottleFeatures = [
       "Washing the bottle in the dishwasher may cause damage to the colour coating.",
   },
 ];
+
+export const DEFAULT_CURRENCY = "HRK";
