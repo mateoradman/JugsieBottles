@@ -1,4 +1,4 @@
-import { bottleInformation, personalizationIcons } from "./constants";
+import { bottleInformation, DEFAULT_CURRENCY, personalizationIcons } from "./constants";
 
 export function getBottlePaths(name, noLogo = false) {
   const path = require("path");
@@ -41,7 +41,7 @@ export function getOrderItemsArray(cartItemsArray) {
     ItemsArray.push({
       Code: productCode,
       Price: {
-        Currency: "HRK",
+        Currency: DEFAULT_CURRENCY,
         Discount: 0,
         GrossDiscountedPrice: bottle.price,
         GrossPrice: bottle.price,
