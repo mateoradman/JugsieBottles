@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # add rest_framework support to the project
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_spectacular',
     'django_countries',
     'product',
     'shop',
@@ -163,7 +164,14 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Jugsie Bottles REST API',
+    'DESCRIPTION': 'Jugsie Bottles REST API serving the next.js frontend.',
+    'VERSION': '1.0.0',
 }
 
 TWOCHECKOUT_API_URL = os.environ.get('TWOCHECKOUT_API_URL')
