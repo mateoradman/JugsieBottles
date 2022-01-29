@@ -2,6 +2,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import { useCartItems } from "../../context/Context";
+import { DEFAULT_CURRENCY } from "../../utils/constants";
 import {
   classNames,
   getCartTotalPrice,
@@ -25,7 +26,7 @@ export default function CheckoutForm() {
   }
 
   const defaultFormData = {
-    Currency: "HRK",
+    Currency: DEFAULT_CURRENCY,
     Source: "Website",
     ExternalCustomerReference: ID(),
   };
@@ -44,20 +45,20 @@ export default function CheckoutForm() {
       case 1:
         return (
           <PersonalDetailsForm
-            updateFormData={updateFormData}
-            handleGoToNextStep={handleGoToNextStep}
+            updateFormData={ updateFormData }
+            handleGoToNextStep={ handleGoToNextStep }
           />
         );
       case 2:
         return (
           <PaymentForm
-            formData={formData}
-            updateFormData={updateFormData}
-            handleGoToNextStep={handleGoToNextStep}
-            handleGoToPreviousStep={handleGoToPreviousStep}
-            step={step}
-            cartItemsArray={cartItemsArray}
-            setCartItemsArray={setCartItemsArray}
+            formData={ formData }
+            updateFormData={ updateFormData }
+            handleGoToNextStep={ handleGoToNextStep }
+            handleGoToPreviousStep={ handleGoToPreviousStep }
+            step={ step }
+            cartItemsArray={ cartItemsArray }
+            setCartItemsArray={ setCartItemsArray }
           />
         );
 
@@ -71,21 +72,21 @@ export default function CheckoutForm() {
   return (
     <div className="relative flex flex-col items-center justify-center overflow-hidden">
       <ul className="w-full steps">
-        <li className={colourStep(step, 1)}>
+        <li className={ colourStep(step, 1) }>
           <span className="label-text">Personal Details</span>
         </li>
-        <li className={colourStep(step, 2)}>
+        <li className={ colourStep(step, 2) }>
           <span className="label-text">Payment</span>
         </li>
-        <li className={colourStep(step, 3)}>
+        <li className={ colourStep(step, 3) }>
           <span className="label-text">Order complete</span>
         </li>
       </ul>
-      {(step === 1 || step === 2) && (
+      { (step === 1 || step === 2) && (
         <div className="mt-6 px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
           <div className="flex flex-col space-y-4 w-full p-2 mx-auto bg-white rounded-2xl">
             <Disclosure defaultOpen>
-              {({ open }) => (
+              { ({ open }) => (
                 <>
                   <Disclosure.Button
                     className={
@@ -94,14 +95,14 @@ export default function CheckoutForm() {
                   >
                     <span>Order Summary</span>
                     <ChevronUpIcon
-                      className={classNames(
+                      className={ classNames(
                         "text-purple-900 w-5 h-5 ml-5 self-center",
                         open ? "transform rotate-180" : ""
-                      )}
+                      ) }
                     />
                   </Disclosure.Button>
                   <Transition
-                    show={open}
+                    show={ open }
                     enter="transition duration-100 ease-out"
                     enterFrom="transform scale-95 opacity-0"
                     enterTo="transform scale-100 opacity-100"
@@ -111,22 +112,22 @@ export default function CheckoutForm() {
                   >
                     <Disclosure.Panel static>
                       <div className="flex flex-col space-y-5 text-sm card bordered rounded-lg shadow-md p-4">
-                        <CartProducts cartItemsArray={cartItemsArray} />
+                        <CartProducts cartItemsArray={ cartItemsArray } />
                         <span className="self-end sm:text-lg font-extrabold">
-                          Total price:{" "}
-                          {getFormattedPrice(getCartTotalPrice(cartItemsArray))}
+                          Total price:{ " " }
+                          { getFormattedPrice(getCartTotalPrice(cartItemsArray)) }
                         </span>
                       </div>
                     </Disclosure.Panel>
                   </Transition>
                 </>
-              )}
+              ) }
             </Disclosure>
           </div>
         </div>
-      )}
+      ) }
 
-      {componentToRender()}
+      { componentToRender() }
     </div>
   );
 }
