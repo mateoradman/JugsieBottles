@@ -92,7 +92,7 @@ const createObjInDatabase = async (requestObj, data, url) => {
 };
 
 const pay = async (customRequestDetails, res) => {
-  const paymentUrl = new URL("shop/pay/", process.env.API_HOST);
+  const paymentUrl = new URL("checkout/pay/", process.env.API_HOST);
   await fetch(paymentUrl.href, customRequestDetails)
     .then((response) => {
       if (response.ok) {

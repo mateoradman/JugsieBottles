@@ -15,5 +15,4 @@ urlpatterns = [
     path('refunds/<int:pk>', views.RefundDetail.as_view()),
     path('orders/', views.OrderListCreateView.as_view()),
     path('orders/<int:pk>', views.OrderDetail.as_view()),
-    path('pay/', views.pay)
 ]
