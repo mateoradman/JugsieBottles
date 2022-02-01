@@ -8,6 +8,8 @@ const Footer = () => {
       <div>
         <Link href='/'>
         <JugsieBottlesLogo />
+        </Link>
+        <Link href='/'>
         <p className="font-extrabold font-mono self-center">
           Jugsie Bottles
         </p>
