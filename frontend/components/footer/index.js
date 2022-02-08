@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import JugsieBottlesLogo from "../../public/Logos/logo";
-import Link from "next/link"
 
 const Footer = () => {
   return (
