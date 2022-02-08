@@ -6,14 +6,10 @@ const Footer = () => {
   return (
     <footer className="bg-white p-10 footer text-base-content">
       <div>
-        <Link href='/'>
         <JugsieBottlesLogo />
-        </Link>
-        <Link href='/'>
         <p className="font-extrabold font-mono self-center">
           Jugsie Bottles
         </p>
-        </Link>
         <span
           className="font-normal font-mono tracking-tight">Quenching your thirst since 2020</span>
       </div>
