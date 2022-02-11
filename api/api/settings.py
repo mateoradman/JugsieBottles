@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'django_countries',
     'product',
+    'checkout',
     'shop',
+    'faq',
 ]
 
 MIDDLEWARE = [
