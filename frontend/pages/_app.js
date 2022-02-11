@@ -1,14 +1,16 @@
-import 'tailwindcss/tailwind.css'
-import '../styles/overrideNextJSImageSettings.css'
-import '../styles/globals.css'
+import { appWithTranslation } from 'next-i18next';
+import 'tailwindcss/tailwind.css';
 import Layout from "../components/layout";
+import '../styles/globals.css';
+import '../styles/overrideNextJSImageSettings.css';
 
-function MyApp({Component, pageProps}) {
+
+function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <Component { ...pageProps } />
     </Layout>
   );
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);
