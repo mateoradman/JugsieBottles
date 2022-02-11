@@ -1,4 +1,4 @@
-import { bottleInformation, DEFAULT_CURRENCY, personalizationIcons } from "./constants";
+import { bottleInformation, DEFAULT_CURRENCY, Icons } from "./constants";
 
 export function getBottlePaths(name, noLogo = false) {
   const path = require("path");
@@ -17,8 +17,8 @@ export function getFormattedPrice(price, currency = "kn") {
   return `${price} ${currency}`;
 }
 
-export function getPersonalizationIcon(iconName) {
-  let finding = personalizationIcons.find((x) => x.name === iconName);
+export function getIcon(iconName) {
+  let finding = Icons.find((x) => x.name === iconName);
   if (finding) return finding.icon;
 }
 

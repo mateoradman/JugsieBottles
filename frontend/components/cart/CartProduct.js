@@ -1,8 +1,8 @@
-import {getFormattedPrice, getPersonalizationIcon} from "../../utils/general";
+import {getFormattedPrice, getIcon} from "../../utils/general";
 import Link from "next/link";
 
 const CartProduct = (props) => {
-  let Icon = getPersonalizationIcon(props.bottle.icon, "w-2 h-2 md:h-4 md:w-4 ml-1");
+  let Icon = getIcon(props.bottle.icon, "w-2 h-2 md:h-4 md:w-4 ml-1");
 
   return (
     <li className="py-6 flex">

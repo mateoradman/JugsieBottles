@@ -81,7 +81,7 @@ export const bottleInformation = [
   },
 ];
 
-export const personalizationIcons = [
+export const Icons = [
   { name: "aeroplane", icon: Aeroplane },
   { name: "butterfly", icon: Butterfly },
   { name: "camera", icon: Camera },

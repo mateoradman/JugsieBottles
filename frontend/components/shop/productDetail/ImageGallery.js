@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {getPersonalizationIcon} from "../../../utils/general";
+import {getIcon} from "../../../utils/general";
 import {classNames} from "../../../utils/general";
 
 const IndividualImage = (props) => {
@@ -19,7 +19,7 @@ const IndividualImage = (props) => {
 const ProductImageGallery = (props) => {
   let Icon;
   if (props.personalization.icon) {
-    Icon = getPersonalizationIcon(props.personalization.icon);
+    Icon = getIcon(props.personalization.icon);
   }
 
   return (
