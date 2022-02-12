@@ -1,4 +1,5 @@
 import { Switch } from "@headlessui/react";
+import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
@@ -9,10 +10,11 @@ import {
   emptyStringValidation,
   FormButton,
   StandardInputField,
-  StandardSelectField,
+  StandardSelectField
 } from "./FormFields";
 
 export default function PaymentForm(props) {
+  const router = useRouter()
   const [FormIsValid, setFormIsValid] = useState(false);
   const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -55,7 +57,7 @@ export default function PaymentForm(props) {
     new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE)
   );
   // TODO: Add translation
-  PaymentClient.setup.setLanguage("hr");
+  PaymentClient.setup.setLanguage(router.locale);
   const [component, setComponent] = useState(
     PaymentClient.components.create("card", PaymentFormStyle)
   );
@@ -147,17 +149,17 @@ export default function PaymentForm(props) {
           method="POST"
           type="post"
           id="payment-form"
-          onSubmit={handleFormSubmit}
+          onSubmit={ handleFormSubmit }
         >
           <div className="form-group">
             <StandardInputField
-              inputLabel={"Cardholder"}
-              typeOfInput={"text"}
-              inputID={"cardholder"}
-              blurHandler={enteredCardholderNameBlurHandler}
-              changeHandler={enteredCardholderNameChangeHandler}
-              hasError={enteredCardholderNamehasError}
-              inputValue={enteredCardholderName}
+              inputLabel={ "Cardholder" }
+              typeOfInput={ "text" }
+              inputID={ "cardholder" }
+              blurHandler={ enteredCardholderNameBlurHandler }
+              changeHandler={ enteredCardholderNameChangeHandler }
+              hasError={ enteredCardholderNamehasError }
+              inputValue={ enteredCardholderName }
             />
           </div>
           <Switch.Group>
@@ -166,65 +168,63 @@ export default function PaymentForm(props) {
                 Billing address same as shipping address
               </Switch.Label>
               <Switch
-                checked={isBillingAddressSame}
-                onChange={() => setIsBillingAddressSame(!isBillingAddressSame)}
-                className={`${
-                  isBillingAddressSame ? "bg-blue-600" : "bg-gray-200"
-                } relative inline-flex items-center h-6 rounded-full w-16 md:w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                checked={ isBillingAddressSame }
+                onChange={ () => setIsBillingAddressSame(!isBillingAddressSame) }
+                className={ `${isBillingAddressSame ? "bg-blue-600" : "bg-gray-200"
+                  } relative inline-flex items-center h-6 rounded-full w-16 md:w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500` }
               >
                 <span
-                  className={`${
-                    isBillingAddressSame
+                  className={ `${isBillingAddressSame
                       ? "translate-x-7 md:translate-x-6"
                       : "translate-x-1"
-                  } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+                    } inline-block w-4 h-4 transform bg-white rounded-full transition-transform` }
                 />
               </Switch>
             </div>
           </Switch.Group>
 
-          {!isBillingAddressSame ? (
+          { !isBillingAddressSame ? (
             <div className="mb-4">
               <StandardInputField
-                inputLabel={"Street and House Number"}
-                typeOfInput={"text"}
-                inputID={"address"}
-                blurHandler={enteredStreetBlurHandler}
-                changeHandler={enteredStreetChangeHandler}
-                hasError={enteredStreethasError}
-                inputValue={enteredStreet}
+                inputLabel={ "Street and House Number" }
+                typeOfInput={ "text" }
+                inputID={ "address" }
+                blurHandler={ enteredStreetBlurHandler }
+                changeHandler={ enteredStreetChangeHandler }
+                hasError={ enteredStreethasError }
+                inputValue={ enteredStreet }
               />
               <StandardInputField
-                inputLabel={"City"}
-                typeOfInput={"text"}
-                inputID={"city"}
-                blurHandler={enteredCityBlurHandler}
-                changeHandler={enteredCityChangeHandler}
-                hasError={enteredCityhasError}
-                inputValue={enteredCity}
+                inputLabel={ "City" }
+                typeOfInput={ "text" }
+                inputID={ "city" }
+                blurHandler={ enteredCityBlurHandler }
+                changeHandler={ enteredCityChangeHandler }
+                hasError={ enteredCityhasError }
+                inputValue={ enteredCity }
               />
               <StandardInputField
-                inputLabel={"ZIP"}
-                typeOfInput={"text"}
-                inputID={"zip"}
-                blurHandler={enteredZIPBlurHandler}
-                changeHandler={enteredZIPChangeHandler}
-                hasError={enteredZIPhasError}
-                inputValue={enteredZIP}
+                inputLabel={ "ZIP" }
+                typeOfInput={ "text" }
+                inputID={ "zip" }
+                blurHandler={ enteredZIPBlurHandler }
+                changeHandler={ enteredZIPChangeHandler }
+                hasError={ enteredZIPhasError }
+                inputValue={ enteredZIP }
               />
               <StandardSelectField
-                inputLabel={"Country"}
-                inputID={"country"}
-                options={countryOptions}
-                selectedCountry={selectedCountry}
-                onChange={changeSelectedCountryHandler}
+                inputLabel={ "Country" }
+                inputID={ "country" }
+                options={ countryOptions }
+                selectedCountry={ selectedCountry }
+                onChange={ changeSelectedCountryHandler }
               />
             </div>
-          ) : null}
+          ) : null }
 
           <div id="card-element"></div>
 
-          <FormButton back previousStepHandler={props.handleGoToPreviousStep} />
+          <FormButton back previousStepHandler={ props.handleGoToPreviousStep } />
           <FormButton />
         </form>
       </div>
