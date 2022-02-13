@@ -1,0 +1,18 @@
+{
+    "personalDetails": "Osobni podaci",
+    "payment": "Plaćanje",
+    "orderComplete": "Narudžba uspješna",
+    "orderSummary": "Pregled narudžbe",
+    "totalPrice": "Ukupna cijena",
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "email": "E-pošta",
+    "phone": "Broj mobitela",
+    "address": "Ulica i kućni broj",
+    "city": "Grad",
+    "zip": "Poštanski broj",
+    "country": "Država",
+    "TandC": "Prihvaćam Pravila i Uvjete korištenja",
+    "billingSameAsShipping": "Adresa platitelja ista kao adresa primatelja",
+    "cardholder": "Cardholder"
+}

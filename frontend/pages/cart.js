@@ -1,11 +1,14 @@
-import {useCartItems} from "../context/Context";
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from "next/link";
-import {getCartTotalPrice, ID} from "../utils/general";
 import CartProducts from "../components/cart/CartProducts";
 import ContinueShoppingButton from "../components/cart/ContinueShoppingButton";
+import { useCartItems } from "../context/Context";
+import { getCartTotalPrice } from "../utils/general";
 
-export default function Cart() {
-  const {cartItemsArray} = useCartItems();
+const Cart = () => {
+  const { cartItemsArray } = useCartItems();
+  const { t } = useTranslation('cart')
 
   return (
     <>
@@ -15,33 +18,33 @@ export default function Cart() {
           <div className="py-6 px-4 sm:px-6 overflow-y-auto">
             <div
               className="text-xl font-extrabold text-gray-900">
-              Shopping cart
+              { t('cart') }
             </div>
-            <CartProducts cartItemsArray={cartItemsArray}/>
+            <CartProducts cartItemsArray={ cartItemsArray } />
           </div>
 
           <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
             <div
               className="flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>{`${getCartTotalPrice(cartItemsArray)} kn`}</p>
+              <p>{ t('subtotal') }</p>
+              <p>{ `${getCartTotalPrice(cartItemsArray)} kn` }</p>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
-              Free shipping included in the price.
+              { t('shipping') }
             </p>
             <div className="mt-6">
               <Link href='/checkout'>
                 <a
                   className="flex max-w-md btn bg-green-800 hover:btn-success border-none rounded-md mx-auto justify-center">
-                  Checkout
+                  { t('checkout') }
                 </a>
               </Link>
             </div>
             <div
               className="mt-6 flex justify-center text-sm text-center text-gray-500">
               <p>
-                or{' '}
-                <ContinueShoppingButton/>
+                or{ ' ' }
+                <ContinueShoppingButton />
               </p>
             </div>
           </div>
@@ -50,3 +53,11 @@ export default function Cart() {
     </>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'cart']),
+  },
+})
+
+export default Cart

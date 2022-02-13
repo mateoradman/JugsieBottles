@@ -1,0 +1,18 @@
+{
+    "personalDetails": "Personal Details",
+    "payment": "Payment",
+    "orderComplete": "Order Complete",
+    "orderSummary": "Order Summary",
+    "totalPrice": "Total Price",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "address": "Street and House Number",
+    "city": "City",
+    "zip": "ZIP Code",
+    "country": "Country",
+    "TandC": "I agree to Terms and Conditions",
+    "billingSameAsShipping": "Billing address same as shipping address",
+    "cardholder": "Cardholder"
+}
