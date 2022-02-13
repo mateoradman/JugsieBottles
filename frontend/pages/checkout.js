@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CheckoutForm from "../components/checkout/CheckoutForm";
 
 const Checkout = () => {
@@ -6,5 +6,11 @@ const Checkout = () => {
     <CheckoutForm />
   );
 };
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['checkout']),
+  },
+})
 
 export default Checkout;

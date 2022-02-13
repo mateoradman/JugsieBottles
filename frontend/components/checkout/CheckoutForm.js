@@ -1,5 +1,6 @@
 import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
+import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { useCartItems } from "../../context/Context";
 import { DEFAULT_CURRENCY } from "../../utils/constants";
@@ -7,7 +8,7 @@ import {
   classNames,
   getCartTotalPrice,
   getFormattedPrice,
-  ID,
+  ID
 } from "../../utils/general";
 import CartProducts from "../cart/CartProducts";
 import PaymentForm from "./PaymentForm";
@@ -69,17 +70,19 @@ export default function CheckoutForm() {
     }
   };
 
+  const { t } = useTranslation('checkout');
+
   return (
     <div className="relative flex flex-col items-center justify-center overflow-hidden">
       <ul className="w-full steps">
         <li className={ colourStep(step, 1) }>
-          <span className="label-text">Personal Details</span>
+          <span className="label-text">{ t('personalDetails') }</span>
         </li>
         <li className={ colourStep(step, 2) }>
-          <span className="label-text">Payment</span>
+          <span className="label-text">{ t('payment') }</span>
         </li>
         <li className={ colourStep(step, 3) }>
-          <span className="label-text">Order complete</span>
+          <span className="label-text">{ t('orderComplete') }</span>
         </li>
       </ul>
       { (step === 1 || step === 2) && (
@@ -93,7 +96,7 @@ export default function CheckoutForm() {
                       "flex justify-between self-center px-6 sm:px-12 py-2 text-lg sm:text-xl font-medium text-left text-green-900 bg-green-100 rounded-lg hover:bg-green-200 focus:outline-none focus-visible:ring focus-visible:ring-green-500 focus-visible:ring-opacity-75"
                     }
                   >
-                    <span>Order Summary</span>
+                    <span>{ t('orderSummary') }</span>
                     <ChevronUpIcon
                       className={ classNames(
                         "text-purple-900 w-5 h-5 ml-5 self-center",
@@ -114,7 +117,7 @@ export default function CheckoutForm() {
                       <div className="flex flex-col space-y-5 text-sm card bordered rounded-lg shadow-md p-4">
                         <CartProducts cartItemsArray={ cartItemsArray } />
                         <span className="self-end sm:text-lg font-extrabold">
-                          Total price:{ " " }
+                          { t('totalPrice') }:{ " " }
                           { getFormattedPrice(getCartTotalPrice(cartItemsArray)) }
                         </span>
                       </div>

@@ -1,10 +1,11 @@
 import { Switch } from "@headlessui/react";
-import { useRouter } from "next/dist/client/router";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
 import { PaymentFormStyle } from "../../styles/TwoCheckoutFormStyle";
-import { DEFAULT_CURRENCY } from "../../utils/constants";
+import { Croatia, DEFAULT_CURRENCY } from "../../utils/constants";
 import { getCartTotalPrice, getOrderItemsArray } from "../../utils/general";
 import {
   emptyStringValidation,
@@ -17,10 +18,10 @@ export default function PaymentForm(props) {
   const router = useRouter()
   const [FormIsValid, setFormIsValid] = useState(false);
   const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(Croatia.value);
   const countryOptions = useMemo(() => countryList().getData(), []);
-  const changeSelectedCountryHandler = (country) => {
-    setSelectedCountry(country);
+  const changeSelectedCountryHandler = event => {
+    setSelectedCountry(event.target.value);
   };
 
   const {
@@ -137,6 +138,8 @@ export default function PaymentForm(props) {
     }
   }, [FormIsValid]);
 
+  const { t } = useTranslation('checkout');
+
   return (
     <div className="px-3 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
       <div className="my-6 sm:my-10 bg-white card py-8 px-3 md:shadow-lg rounded-lg sm:px-10">
@@ -153,7 +156,7 @@ export default function PaymentForm(props) {
         >
           <div className="form-group">
             <StandardInputField
-              inputLabel={ "Cardholder" }
+              inputLabel={ t("cardholder") }
               typeOfInput={ "text" }
               inputID={ "cardholder" }
               blurHandler={ enteredCardholderNameBlurHandler }
@@ -165,7 +168,7 @@ export default function PaymentForm(props) {
           <Switch.Group>
             <div className="flex items-center my-2 md:justify-between">
               <Switch.Label className="mr-2">
-                Billing address same as shipping address
+                { t("billingSameAsShipping") }
               </Switch.Label>
               <Switch
                 checked={ isBillingAddressSame }
@@ -175,18 +178,18 @@ export default function PaymentForm(props) {
               >
                 <span
                   className={ `${isBillingAddressSame
-                      ? "translate-x-7 md:translate-x-6"
-                      : "translate-x-1"
+                    ? "translate-x-7 md:translate-x-6"
+                    : "translate-x-1"
                     } inline-block w-4 h-4 transform bg-white rounded-full transition-transform` }
                 />
               </Switch>
             </div>
           </Switch.Group>
 
-          { !isBillingAddressSame ? (
+          { !isBillingAddressSame && (
             <div className="mb-4">
               <StandardInputField
-                inputLabel={ "Street and House Number" }
+                inputLabel={ t("address") }
                 typeOfInput={ "text" }
                 inputID={ "address" }
                 blurHandler={ enteredStreetBlurHandler }
@@ -195,7 +198,7 @@ export default function PaymentForm(props) {
                 inputValue={ enteredStreet }
               />
               <StandardInputField
-                inputLabel={ "City" }
+                inputLabel={ t("city") }
                 typeOfInput={ "text" }
                 inputID={ "city" }
                 blurHandler={ enteredCityBlurHandler }
@@ -204,7 +207,7 @@ export default function PaymentForm(props) {
                 inputValue={ enteredCity }
               />
               <StandardInputField
-                inputLabel={ "ZIP" }
+                inputLabel={ t("zip") }
                 typeOfInput={ "text" }
                 inputID={ "zip" }
                 blurHandler={ enteredZIPBlurHandler }
@@ -213,14 +216,14 @@ export default function PaymentForm(props) {
                 inputValue={ enteredZIP }
               />
               <StandardSelectField
-                inputLabel={ "Country" }
+                inputLabel={ t("country") }
                 inputID={ "country" }
                 options={ countryOptions }
                 selectedCountry={ selectedCountry }
                 onChange={ changeSelectedCountryHandler }
               />
             </div>
-          ) : null }
+          ) }
 
           <div id="card-element"></div>
 

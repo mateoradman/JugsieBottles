@@ -56,6 +56,8 @@ class TwoCheckoutAPIClient:
                     log.error('POST request must contain data keyword.')
                 response: requests.Response = requests.post(
                     url, json=data, headers=headers, timeout=self.TIMEOUT)
+                if response is not None and not response.ok:
+                    log.error(response.json())
             elif method == 'GET':
                 response: requests.Response = requests.get(
                     url, timeout=self.TIMEOUT, headers=headers)

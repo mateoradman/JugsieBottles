@@ -1,3 +1,4 @@
+import countryList from 'react-select-country-list';
 import {
   Aeroplane,
   Butterfly,
@@ -12,7 +13,7 @@ import {
   Paw,
   Smile,
   Star,
-  Tooth,
+  Tooth
 } from "../public/personalizationIcons";
 import { getBottlePaths } from "./general";
 
@@ -117,3 +118,4 @@ export const bottleFeatures = [
 ];
 
 export const DEFAULT_CURRENCY = "HRK";
+export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }
