@@ -2,5 +2,7 @@
     "cart": "Shopping Cart",
     "subtotal": "Subtotal",
     "shipping": "Free shipping included in the price.",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "cartEmpty": "The cart is empty.",
+    "viewCart": "View Full Cart"
 } 
