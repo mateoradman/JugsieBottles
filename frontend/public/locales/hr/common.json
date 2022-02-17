@@ -1,4 +1,7 @@
-
 {
-    "continueShopping": "Nastavi kupovinu"
+    "continueShopping": "Nastavi kupovinu",
+    "back": "Natrag",
+    "continue": "Nastavi",
+    "dataInvalid": "Neispravan unos.",
+    "remove": "Ukloni"
 }
