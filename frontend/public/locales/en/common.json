@@ -4,5 +4,7 @@
     "continue": "Continue",
     "dataInvalid": "Data is invalid.",
     "remove": "Remove",
+    "send": "Send",
+    "message": "Message",
     "viewCart": "View Cart"
 }
