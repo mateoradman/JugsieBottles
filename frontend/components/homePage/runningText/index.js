@@ -22,11 +22,10 @@ const MarqueeRunningText = () => {
 };
 
 const RunningText = () => {
-  const { t } = useTranslation('index')
   return (
     <span className="mx-5 whitespace-nowrap text-5xl tracking-wide md:text-9xl text-transparent
     font-extrabold bg-gradient-to-r bg-clip-text from-blue-500 to-red-500">
-      { t("running-text") }
+      24h cold 12h hot.
     </span>
   )
 }
