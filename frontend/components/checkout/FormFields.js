@@ -18,7 +18,6 @@ export const StandardInputField = (props) => {
         id={ props.inputID }
         type={ props.inputType }
         required
-        ref={ props.inputRef }
         defaultValue={ props.inputValue }
         onBlur={ props.blurHandler }
         onChange={ props.changeHandler }
