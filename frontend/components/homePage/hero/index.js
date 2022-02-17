@@ -1,6 +1,6 @@
-import HeroPhoto from "../../../public/Hero/Hero.jpg";
-import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import HeroPhoto from "../../../public/Hero/Hero.jpg";
 
 const Hero = () => {
   const { t } = useTranslation('index')
@@ -24,7 +24,7 @@ const Hero = () => {
         </p>
         <Link href="/shop">
           <button className="btn btn-outline text-white text-sm md:w-1/5 sm:text-lg md:text-xl">
-            Kupi sada
+            { t("buy-now") }
           </button>
         </Link>
       </div>
