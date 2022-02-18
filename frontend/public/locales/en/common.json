@@ -13,5 +13,12 @@
     "remove": "Remove",
     "send": "Send",
     "message": "Message",
-    "colour": "Colour"
+    "colour": "Colour",
+    "company": "Company",
+    "about-us": "About us",
+    "contact": "Contact",
+    "legal": "Legal",
+    "toc": "Terms of use",
+    "privacy-policy": "Privacy policy",
+    "social": "Social"
 }

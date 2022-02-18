@@ -13,5 +13,11 @@
     "remove": "Ukloni",
     "message": "Poruka",
     "send": "Pošalji",
-    "colour": "Boja"
+    "colour": "Boja",
+    "company": "Tvrtka",
+    "contact": "Kontakt",
+    "legal": "Pravni dokumenti",
+    "toc": "Uvjeti korištenja",
+    "privacy-policy": "Politika privatnosti",
+    "social": "Društvene mreže"
 }
