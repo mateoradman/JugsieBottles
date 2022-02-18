@@ -122,7 +122,8 @@ export const Contact = () => {
                         hasError={ enteredPhonehasError }
                         inputValue={ enteredPhone }
                     />
-                    <div className="form-control">
+
+                    <div className="form-control col-span-1 md:col-span-2">
                         <label className="label block text-sm font-medium text-gray-700"
                             htmlFor={ "message" }>
                             <span className="label-text">{ t("message", { ns: 'common' }) }</span>
@@ -133,7 +134,7 @@ export const Contact = () => {
                             defaultValue={ enteredMessage }
                             onBlur={ enteredMessageBlurHandler }
                             onChange={ enteredMessageChangeHandler }
-                            className={ classNames("textarea textarea-bordered rounded-lg",
+                            className={ classNames("textarea textarea-bordered rounded-lg text-xs h-32",
                                 enteredMessagehasError ? 'textarea-error' : 'textarea-info') }
                         />
                         { enteredMessagehasError ?
