@@ -8,7 +8,7 @@ const CartProducts = (props) => {
   const handleRemoveItemFromCart = (bottleItem) => {
     setCartItemsArray(cartItemsArray.filter((item) => item !== bottleItem));
   }
-  const { t } = useTranslation('cart');
+  const { t } = useTranslation('common');
 
   return (
     <div className="mt-8">

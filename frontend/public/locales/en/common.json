@@ -1,4 +1,11 @@
 {
+    "personalization": "Personalization",
+    "cart": "Shopping Cart",
+    "subtotal": "Subtotal",
+    "shipping": "Free shipping included in the price.",
+    "checkout": "Checkout",
+    "cartEmpty": "The cart is empty.",
+    "viewCart": "View Cart",
     "continueShopping": "Continue shopping",
     "back": "Back",
     "continue": "Continue",
@@ -6,5 +13,5 @@
     "remove": "Remove",
     "send": "Send",
     "message": "Message",
-    "viewCart": "View Cart"
+    "colour": "Colour"
 }

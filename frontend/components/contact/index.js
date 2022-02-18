@@ -67,7 +67,8 @@ export const Contact = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         if (formIsValid) {
-            return
+            resetAllFields();
+            return null;
         }
     }
 
@@ -145,7 +146,7 @@ export const Contact = () => {
                         <button type="submit"
                             className="flex space-x-10 w-full btn btn-info rounded-lg"
                         >
-                            { t("send") }
+                            { t("send", { ns: 'common' }) }
                         </button>
                     </div>
                 </form>

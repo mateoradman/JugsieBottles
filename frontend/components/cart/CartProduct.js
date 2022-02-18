@@ -27,13 +27,13 @@ const CartProduct = (props) => {
           <p
             className="flex mt-1 text-sm text-gray-500">
             <span className="font-bold"><span
-              className="mr-1">{ 'Colour:' }</span></span>
+              className="mr-1">{ `${t('colour')}:` }</span></span>
             { props.bottle.name }
           </p>
           { props.bottle.icon || props.bottle.text ?
             <p
               className="flex space-x-1 mt-1 text-sm text-gray-500">
-              <span className="font-bold">Personalization: </span>
+              <span className="font-bold">{ `${t('personalization')}:` }</span>
               { Icon ? <span className="flex">
                 <span>{ props.bottle.text || null }</span>
                 <span className="pl-2 self-center"><Icon /></span>

@@ -1,4 +1,11 @@
 {
+    "personalization": "Personalizacija",
+    "cart": "Košarica",
+    "subtotal": "Ukupno",
+    "shipping": "Besplatna poštarina uključena u cijenu.",
+    "checkout": "Nastavi na plaćanje",
+    "cartEmpty": "Košarica je prazna.",
+    "viewCart": "Otvori košaricu",
     "continueShopping": "Nastavi kupovinu",
     "back": "Natrag",
     "continue": "Nastavi",
@@ -6,5 +13,5 @@
     "remove": "Ukloni",
     "message": "Poruka",
     "send": "Pošalji",
-    "viewCart": "Otvori košaricu"
+    "colour": "Boja"
 }
