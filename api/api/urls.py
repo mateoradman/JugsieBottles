@@ -13,6 +13,7 @@ urlpatterns = [
     path('api/v1/product/', include('product.urls')),
     path('api/v1/shop/', include('shop.urls')),
     path('api/v1/checkout/', include('checkout.urls')),
+    path('api/v1/contact/', include('contact.urls')),
     path('api/v1/faq/', include('faq.urls')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
 ] + schema_urlpatterns

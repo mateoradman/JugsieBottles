@@ -1,9 +1,11 @@
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import useInput from "../../hooks/useInput";
 import { classNames } from "../../utils/general";
 import { emptyEmailValidation, emptyPhoneNumberValidation, emptyStringValidation, StandardInputField } from '../checkout/FormFields';
 
 export const Contact = () => {
+    const router = useRouter()
     const {
         value: enteredFirstName,
         isValid: enteredFirstNameIsValid,
@@ -62,13 +64,18 @@ export const Contact = () => {
         LastName: enteredLastName,
         Email: enteredEmail,
         Phone: enteredPhone,
+        Message: enteredMessage,
+        Locale: router.locale
     }
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         if (formIsValid) {
             resetAllFields();
-            return null;
+            fetch("/api/contact", {
+                method: "POST",
+                body: JSON.stringify(formData),
+            })
         }
     }
 
@@ -131,6 +138,7 @@ export const Contact = () => {
                         <textarea name={ "message" }
                             id={ "message" }
                             required
+                            maxLength={500}
                             defaultValue={ enteredMessage }
                             onBlur={ enteredMessageBlurHandler }
                             onChange={ enteredMessageChangeHandler }

@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -10,12 +11,16 @@ load_dotenv(os.path.join(BASE_DIR, '.env'), verbose=True)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$talervr7+nfw9usab(es@hl*v=c&^79!gaj-n6$c4*=#_4s^v'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0']
+USE_TZ = True
+TIME_ZONE = 'Europe/Zagreb'
+USE_L10N = True
+USE_I18N = False
 
 # Application definition
 
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'checkout',
     'shop',
     'faq',
+    'contact'
 ]
 
 MIDDLEWARE = [
@@ -179,3 +185,17 @@ SPECTACULAR_SETTINGS = {
 TWOCHECKOUT_API_URL = os.environ.get('TWOCHECKOUT_API_URL')
 TWOCHECKOUT_API_SECRET_KEY = os.environ.get('TWOCHECKOUT_API_SECRET_KEY')
 TWOCHECKOUT_API_MERCHANT_CODE = os.environ.get('TWOCHECKOUT_API_MERCHANT_CODE')
+
+
+# EMAIL SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('SMTP_SERVER')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('SMTP_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('SMTP_PASSWORD')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'info@jugsie.com'
+EMAIL_SUBJECT_PREFIX = '[Jugsie Bottles] '
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+ADMINS = [('Mateo', 'radmanmateo@gmail.com')]
+MANAGERS = ADMINS

@@ -57,7 +57,6 @@ export default function PaymentForm(props) {
   const [PaymentClient, setPaymentClient] = useState(
     new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE)
   );
-  // TODO: Add translation
   PaymentClient.setup.setLanguage(router.locale);
   const [component, setComponent] = useState(
     PaymentClient.components.create("card", PaymentFormStyle)
@@ -86,6 +85,7 @@ export default function PaymentForm(props) {
           CartData: props.cartItemsArray,
           BillingDetails: BillingDetails,
           PaymentDetails: PaymentDetails,
+          Locale: router.locale
         });
         setFormIsValid(true);
       });
