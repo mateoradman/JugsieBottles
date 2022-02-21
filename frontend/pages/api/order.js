@@ -1,7 +1,6 @@
+import { validate as uuidValidate, version as uuidVersion } from 'uuid';
 import { getAuthToken, getDefaultRequest } from "../../utils/api";
 import { DEFAULT_CURRENCY } from "../../utils/constants";
-import { getCartTotalPrice } from "../../utils/general";
-
 export default async function paymentProtocol(req, res) {
   if (!req.headers.referer || !req.headers.referer.endsWith("/checkout")) {
     return res.status(401).json({ error: "Unauthorized." });
@@ -28,16 +27,16 @@ export default async function paymentProtocol(req, res) {
 const isBodyValid = async (requestBody) => {
   const body = JSON.parse(requestBody);
   if (
-    !body.Currency ||
-    body.Currency !== DEFAULT_CURRENCY ||
-    !body.Source ||
-    !body.ExternalCustomerReference ||
-    !body.ExternalCustomerReference.startsWith("_") ||
-    !body.DeliveryDetails ||
-    !body.BillingDetails ||
-    !body.PaymentDetails
-  ) return false;
-  return true;
+    body.Currency &&
+    body.Currency === DEFAULT_CURRENCY &&
+    body.Source &&
+    uuidValidate(body.OrderUUID) && 
+    uuidVersion(body.OrderUUID) === 4 &&
+    body.DeliveryDetails &&
+    body.BillingDetails &&
+    body.PaymentDetails
+  ) return true;
+  return false;
 };
 
 const submitOrderToRestAPI = async (originalRequest) => {
@@ -75,10 +74,11 @@ const submitOrderToRestAPI = async (originalRequest) => {
     const orderData = {
       customer: customer.id,
       items: orderItems,
-      total_price: getCartTotalPrice(originalBody.CartData),
+      total_price: originalBody.TotalPrice,
       currency: originalBody.Currency,
       shipping_address: shippingAddress.id,
       billing_address: billingAddress.id,
+      order_id: originalBody.OrderUUID
     };
     await createObjInDatabase(requestObjCopy, orderData, "shop/orders/");
   }

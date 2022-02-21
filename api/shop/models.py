@@ -28,10 +28,6 @@ PERSONALIZATION_ICON_CHOICES = (
 )
 
 
-def create_ref_code():
-    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
-
-
 class Customer(models.Model):
     first_name = models.CharField(max_length=254)
     last_name = models.CharField(max_length=254)
@@ -62,8 +58,7 @@ class Order(models.Model):
     items = models.ManyToManyField(OrderItem)
     total_price = models.IntegerField()
     currency = models.CharField(max_length=3, default='HRK')
-    ref_code = models.CharField(max_length=20, default=create_ref_code,
-                                blank=True, null=True)
+    order_id = models.UUIDField(editable=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     shipping_address = models.ForeignKey(
         'Address', related_name='shipping_address', on_delete=models.SET_NULL,
@@ -77,7 +72,7 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Order {self.ref_code}: {self.customer.first_name} {self.customer.last_name}"
+        return f"Order {self.order_id}: {self.customer.first_name} {self.customer.last_name}"
 
 
 class Address(models.Model):

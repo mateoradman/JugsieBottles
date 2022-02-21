@@ -22,7 +22,8 @@
     "react-icons": "^4.3.1",
     "react-select-country-list": "^2.2.3",
     "sharp": "^0.29.2",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^2.2.19",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@svgr/cli": "^6.1.1"

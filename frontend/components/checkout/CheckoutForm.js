@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { useCartItems } from "../../context/Context";
 import { DEFAULT_CURRENCY } from "../../utils/constants";
+import { v4 as uuidv4 } from 'uuid';
 import {
   classNames,
   getCartTotalPrice,
@@ -29,7 +30,7 @@ export default function CheckoutForm() {
   const defaultFormData = {
     Currency: DEFAULT_CURRENCY,
     Source: "Website",
-    ExternalCustomerReference: ID(),
+    OrderUUID: uuidv4(),
   };
   const [formData, setFormData] = useState(defaultFormData);
   const updateFormData = (newFormData) => {

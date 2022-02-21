@@ -85,7 +85,8 @@ export default function PaymentForm(props) {
           CartData: props.cartItemsArray,
           BillingDetails: BillingDetails,
           PaymentDetails: PaymentDetails,
-          Locale: router.locale
+          Locale: router.locale,
+          TotalPrice: getCartTotalPrice(props.cartItemsArray),
         });
         setFormIsValid(true);
       });
