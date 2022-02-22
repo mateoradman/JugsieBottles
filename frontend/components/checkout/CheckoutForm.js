@@ -2,14 +2,13 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { useCartItems } from "../../context/Context";
 import { DEFAULT_CURRENCY } from "../../utils/constants";
-import { v4 as uuidv4 } from 'uuid';
 import {
   classNames,
   getCartTotalPrice,
-  getFormattedPrice,
-  ID
+  getFormattedPrice
 } from "../../utils/general";
 import CartProducts from "../cart/CartProducts";
 import PaymentForm from "./PaymentForm";

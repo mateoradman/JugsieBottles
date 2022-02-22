@@ -58,7 +58,7 @@ class Order(models.Model):
     items = models.ManyToManyField(OrderItem)
     total_price = models.IntegerField()
     currency = models.CharField(max_length=3, default='HRK')
-    order_id = models.UUIDField(editable=False)
+    order_id = models.CharField(max_length=37, blank=False, null=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     shipping_address = models.ForeignKey(
         'Address', related_name='shipping_address', on_delete=models.SET_NULL,
