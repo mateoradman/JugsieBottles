@@ -1,8 +1,8 @@
-import Navbar from "../navigation";
-import Footer from "../footer";
 import Head from "next/head";
 import Script from "next/script";
 import { CartProvider } from "../../context/Context";
+import Footer from "../footer";
+import Navbar from "../navigation";
 
 export default function Layout({ children }) {
   return (
@@ -15,10 +15,6 @@ export default function Layout({ children }) {
         <link rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js" />
       <Script type="text/javascript"
