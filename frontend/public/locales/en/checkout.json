@@ -15,5 +15,10 @@
     "TandC": "I agree to Terms and Conditions",
     "billingSameAsShipping": "Billing address same as shipping address",
     "cardholder": "Cardholder",
-    "contact-form": "Contact Form"
+    "contact-form": "Contact Form",
+    "payment-success": "Payment successful!",
+    "confirmation-email": "You will receive the confirmation email shortly.",
+    "thank-you": "Thank you for shopping with us.",
+    "payment-failure": "Payment failed!",
+    "payment-failure-message": "Please try again or contact us for help."
 }

@@ -1,17 +1,14 @@
-import { Switch } from "@headlessui/react";
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useState } from "react";
+import {Switch} from "@headlessui/react";
+import {useTranslation} from "next-i18next";
+import {useRouter} from "next/router";
+import React, {useEffect, useMemo, useState} from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
-import { PaymentFormStyle } from "../../styles/TwoCheckoutFormStyle";
-import { Croatia, DEFAULT_CURRENCY } from "../../utils/constants";
-import { getCartTotalPrice, getOrderItemsArray } from "../../utils/general";
+import {PaymentFormStyle} from "../../styles/TwoCheckoutFormStyle";
+import {Croatia, DEFAULT_CURRENCY} from "../../utils/constants";
+import {classNames, getCartTotalPrice, getOrderItemsArray} from "../../utils/general";
 import {
-  emptyStringValidation,
-  FormButton,
-  StandardInputField,
-  StandardSelectField
+  emptyStringValidation, StandardInputField, StandardSelectField
 } from "./FormFields";
 
 export default function PaymentForm(props) {
@@ -54,13 +51,9 @@ export default function PaymentForm(props) {
     reset: enteredZIPReset,
   } = useInput(emptyStringValidation);
 
-  const [PaymentClient, setPaymentClient] = useState(
-    new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE)
-  );
+  const [PaymentClient] = useState(new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE));
   PaymentClient.setup.setLanguage(router.locale);
-  const [component, setComponent] = useState(
-    PaymentClient.components.create("card", PaymentFormStyle)
-  );
+  const [component] = useState(PaymentClient.components.create("card", PaymentFormStyle));
   useEffect(() => {
     component.mount("#card-element");
   }, []);
@@ -76,8 +69,8 @@ export default function PaymentForm(props) {
           PaymentMethod: {
             EesToken: response.token,
             Currency: DEFAULT_CURRENCY,
-            Vendor3DSReturnURL: "http://google.com",
-            Vendor3DSCancelURL: "http://facebook.com",
+            Vendor3DSReturnURL: "http://jugsie.com/checkout/status?success=true",
+            Vendor3DSCancelURL: "http://jugsie.com/checkout/status?success=false",
           },
         };
         props.updateFormData({
@@ -104,8 +97,7 @@ export default function PaymentForm(props) {
   const getBillingDetails = () => {
     if (isBillingAddressSame) {
       return {
-        name: enteredCardholderName,
-        ...props.formData.DeliveryDetails,
+        name: enteredCardholderName, ...props.formData.DeliveryDetails,
       };
     } else {
       return {
@@ -129,17 +121,19 @@ export default function PaymentForm(props) {
 
   useEffect(() => {
     if (FormIsValid === true) {
-      props.setCartItemsArray([]);
       fetch("/api/order", {
-        method: "POST",
-        body: JSON.stringify(props.formData),
+        method: "POST", body: JSON.stringify(props.formData),
+      }).then((res) => {
+        if (res.ok) props.setCartItemsArray([]);
+        resetAllFields();
+        router.push({
+          pathname: '/checkout/status', query: {success: res.ok}
+        })
       });
-      resetAllFields();
-      props.handleGoToNextStep();
     }
   }, [FormIsValid]);
 
-  const { t } = useTranslation('checkout');
+  const {t} = useTranslation(['checkout', 'common']);
 
   return (
     <div className="px-3 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
@@ -153,85 +147,93 @@ export default function PaymentForm(props) {
           method="POST"
           type="post"
           id="payment-form"
-          onSubmit={ handleFormSubmit }
+          onSubmit={handleFormSubmit}
         >
           <div className="form-group">
             <StandardInputField
-              inputLabel={ t("cardholder") }
-              typeOfInput={ "text" }
-              inputID={ "cardholder" }
-              blurHandler={ enteredCardholderNameBlurHandler }
-              changeHandler={ enteredCardholderNameChangeHandler }
-              hasError={ enteredCardholderNamehasError }
-              inputValue={ enteredCardholderName }
+              inputLabel={t("cardholder")}
+              typeOfInput={"text"}
+              inputID={"cardholder"}
+              blurHandler={enteredCardholderNameBlurHandler}
+              changeHandler={enteredCardholderNameChangeHandler}
+              hasError={enteredCardholderNamehasError}
+              inputValue={enteredCardholderName}
             />
           </div>
           <Switch.Group>
             <div className="flex items-center my-2 md:justify-between">
               <Switch.Label className="mr-2">
-                { t("billingSameAsShipping") }
+                {t("billingSameAsShipping")}
               </Switch.Label>
               <Switch
-                checked={ isBillingAddressSame }
-                onChange={ () => setIsBillingAddressSame(!isBillingAddressSame) }
-                className={ `${isBillingAddressSame ? "bg-blue-600" : "bg-gray-200"
-                  } relative inline-flex items-center h-6 rounded-full w-16 md:w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500` }
+                checked={isBillingAddressSame}
+                onChange={() => setIsBillingAddressSame(!isBillingAddressSame)}
+                className={`${isBillingAddressSame ? "bg-blue-600" : "bg-gray-200"} relative inline-flex items-center 
+                h-6 rounded-full w-16 md:w-11 transition-colors focus:outline-none focus:ring-2 
+                focus:ring-offset-2 focus:ring-indigo-500`}
               >
                 <span
-                  className={ `${isBillingAddressSame
-                    ? "translate-x-7 md:translate-x-6"
-                    : "translate-x-1"
-                    } inline-block w-4 h-4 transform bg-white rounded-full transition-transform` }
+                  className={`${isBillingAddressSame ? "translate-x-7 md:translate-x-6" : "translate-x-1"} inline-block
+                   w-4 h-4 transform bg-white rounded-full transition-transform`}
                 />
               </Switch>
             </div>
           </Switch.Group>
 
-          { !isBillingAddressSame && (
-            <div className="mb-4">
-              <StandardInputField
-                inputLabel={ t("address") }
-                typeOfInput={ "text" }
-                inputID={ "address" }
-                blurHandler={ enteredStreetBlurHandler }
-                changeHandler={ enteredStreetChangeHandler }
-                hasError={ enteredStreethasError }
-                inputValue={ enteredStreet }
-              />
-              <StandardInputField
-                inputLabel={ t("city") }
-                typeOfInput={ "text" }
-                inputID={ "city" }
-                blurHandler={ enteredCityBlurHandler }
-                changeHandler={ enteredCityChangeHandler }
-                hasError={ enteredCityhasError }
-                inputValue={ enteredCity }
-              />
-              <StandardInputField
-                inputLabel={ t("zip") }
-                typeOfInput={ "text" }
-                inputID={ "zip" }
-                blurHandler={ enteredZIPBlurHandler }
-                changeHandler={ enteredZIPChangeHandler }
-                hasError={ enteredZIPhasError }
-                inputValue={ enteredZIP }
-              />
-              <StandardSelectField
-                inputLabel={ t("country") }
-                inputID={ "country" }
-                options={ countryOptions }
-                selectedCountry={ selectedCountry }
-                onChange={ changeSelectedCountryHandler }
-              />
-            </div>
-          ) }
+          {!isBillingAddressSame && (<div className="mb-4">
+            <StandardInputField
+              inputLabel={t("address")}
+              typeOfInput={"text"}
+              inputID={"address"}
+              blurHandler={enteredStreetBlurHandler}
+              changeHandler={enteredStreetChangeHandler}
+              hasError={enteredStreethasError}
+              inputValue={enteredStreet}
+            />
+            <StandardInputField
+              inputLabel={t("city")}
+              typeOfInput={"text"}
+              inputID={"city"}
+              blurHandler={enteredCityBlurHandler}
+              changeHandler={enteredCityChangeHandler}
+              hasError={enteredCityhasError}
+              inputValue={enteredCity}
+            />
+            <StandardInputField
+              inputLabel={t("zip")}
+              typeOfInput={"text"}
+              inputID={"zip"}
+              blurHandler={enteredZIPBlurHandler}
+              changeHandler={enteredZIPChangeHandler}
+              hasError={enteredZIPhasError}
+              inputValue={enteredZIP}
+            />
+            <StandardSelectField
+              inputLabel={t("country")}
+              inputID={"country"}
+              options={countryOptions}
+              selectedCountry={selectedCountry}
+              onChange={changeSelectedCountryHandler}
+            />
+          </div>)}
 
           <div id="card-element"></div>
 
-          <FormButton back previousStepHandler={ props.handleGoToPreviousStep } />
-          <FormButton />
+          <div className="col-span-1 md:col-span-2 justify-center">
+            <button type="button"
+                    className="flex space-x-10 w-full btn btn-warning rounded-lg"
+                    onClick={props.handleGoToPreviousStep}>
+              {t("back", {ns: 'common'})}
+            </button>
+          </div>
+          <div className="col-span-1 md:col-span-2 justify-center">
+            <button type="submit"
+                    className={classNames("flex space-x-10 w-full btn btn-info rounded-lg", FormIsValid && "loading")}>
+              {t("pay", {ns: 'common'})}
+            </button>
+          </div>
         </form>
       </div>
     </div>
-  );
+  )
 }

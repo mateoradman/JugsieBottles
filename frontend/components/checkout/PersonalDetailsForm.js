@@ -1,8 +1,14 @@
-import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
+import {useTranslation} from 'next-i18next';
+import React, {useState} from 'react';
 import useInput from '../../hooks/useInput';
-import { Croatia } from '../../utils/constants';
-import { emptyEmailValidation, emptyPhoneNumberValidation, emptyStringValidation, FormButton, StandardInputField, StandardSelectField } from './FormFields';
+import {Croatia} from '../../utils/constants';
+import {
+  emptyEmailValidation,
+  emptyPhoneNumberValidation,
+  emptyStringValidation,
+  StandardInputField,
+  StandardSelectField
+} from './FormFields';
 
 export default function PersonalDetailsForm(props) {
   const [checkedTandC, setCheckedTandC] = useState(false);
@@ -100,114 +106,119 @@ export default function PersonalDetailsForm(props) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (formIsValid) {
-      props.updateFormData({ DeliveryDetails: formData })
+      props.updateFormData({DeliveryDetails: formData})
       resetAllFields();
       props.handleGoToNextStep();
-    };
+    }
   }
 
-  const { t } = useTranslation('checkout');
+  const {t} = useTranslation('checkout');
 
   return (
     <div className="px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
       <div className="my-6 sm:my-10 bg-white card py-8 px-3 md:shadow-lg rounded-lg sm:px-10">
         <h1 className="mb-4 text-capitalize font-bold text-2xl text-center">
-          { t('personalDetails') }
+          {t('personalDetails')}
         </h1>
         <form
           className="grid grid-cols-1 px-5 md:px-0 md:grid-cols-2 gap-y-3 md:gap-x-10"
           action="#"
           method="POST"
-          onSubmit={ handleFormSubmit }
+          onSubmit={handleFormSubmit}
         >
           <StandardInputField
-            inputLabel={ t('firstName') }
-            inputID={ "first_name" }
-            typeOfInput={ "text" }
-            blurHandler={ enteredFirstNameBlurHandler }
-            changeHandler={ enteredFirstNameChangeHandler }
-            hasError={ enteredFirstNamehasError }
-            inputValue={ enteredFirstName }
+            inputLabel={t('firstName')}
+            inputID={"first_name"}
+            typeOfInput={"text"}
+            blurHandler={enteredFirstNameBlurHandler}
+            changeHandler={enteredFirstNameChangeHandler}
+            hasError={enteredFirstNamehasError}
+            inputValue={enteredFirstName}
           />
           <StandardInputField
-            inputLabel={ t('lastName') }
-            inputID={ "last_name" }
-            typeOfInput={ "text" }
-            blurHandler={ enteredLastNameBlurHandler }
-            changeHandler={ enteredLastNameChangeHandler }
-            hasError={ enteredLastNamehasError }
-            inputValue={ enteredLastName }
+            inputLabel={t('lastName')}
+            inputID={"last_name"}
+            typeOfInput={"text"}
+            blurHandler={enteredLastNameBlurHandler}
+            changeHandler={enteredLastNameChangeHandler}
+            hasError={enteredLastNamehasError}
+            inputValue={enteredLastName}
           />
           <StandardInputField
-            inputLabel={ t('email') }
-            inputID={ "email" }
-            typeOfInput={ "email" }
-            blurHandler={ enteredEmailBlurHandler }
-            changeHandler={ enteredEmailChangeHandler }
-            hasError={ enteredEmailhasError }
-            inputValue={ enteredEmail }
+            inputLabel={t('email')}
+            inputID={"email"}
+            typeOfInput={"email"}
+            blurHandler={enteredEmailBlurHandler}
+            changeHandler={enteredEmailChangeHandler}
+            hasError={enteredEmailhasError}
+            inputValue={enteredEmail}
           />
           <StandardInputField
-            inputLabel={ t('phone') }
-            typeOfInput={ "tel" }
-            inputID={ "phone" }
-            blurHandler={ enteredPhoneBlurHandler }
-            changeHandler={ enteredPhoneChangeHandler }
-            hasError={ enteredPhonehasError }
-            inputValue={ enteredPhone }
+            inputLabel={t('phone')}
+            typeOfInput={"tel"}
+            inputID={"phone"}
+            blurHandler={enteredPhoneBlurHandler}
+            changeHandler={enteredPhoneChangeHandler}
+            hasError={enteredPhonehasError}
+            inputValue={enteredPhone}
           />
           <StandardInputField
-            inputLabel={ t('address') }
-            typeOfInput={ "text" }
-            inputID={ "address" }
-            blurHandler={ enteredStreetBlurHandler }
-            changeHandler={ enteredStreetChangeHandler }
-            hasError={ enteredStreethasError }
-            inputValue={ enteredStreet }
+            inputLabel={t('address')}
+            typeOfInput={"text"}
+            inputID={"address"}
+            blurHandler={enteredStreetBlurHandler}
+            changeHandler={enteredStreetChangeHandler}
+            hasError={enteredStreethasError}
+            inputValue={enteredStreet}
           />
           <StandardInputField
-            inputLabel={ t('city') }
-            typeOfInput={ "text" }
-            inputID={ "city" }
-            blurHandler={ enteredCityBlurHandler }
-            changeHandler={ enteredCityChangeHandler }
-            hasError={ enteredCityhasError }
-            inputValue={ enteredCity }
+            inputLabel={t('city')}
+            typeOfInput={"text"}
+            inputID={"city"}
+            blurHandler={enteredCityBlurHandler}
+            changeHandler={enteredCityChangeHandler}
+            hasError={enteredCityhasError}
+            inputValue={enteredCity}
           />
           <StandardInputField
-            inputLabel={ t('zip') }
-            typeOfInput={ "text" }
-            inputID={ "zip" }
-            blurHandler={ enteredZIPBlurHandler }
-            changeHandler={ enteredZIPChangeHandler }
-            hasError={ enteredZIPhasError }
-            inputValue={ enteredZIP }
+            inputLabel={t('zip')}
+            typeOfInput={"text"}
+            inputID={"zip"}
+            blurHandler={enteredZIPBlurHandler}
+            changeHandler={enteredZIPChangeHandler}
+            hasError={enteredZIPhasError}
+            inputValue={enteredZIP}
           />
           <StandardSelectField
-            inputLabel={ t('country') }
-            inputID={ 'country' }
-            options={ countryOptions }
-            selectedCountry={ selectedCountry }
-            onChange={ changeSelectedCountryHandler }
+            inputLabel={t('country')}
+            inputID={'country'}
+            options={countryOptions}
+            selectedCountry={selectedCountry}
+            onChange={changeSelectedCountryHandler}
           />
 
           <div className="flex my-3 md:col-span-2 w-full">
             <div className="form-control">
               <label className="cursor-pointer label">
                 <span className="label-text font-bold p-1">
-                  { t('TandC') }
+                  {t('TandC')}
                 </span>
                 <input
                   type="checkbox"
                   required
                   className="justify-start ml-3 checkbox checkbox-primary"
-                  onClick={ () => setCheckedTandC(!checkedTandC) }
-                  defaultChecked={ checkedTandC } />
+                  onClick={() => setCheckedTandC(!checkedTandC)}
+                  defaultChecked={checkedTandC}/>
               </label>
             </div>
           </div>
 
-          <FormButton />
+          <div className="col-span-1 md:col-span-2 justify-center">
+            <button type="submit"
+                    className={"flex space-x-10 w-full btn btn-info rounded-lg"}>
+              {t("continue", {ns: 'common'})}
+            </button>
+          </div>
         </form>
       </div>
     </div>

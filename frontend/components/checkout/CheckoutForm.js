@@ -1,19 +1,12 @@
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
-import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-import { useCartItems } from "../../context/Context";
-import { DEFAULT_CURRENCY } from "../../utils/constants";
-import {
-  classNames,
-  getCartTotalPrice,
-  getFormattedPrice
-} from "../../utils/general";
-import CartProducts from "../cart/CartProducts";
+import {useTranslation} from "next-i18next";
+import React, {useState} from "react";
+import {v4 as uuidv4} from 'uuid';
+import {useCartItems} from "../../context/Context";
+import {DEFAULT_CURRENCY} from "../../utils/constants";
+import {classNames} from "../../utils/general";
+import {OrderSummary} from "./OrderSummary";
 import PaymentForm from "./PaymentForm";
 import PersonalDetailsForm from "./PersonalDetailsForm";
-import Success from "./Success";
 
 export default function CheckoutForm() {
   const [step, setStep] = useState(1);
@@ -22,7 +15,7 @@ export default function CheckoutForm() {
     setStep((prevStep) => prevStep - 1);
     setFormData(defaultFormData);
   };
-  function colourStep(currentStep, threshold) {
+  const colourStep = (currentStep, threshold) => {
     return classNames("step", currentStep >= threshold ? "step-success" : "");
   }
 
@@ -40,7 +33,7 @@ export default function CheckoutForm() {
 
   const componentToRender = () => {
     // Immediately don't render anything if there is nothing in the cart
-    if ((!cartItemsArray || cartItemsArray.length === 0) && step !== 3) return null;
+    if (!cartItemsArray || cartItemsArray.length === 0) return null;
 
     switch (step) {
       case 1:
@@ -62,9 +55,6 @@ export default function CheckoutForm() {
             setCartItemsArray={ setCartItemsArray }
           />
         );
-
-      case 3:
-        return <Success />;
       default:
         return null;
     }
@@ -81,55 +71,11 @@ export default function CheckoutForm() {
         <li className={ colourStep(step, 2) }>
           <span className="label-text">{ t('payment') }</span>
         </li>
-        <li className={ colourStep(step, 3) }>
+        <li className="step">
           <span className="label-text">{ t('orderComplete') }</span>
         </li>
       </ul>
-      { (step === 1 || step === 2) && (
-        <div className="mt-6 px-5 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
-          <div className="flex flex-col space-y-4 w-full p-2 mx-auto bg-white rounded-2xl">
-            <Disclosure defaultOpen>
-              { ({ open }) => (
-                <>
-                  <Disclosure.Button
-                    className={
-                      "flex justify-between self-center px-6 sm:px-12 py-2 text-lg sm:text-xl font-medium text-left text-green-900 bg-green-100 rounded-lg hover:bg-green-200 focus:outline-none focus-visible:ring focus-visible:ring-green-500 focus-visible:ring-opacity-75"
-                    }
-                  >
-                    <span>{ t('orderSummary') }</span>
-                    <ChevronUpIcon
-                      className={ classNames(
-                        "text-purple-900 w-5 h-5 ml-5 self-center",
-                        open ? "transform rotate-180" : ""
-                      ) }
-                    />
-                  </Disclosure.Button>
-                  <Transition
-                    show={ open }
-                    enter="transition duration-100 ease-out"
-                    enterFrom="transform scale-95 opacity-0"
-                    enterTo="transform scale-100 opacity-100"
-                    leave="transition duration-75 ease-out"
-                    leaveFrom="transform scale-100 opacity-100"
-                    leaveTo="transform scale-95 opacity-0"
-                  >
-                    <Disclosure.Panel static>
-                      <div className="flex flex-col space-y-5 text-sm card bordered rounded-lg shadow-md p-4">
-                        <CartProducts cartItemsArray={ cartItemsArray } />
-                        <span className="self-end sm:text-lg font-extrabold">
-                          { t('totalPrice') }:{ " " }
-                          { getFormattedPrice(getCartTotalPrice(cartItemsArray)) }
-                        </span>
-                      </div>
-                    </Disclosure.Panel>
-                  </Transition>
-                </>
-              ) }
-            </Disclosure>
-          </div>
-        </div>
-      ) }
-
+      <OrderSummary cartItemsArray={ cartItemsArray } />
       { componentToRender() }
     </div>
   );

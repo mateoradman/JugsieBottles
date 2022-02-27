@@ -1,5 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import CheckoutForm from "../components/checkout/CheckoutForm";
+import CheckoutForm from "../../components/checkout/CheckoutForm";
 
 const Checkout = () => {
   return (
