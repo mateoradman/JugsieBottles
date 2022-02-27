@@ -10,7 +10,7 @@ const Cart = (props) => {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, 'common'),
+    ...await serverSideTranslations(locale, ['common']),
   },
 })
 

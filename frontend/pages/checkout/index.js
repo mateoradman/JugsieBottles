@@ -9,7 +9,7 @@ const Checkout = () => {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['checkout']),
+    ...await serverSideTranslations(locale, ['common','checkout']),
   },
 })
 
