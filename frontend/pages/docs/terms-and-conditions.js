@@ -1,3 +1,5 @@
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+
 export default function TermsAndConditionsPage() {
     return (
 
@@ -224,3 +226,9 @@ export default function TermsAndConditionsPage() {
 
     )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+})
