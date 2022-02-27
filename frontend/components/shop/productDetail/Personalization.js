@@ -1,7 +1,7 @@
 import { RadioGroup } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from "react";
-import { personalizationIcons } from "../../../utils/constants";
+import { Icons } from "../../../utils/constants";
 import { classNames } from "../../../utils/general";
 
 export function PersonalizationToggle(props) {
@@ -77,7 +77,7 @@ const IconTabRadioGroup = (props) => {
     <RadioGroup value={ selectedIcon } onChange={ setSelectedIcon }
       className="mt-4">
       <div className="grid grid-cols-7 gap-2.5">
-        { personalizationIcons.map((iconObject) => (
+        { Icons.map((iconObject) => (
           <RadioGroup.Option
             key={ iconObject.name }
             value={ iconObject.name }
