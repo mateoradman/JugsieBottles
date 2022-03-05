@@ -9,7 +9,7 @@ schema_urlpatterns = [
 ]
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('jugsie-cpanel/', admin.site.urls),
     path('api/v1/product/', include('product.urls')),
     path('api/v1/shop/', include('shop.urls')),
     path('api/v1/checkout/', include('checkout.urls')),
