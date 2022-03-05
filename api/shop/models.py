@@ -1,6 +1,3 @@
-import random
-import string
-
 from django.db import models
 from django_countries.fields import CountryField
 from product.models import Bottle
