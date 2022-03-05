@@ -80,6 +80,7 @@ export default function PaymentForm(props) {
           PaymentDetails: PaymentDetails,
           Locale: router.locale,
           TotalPrice: getCartTotalPrice(props.cartItemsArray),
+          OrderTimeString: new Date().toLocaleString('hr', {timeZone: 'Europe/Zagreb'})
         });
         setFormIsValid(true);
       });
