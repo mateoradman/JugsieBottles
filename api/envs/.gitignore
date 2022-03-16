@@ -1,5 +1,0 @@
-# Ignore all
-/*
-# Except these files
-!.gitignore
-!.env.dev
