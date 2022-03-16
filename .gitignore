@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignore production env files.
+*/envs/.env.prod*
+
 # Distribution / packaging
 .Python
 build/
