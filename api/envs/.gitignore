@@ -1,4 +1,5 @@
 # Ignore all
 /*
-# Except this file
+# Except these files
 !.gitignore
+!.env.dev
