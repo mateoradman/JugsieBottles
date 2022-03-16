@@ -1,19 +1,16 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR, '.env'), verbose=True)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', '1'))
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', ['localhost', '0.0.0.0', '127.0.0.1', 'backend'])
 USE_TZ = True
 TIME_ZONE = 'Europe/Zagreb'
 USE_L10N = True
@@ -84,8 +81,12 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get("SQL_DATABASE", BASE_DIR / 'db.sqlite3'),
+        "USER": os.environ.get("SQL_USER"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD"),
+        "HOST": os.environ.get("SQL_HOST"),
+        "PORT": os.environ.get("SQL_PORT"),
     }
 }
 
@@ -117,7 +118,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGGING = {
-    'version': 1,                       # the dictConfig format version
+    'version': 1,  # the dictConfig format version
     'disable_existing_loggers': False,  # retain the default loggers
     'formatters': {
         'console': {
@@ -166,7 +167,6 @@ SPECTACULAR_SETTINGS = {
 TWOCHECKOUT_API_URL = os.environ.get('TWOCHECKOUT_API_URL')
 TWOCHECKOUT_API_SECRET_KEY = os.environ.get('TWOCHECKOUT_API_SECRET_KEY')
 TWOCHECKOUT_API_MERCHANT_CODE = os.environ.get('TWOCHECKOUT_API_MERCHANT_CODE')
-
 
 # EMAIL SETTINGS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: jugsie_frontend
+    build: ./frontend
+    restart: always
+    networks:
+      - jugsie_network
+    volumes:
+      - ./frontend/:/usr/src/app/frontend
+      - /usr/src/app/frontend/node_modules
+    env_file: ./frontend/envs/.env.dev
+    command: yarn run dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+      - db
+  backend:
+    container_name: jugsie_backend
+    build: ./api
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - jugsie_network
+    volumes:
+      - ./api/:/usr/src/app/api
+    ports:
+      - "8000:8000"
+    env_file:
+      - api/envs/.env.dev
+    depends_on:
+      - db
+  db:
+    container_name: jugsie_db
+    image: postgres:14-alpine
+    restart: always
+    volumes:
+      - ./db/postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=jugsie
+      - POSTGRES_PASSWORD=jugsie
+      - POSTGRES_DB=jugsie_dev
+    networks:
+      - jugsie_network
+
+volumes:
+  postgres_data:
+
+networks:
+  jugsie_network:
+    driver: bridge
