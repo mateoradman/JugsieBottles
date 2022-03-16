@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Bottle(models.Model):
-    name = models.CharField(blank=False, null=False, max_length=64)
+    name = models.CharField(blank=False, null=False, max_length=64, unique=True)
     colour = models.CharField(blank=False, null=False, max_length=64)
     description = models.TextField()
     details = models.TextField()
