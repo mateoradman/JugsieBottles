@@ -13,14 +13,12 @@ class Command(BaseCommand):
         price = 130
         bottles = ["Green", "Blue", "Black", "Hot Pink", "White", "Turquoise",
                    "Lilac"]
-        objs = []
         for colour in bottles:
-            objs.append(
-                Bottle(name=name,
-                       price=price if colour != "Hot Pink" else 100,
-                       colour=colour,
-                       description=description,
-                       details=details))
-        Bottle.objects.bulk_create(objs)
+            Bottle.objects.get_or_create(name=name,
+                                         price=100 if colour == "Hot Pink" else price,
+                                         colour=colour,
+                                         description=description,
+                                         details=details)
+
         self.stdout.write(self.style.SUCCESS(
             "Successfully added Jugsie Bottles to the Database."))
