@@ -2,34 +2,18 @@ version: '3.8'
 
 services:
   frontend:
-    container_name: jugsie_frontend
-    build: ./frontend
+    container_name: jugsie_app
+    build: app
     restart: always
     networks:
       - jugsie_network
     volumes:
-      - ./frontend/:/usr/src/app/frontend
+      - ./app/:/usr/src/app/frontend
       - /usr/src/app/frontend/node_modules
-    env_file: ./frontend/envs/.env.dev
+    env_file: app/envs/.env.dev
     command: yarn run dev
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-      - db
-  backend:
-    container_name: jugsie_backend
-    build: ./api
-    restart: always
-    command: python manage.py runserver 0.0.0.0:8000
-    networks:
-      - jugsie_network
-    volumes:
-      - ./api/:/usr/src/app/api
-    ports:
-      - "8000:8000"
-    env_file:
-      - api/envs/.env.dev
     depends_on:
       - db
   db:
