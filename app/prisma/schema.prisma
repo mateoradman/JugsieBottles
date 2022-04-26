@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PersonalizationIcon {
+  Aeroplane
+  Butterfly
+  Camera
+  Clover
+  Crown
+  Dumbbell
+  Flower
+  Heart
+  Lipstick
+  MusicalNote
+  Paw
+  Smile
+  Star
+  Tooth
+}
+
+enum Locale {
+  en
+  hr
+}
+
+model Bottle {
+  id        Int         @id @default(autoincrement())
+  colour    String      @unique
+  name      String
+  price     Int
+  stock     Int         @default(0)
+  OrderItem OrderItem[]
+}
+
+model Customer {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  Order     Order[]
+  Address   Address[]
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  customer   Customer    @relation(fields: [customerId], references: [id])
+  customerId Int
+  orderItems OrderItem[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @default(now())
+  coupon     Coupon      @relation(fields: [couponId], references: [id])
+  couponId   Int
+  currency   String
+}
+
+model OrderItem {
+  id                  Int                  @id @default(autoincrement())
+  bottle              Bottle               @relation(fields: [bottleId], references: [id])
+  bottleId            Int
+  quantity            Int
+  personalizationText String               @default("")
+  personalizationIcon PersonalizationIcon?
+  price               Int
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @default(now())
+  Order               Order?               @relation(fields: [orderId], references: [id])
+  orderId             Int?
+}
+
+model Coupon {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  discount    Int
+  maxDiscount Int
+  maxUses     Int
+  uses        Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  Order       Order[]
+}
+
+model Address {
+  id         Int      @id @default(autoincrement())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  street     String
+  city       String
+  zip        String
+  country    String
+  isShipping Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model Faq {
+  id       Int    @id @default(autoincrement())
+  question String
+  answer   String
+  section  String
+  locale   Locale
+  icon     String
+}
