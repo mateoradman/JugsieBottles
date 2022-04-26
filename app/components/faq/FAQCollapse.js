@@ -10,6 +10,5 @@ export function FAQCollapse(props) {
                     {props.data.answer}
                 </div>
         </div>
-
     )
 }

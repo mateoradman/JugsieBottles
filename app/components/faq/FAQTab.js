@@ -1,10 +1,18 @@
 import { Tab } from '@headlessui/react';
 import { ReceiptRefundIcon, TruckIcon, InformationCircleIcon } from '@heroicons/react/solid';
-import { classNames, ID } from '../../utils/general';
+import { classNames } from '../../utils/general';
 import { FAQCollapse } from './FAQCollapse';
 
 export const FAQTab = (props) => {
-    const tabs = props.faq;
+    const FaqBySection = props.faq.reduce((acc, faq) => {
+        if (!acc[faq.section]) {
+            acc[faq.section] = [];
+        }
+        acc[faq.section].push(faq);
+        acc[faq.section].icon = faq.icon;
+        return acc;
+    }, {});
+
     return (
         <Tab.Group defaultIndex={ 0 }>
             <Tab.List
@@ -13,29 +21,29 @@ export const FAQTab = (props) => {
                     "border-b border-gray-200 mb-2"
                 ) }
             >
-                { tabs.map((tab) => (
+                { FaqBySection && Object.keys(FaqBySection).map((section) => (
                     <Tab
-                        key={ tab.name }
+                        key={ section }
                         className={ classNames(
                             "flex items-center justify-center px-4 h-10 py-2 -mb-px text-sm text-center whitespace-nowrap cursor-base focus:outline-none",
                             "text-neutral-900"
                         ) }
                     >
                         <span className="flex align-middle border-b-2 border-transparent hover:border-gray-300 selected:border-gray-400">
-                            <FAQIcon icon={tab.icon}/>
-                            { tab.name }
+                            <FAQIcon icon={FaqBySection[section].icon}/>
+                            { section }
                         </span>
                     </Tab>
                 )) }
             </Tab.List>
             <Tab.Panels>
-                { tabs.map((tab) => (
+                { FaqBySection && Object.keys(FaqBySection).map((section) => (
                     <Tab.Panel
                         as='div'
-                        key={ tab.name }
+                        key={ section }
                         className="card space-y-4"
                     >
-                        { tab.questionandanswer_set.map(QandA => (<FAQCollapse key={ ID() } data={ QandA } />)) }
+                        { FaqBySection[section].map(faq => (<FAQCollapse key={ faq.id } data={ faq } />)) }
                     </Tab.Panel>
                 )) }
             </Tab.Panels>
