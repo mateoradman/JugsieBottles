@@ -1,7 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ProductCard } from "../components/shop/productDetail";
 import TechnicalSpecs from "../components/shop/productTechnicalSpecs";
-import { getAuthToken, getDefaultRequest } from "../utils/api";
+import { PrismaClient } from '@prisma/client';
 
 export default function Shop(props) {
   return (
@@ -13,12 +13,12 @@ export default function Shop(props) {
 }
 
 export async function getStaticProps({ locale }) {
-  let authHeader = await getAuthToken();
-  let customRequest = getDefaultRequest();
-  customRequest.headers["Authorization"] = authHeader;
-  const url = new URL("product/bottles/1", process.env.API_HOST);
-  const res = await fetch(url.href, customRequest);
-  const product = await res.json();
+  const prisma = new PrismaClient();
+  const product = await prisma.bottle.findFirst({
+    where: {
+      colour: "Blue",
+    },
+  });
 
   return {
     props: {
