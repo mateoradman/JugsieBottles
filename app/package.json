@@ -1,4 +1,9 @@
 {
+  "version": "1.0.0",
+  "description": "Jugsie Bottles Website",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
