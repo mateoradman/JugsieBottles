@@ -21,5 +21,7 @@
   "toc": "Uvjeti korištenja",
   "privacy-policy": "Politika privatnosti",
   "social": "Društvene mreže",
-  "pay": "Plati"
+  "pay": "Plati",
+  "contactSuccess": "Uspješno ste poslali poruku.",
+  "contactError": "Poruka nije poslana."
 }

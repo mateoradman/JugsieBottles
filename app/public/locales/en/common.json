@@ -22,5 +22,7 @@
   "toc": "Terms of use",
   "privacy-policy": "Privacy policy",
   "social": "Social",
-  "pay": "Pay"
+  "pay": "Pay",
+  "contactSuccess": "Your message has been sent successfully.",
+  "contactError": "An error occurred while sending your message."
 }
