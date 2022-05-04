@@ -18,7 +18,7 @@ export const StandardInputField = (props) => {
              id={props.inputID}
              type={props.inputType}
              required
-             defaultValue={props.inputValue}
+             value={props.inputValue}
              onBlur={props.blurHandler}
              onChange={props.changeHandler}
              className={classNames("input input-bordered rounded-lg",
