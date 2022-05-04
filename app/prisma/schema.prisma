@@ -46,6 +46,7 @@ model Customer {
   createdAt DateTime  @default(now())
   Order     Order[]
   Address   Address[]
+  Contact   Contact[]
 }
 
 model Order {
@@ -106,4 +107,14 @@ model Faq {
   section  String
   locale   Locale
   icon     String
+}
+
+model Contact {
+  id         Int      @id @default(autoincrement())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  phone      String
+  message    String
+  locale     Locale
+  createdAt  DateTime @default(now())
 }
