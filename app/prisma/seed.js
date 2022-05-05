@@ -119,7 +119,7 @@ const faq_en = [
     },
     {
         "question": "Can I put my Jugsie bottle in the fridge or freezer?",
-        "answer": "We would not advise putting Jugsie bottles in the fridge or the freezer. This is because this will have no effect on the bottle due to the double-wall vacuum insulation. This technology means the bottle is not affected by the outside temperature so the fridge or the freezer will not be able to cool the contents inside. It has also been known to crack the bottle and break the vacuum seal if left in the freezer.For best results for cold water, we recommend using very cold water from the fridge or tap and filling your Jugsie bottle with ice cubes.",
+        "answer": "We would not advise putting Jugsie bottles in the fridge or the freezer. This is because this will have no effect on the bottle due to the double-wall vacuum insulation. This technology means the bottle is not affected by the outside temperature so the fridge or the freezer will not be able to cool the contents inside. It has also been known to crack the bottle and break the vacuum seal if left in the freezer. For best results for cold water, we recommend using very cold water from the fridge or tap and filling your Jugsie bottle with ice cubes.",
         "section": "General",
         "locale": "en",
         "icon": "InformationCircleIcon"
@@ -189,7 +189,7 @@ const faq_en = [
     },
     {
         "question": "How much does shipping cost? How long does the delivery take?",
-        "answer": "For orders over 100 HRK, we offer a free delivery which takes 7-10 working days to be delivered to your address.For orders under 100HRK, the delivery costs 20HRK.",
+        "answer": "For orders over 100 HRK, we offer a free delivery which takes 7-10 working days to be delivered to your address. For orders under 100HRK, the delivery costs 20HRK.",
         "section": "Orders and Delivery",
         "locale": "en",
         "icon": "TruckIcon"
@@ -224,28 +224,28 @@ const faq_en = [
     },
     {
         "question": "My order arrived damaged",
-        "answer": "We are very sorry that your order arrived damaged. If the product is damaged in transit, then we will replace it free of charge.Please do not send us the faulty products, but rather contact us as soon as possible (info@jugsie.com).",
+        "answer": "We are very sorry that your order arrived damaged. If the product is damaged in transit, then we will replace it free of charge. Please do not send us the faulty products, but rather contact us as soon as possible (info@jugsie.com).",
         "section": "Returns",
         "locale": "en",
         "icon": "ReceiptRefundIcon"
     },
     {
         "question": "What is covered by the warranty?",
-        "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product.As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original.General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
+        "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product. As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original. General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
         "section": "Returns",
         "locale": "en",
         "icon": "ReceiptRefundIcon"
     },
     {
         "question": "What is covered by the warranty?",
-        "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product.As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original.General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
+        "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product. As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original. General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
         "section": "Returns",
         "locale": "en",
         "icon": "ReceiptRefundIcon"
     },
     {
         "question": "Claims under warranty",
-        "answer": "If you think your item is faulty, please get in touch with us first and we\u2019ll be happy to look into it. Please describe what is wrong and attach a photo of your item. Faulty products are eligible for refunds up to thirty days after purchase. Afterwards, we can only offer replacements under warranty.Kindly note that warranty does not restart when you receive a replacement bottle.",
+        "answer": "If you think your item is faulty, please get in touch with us first and we\u2019ll be happy to look into it. Please describe what is wrong and attach a photo of your item. Faulty products are eligible for refunds up to thirty days after purchase. Afterwards, we can only offer replacements under warranty. Kindly note that warranty does not restart when you receive a replacement bottle.",
         "section": "Returns",
         "locale": "en",
         "icon": "ReceiptRefundIcon"
