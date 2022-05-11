@@ -29,6 +29,11 @@ enum Locale {
   hr
 }
 
+enum PaymentOption {
+  CreditCard
+  BankTransfer
+}
+
 model Bottle {
   id        Int         @id @default(autoincrement())
   colour    String      @unique
@@ -50,15 +55,17 @@ model Customer {
 }
 
 model Order {
-  id         Int         @id @default(autoincrement())
-  customer   Customer    @relation(fields: [customerId], references: [id])
-  customerId Int
-  orderItems OrderItem[]
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @default(now())
-  coupon     Coupon      @relation(fields: [couponId], references: [id])
-  couponId   Int
-  currency   String
+  id            Int           @id @default(autoincrement())
+  orderUUID     String        @unique
+  customer      Customer      @relation(fields: [customerId], references: [id])
+  customerId    Int
+  orderItems    OrderItem[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now())
+  coupon        Coupon?       @relation(fields: [couponId], references: [id])
+  couponId      Int?
+  currency      String
+  paymentOption PaymentOption
 }
 
 model OrderItem {
