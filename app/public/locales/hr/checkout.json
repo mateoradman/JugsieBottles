@@ -20,5 +20,6 @@
   "confirmation-email": "U sljedećih nekoliko minuta primit ćete potvrdni e-mail.",
   "thank-you": "Hvala Vam na povjerenju.",
   "payment-failure": "Plaćanje neuspješno!",
-  "payment-failure-message": "Pokušajte ponovno ili nas kontaktirajte za pomoć."
+  "payment-failure-message": "Pokušajte ponovno ili nas kontaktirajte za pomoć.",
+  "bankTransferAlert": "Trenutno je samo dostupno plaćanje prijenosom na bankovni račun."
 }

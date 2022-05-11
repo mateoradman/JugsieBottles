@@ -20,5 +20,6 @@
     "confirmation-email": "You will receive the confirmation email shortly.",
     "thank-you": "Thank you for shopping with us.",
     "payment-failure": "Payment failed!",
-    "payment-failure-message": "Please try again or contact us for help."
+    "payment-failure-message": "Please try again or contact us for help.",
+    "bankTransferAlert": "Bank transfer is the only method of payment currently available."
 }
