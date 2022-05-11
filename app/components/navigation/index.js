@@ -1,9 +1,8 @@
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { i18n } from "next-i18next";
+import {Popover, Transition} from "@headlessui/react";
+import {MenuIcon, XIcon} from "@heroicons/react/outline";
 import Link from "next/link";
-import { Fragment, useState } from "react";
-import { useCartItems } from "../../context/Context";
+import {Fragment, useState} from "react";
+import {useCartItems} from "../../context/Context";
 import JugsieBottlesLogo from "../../public/Logos/logo";
 import Cart from "../cart";
 import CartIcon from "./CartIcon";
@@ -47,7 +46,7 @@ const Navbar = () => {
             </div>
             <NavbarLinks
               divStyling="hidden flex md:block md:mx-auto md:space-x-8 md:items-center"
-              buttonStyling="font-bold text-lg text-gray-500 hover:text-gray-900"
+              buttonStyling="btn btn-ghost btn-sm"
             />
             <div
               className="hidden md:border-none md:-mr-2 md:inline-flex"
@@ -72,27 +71,30 @@ const Navbar = () => {
             focus
             className="absolute h-full z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
           >
-            <div
-              className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-              <div className="px-5 pt-4 flex items-center justify-between">
-                <div>
-                  <JugsieBottlesLogo />
+            {({ close }) => (
+              <div
+                className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                <div className="px-5 pt-4 flex items-center justify-between">
+                  <div>
+                    <JugsieBottlesLogo />
+                  </div>
+                  <div className="-mr-2">
+                    <Popover.Button
+                      className="bg-white rounded-md p-2 inline-flex items-center justify-center
+                      text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2
+                      focus:ring-inset focus:ring-indigo-500">
+                      <XIcon className="h-6 w-6" aria-hidden="true" />
+                    </Popover.Button>
+                  </div>
                 </div>
-                <div className="-mr-2">
-                  <Popover.Button
-                    className="bg-white rounded-md p-2 inline-flex items-center justify-center
-                    text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2
-                    focus:ring-inset focus:ring-indigo-500">
-                    <XIcon className="h-6 w-6" aria-hidden="true" />
-                  </Popover.Button>
+                <div onClick={async () => close()}>
+                  <NavbarLinks
+                      buttonStyling="btn btn-outline btn-primary"
+                      divStyling="p-4 space-y-4 flex flex-col"
+                  />
                 </div>
               </div>
-              <NavbarLinks
-                buttonStyling="block px-3 py-2 rounded-md text-base font-medium text-gray-700
-            hover:text-gray-900 hover:bg-gray-50"
-                divStyling="px-2 pt-2 pb-3 space-y-1"
-              />
-            </div>
+            )}
           </Popover.Panel>
 
         </Transition>
