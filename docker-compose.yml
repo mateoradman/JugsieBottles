@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  frontend:
+  app:
     container_name: jugsie_app
-    build: app
+    build: ./app
     restart: always
     networks:
       - jugsie_network
     volumes:
-      - ./app/:/usr/src/app/frontend
-      - /usr/src/app/frontend/node_modules
+      - ./app/:/usr/src/app
+      - /usr/src/app/node_modules
     env_file: app/envs/.env.dev
     command: yarn run dev
     ports:
@@ -28,6 +28,8 @@ services:
       - POSTGRES_DB=jugsie_dev
     networks:
       - jugsie_network
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
