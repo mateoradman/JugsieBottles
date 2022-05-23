@@ -20,7 +20,6 @@ FROM node:16-alpine AS runner
 WORKDIR /usr/src/app
 
 ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
 ENV CHECKPOINT_DISABLE 1
 ENV NEXT_TELEMETRY_DISABLED 1
 
