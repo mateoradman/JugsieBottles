@@ -23,5 +23,6 @@
   "social": "Društvene mreže",
   "pay": "Plati",
   "contactSuccess": "Uspješno ste poslali poruku.",
-  "contactError": "Poruka nije poslana."
+  "contactError": "Poruka nije poslana.",
+  "confirm": "Potvrdi"
 }

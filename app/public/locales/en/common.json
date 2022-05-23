@@ -24,5 +24,6 @@
   "social": "Social",
   "pay": "Pay",
   "contactSuccess": "Your message has been sent successfully.",
-  "contactError": "An error occurred while sending your message."
+  "contactError": "An error occurred while sending your message.",
+  "confirm": "Confirm"
 }
