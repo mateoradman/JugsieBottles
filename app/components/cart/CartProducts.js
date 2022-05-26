@@ -3,7 +3,7 @@ import { useCartItems } from "../../context/Context";
 import { ID } from "../../utils/general";
 import { useTranslation } from "next-i18next";
 
-const CartProducts = (props) => {
+const CartProducts = () => {
   const { cartItemsArray, setCartItemsArray } = useCartItems();
   const handleRemoveItemFromCart = (bottleItem) => {
     setCartItemsArray(cartItemsArray.filter((item) => item !== bottleItem));
