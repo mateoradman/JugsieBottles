@@ -9,48 +9,53 @@ export const StandardInputField = (props) => {
 
   const {t} = useTranslation('common');
   return (
-    <div className="form-control">
-      <label className="label block text-sm font-medium text-gray-700"
+    <>
+      <label className="block text-sm font-medium text-gray-700"
              htmlFor={props.inputID}>
-        <span className="label-text">{props.inputLabel}</span>
+        <span>{props.inputLabel}</span>
       </label>
-      <input name={props.inputID}
-             id={props.inputID}
-             type={props.inputType}
-             required
-             value={props.inputValue}
-             onBlur={props.blurHandler}
-             onChange={props.changeHandler}
-             className={classNames("input input-bordered rounded-lg",
-               props.hasError ? 'input-error' : 'input-info')}
-      />
-      {props.hasError ?
-        <label className="label block text-sm font-medium text-gray-500">
-          <span className="label-text-alt">{t("dataInvalid")}</span>
-        </label> : null
-      }
-    </div>
+      <div className="mt-1">
+        <input name={props.inputID}
+               id={props.inputID}
+               type={props.inputType}
+               value={props.inputValue}
+               onBlur={props.blurHandler}
+               onChange={props.changeHandler}
+               autoComplete={props.autoComplete}
+               className={classNames("input block w-full h-10 p-2 rounded-md shadow-sm sm:text-sm",
+                 props.hasError ? 'input-error' : 'input-info')}
+        />
+        {props.hasError ?
+          <label className="mt-1 block text-xs font-medium text-gray-700">
+            <span>{t("dataInvalid")}</span>
+          </label> : null
+        }
+      </div>
+    </>
   );
 };
 
 export const StandardSelectField = (props) => {
   return (
-    <div className="form-control">
-      <label className="label mb-1 block text-sm font-medium text-gray-700"
+    <>
+      <label className="block text-sm font-medium text-gray-700"
              htmlFor={props.inputID}>
-        <span className="label-text">{props.inputLabel}</span>
+        <span>{props.inputLabel}</span>
       </label>
-      <select
-        id={props.inputID}
-        defaultValue={props.selectedCountry}
-        onChange={props.onChange}
-        className="select select-bordered rounded-lg select-info w-full">
-        {props.options.map((country) => (
-          <option key={country.value} value={country.value}>
-            {country.label}
-          </option>
-        ))}
-      </select>
-    </div>
+      <div className="mt-1">
+        <select
+          id={props.inputID}
+          defaultValue={props.selectedCountry}
+          onChange={props.onChange}
+          className="block w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500
+          focus:border-indigo-500 sm:text-sm">
+          {props.options.map((country) => (
+            <option key={country.value} value={country.value}>
+              {country.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </>
   );
 };
