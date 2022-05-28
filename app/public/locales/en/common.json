@@ -25,5 +25,8 @@
   "pay": "Pay",
   "contactSuccess": "Your message has been sent successfully.",
   "contactError": "An error occurred while sending your message.",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "contactSupport": "Contact support",
+  "pageNotFound": "Page not found",
+  "404message": "The page you are looking for does not exist."
 }

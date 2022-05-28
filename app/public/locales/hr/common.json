@@ -24,5 +24,8 @@
   "pay": "Plati",
   "contactSuccess": "Uspješno ste poslali poruku.",
   "contactError": "Poruka nije poslana.",
-  "confirm": "Potvrdi"
+  "confirm": "Potvrdi",
+  "contactSupport" : "Kontaktirajte podršku",
+  "pageNotFound": "Stranica nije pronađena",
+  "404message":  "Stranica koju tražite ne postoji."
 }
