@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { useCartItems } from "../../context/Context";
 import { DEFAULT_CURRENCY } from "../../utils/constants";
 import { classNames } from "../../utils/general";
-import { InfoAlert, NeutralAlert } from "../alerts";
+import { InfoAlert } from "../alerts";
 import BankTransferForm from "./BankTransferForm";
-import CreditCardForm from "./CreditCardForm";
+import CreditCardForm_deprecated from "./CreditCardForm";
 import { OrderSummary } from "./OrderSummary";
 import PersonalDetailsForm from "./PersonalDetailsForm";
 
@@ -56,7 +56,7 @@ export default function CheckoutForm() {
         return (
           <>
             {paymentByCard ? (
-              <CreditCardForm
+              <CreditCardForm_deprecated
                 formData={formData}
                 updateFormData={updateFormData}
                 handleGoToNextStep={handleGoToNextStep}
@@ -66,8 +66,15 @@ export default function CheckoutForm() {
                 setCartItemsArray={setCartItemsArray}
               />
             ) : (
-              <div>AOSkfosdkfsdop</div>
-              // <BankTransferForm></BankTransferForm>
+              <BankTransferForm
+                formData={formData}
+                updateFormData={updateFormData}
+                handleGoToNextStep={handleGoToNextStep}
+                handleGoToPreviousStep={handleGoToPreviousStep}
+                step={step}
+                cartItemsArray={cartItemsArray}
+                setCartItemsArray={setCartItemsArray}
+              ></BankTransferForm>
             )}
           </>
         );
@@ -92,9 +99,9 @@ export default function CheckoutForm() {
         </li>
       </ul>
       {step === 2 &&
-      (<div className="mx-6 mt-6 flex font-medium text-sm">
-        <InfoAlert message={t('bankTransferAlert')}/>
-      </div>)
+        (<div className="mx-6 mt-6 flex font-medium text-sm">
+          <InfoAlert message={t('bankTransferAlert')} />
+        </div>)
       }
       <OrderSummary cartItemsArray={cartItemsArray} />
       {componentToRender()}

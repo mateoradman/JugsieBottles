@@ -1,16 +1,17 @@
-import { Switch } from "@headlessui/react";
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useState } from "react";
+import {Switch} from "@headlessui/react";
+import {useTranslation} from "next-i18next";
+import {useRouter} from "next/router";
+import React, {useEffect, useMemo, useState} from "react";
 import countryList from "react-select-country-list";
 import useInput from "../../hooks/useInput";
-import { Croatia } from "../../utils/constants";
-import { classNames, getCartTotalPrice, getOrderItemsArray } from "../../utils/general";
+import {PaymentFormStyle} from "../../styles/TwoCheckoutFormStyle";
+import {Croatia, DEFAULT_CURRENCY} from "../../utils/constants";
+import {classNames, getCartTotalPrice, getOrderItemsArray} from "../../utils/general";
 import {
   emptyStringValidation, StandardInputField, StandardSelectField
 } from "./FormFields";
 
-export default function BankTransferForm(props) {
+export default function CreditCardForm_deprecated(props) {
   const router = useRouter()
   const [FormIsValid, setFormIsValid] = useState(false);
   const [isBillingAddressSame, setIsBillingAddressSame] = useState(true);
@@ -20,6 +21,14 @@ export default function BankTransferForm(props) {
     setSelectedCountry(event.target.value);
   };
 
+  const {
+    value: enteredCardholderName,
+    hasError: enteredCardholderNamehasError,
+    isValid: enteredCardholderNameIsValid,
+    valueChangeHandler: enteredCardholderNameChangeHandler,
+    inputBlurHandler: enteredCardholderNameBlurHandler,
+    reset: enteredCardholderNameReset,
+  } = useInput(emptyStringValidation);
   const {
     value: enteredStreet,
     hasError: enteredStreethasError,
@@ -42,16 +51,40 @@ export default function BankTransferForm(props) {
     reset: enteredZIPReset,
   } = useInput(emptyStringValidation);
 
-  props.updateFormData({
-    Items: getOrderItemsArray(props.cartItemsArray),
-    CartData: props.cartItemsArray,
-    BillingDetails: getBillingDetails(),
-    Locale: router.locale,
-    TotalPrice: getCartTotalPrice(props.cartItemsArray),
-    OrderTimeString: new Date().toLocaleString('hr', { timeZone: 'Europe/Zagreb' })
-  });
-  setFormIsValid(true);
-
+  const [PaymentClient] = useState(new TwoPayClient(process.env.NEXT_PUBLIC_MERCHANT_CODE));
+  PaymentClient.setup.setLanguage(router.locale);
+  const [component] = useState(PaymentClient.components.create("card", PaymentFormStyle));
+  useEffect(() => {
+    component.mount("#card-element");
+  }, []);
+  const generatePaymentToken = () => {
+    let BillingDetails = getBillingDetails();
+    PaymentClient.tokens
+      .generate(component, BillingDetails)
+      .then((response) => {
+        const PaymentDetails = {
+          Type: "TEST",
+          Currency: DEFAULT_CURRENCY,
+          TotalAmount: getCartTotalPrice(props.cartItemsArray),
+          PaymentMethod: {
+            EesToken: response.token,
+            Currency: DEFAULT_CURRENCY,
+            Vendor3DSReturnURL: "http://jugsie.com/checkout/status?success=true",
+            Vendor3DSCancelURL: "http://jugsie.com/checkout/status?success=false",
+          },
+        };
+        props.updateFormData({
+          Items: getOrderItemsArray(props.cartItemsArray),
+          CartData: props.cartItemsArray,
+          BillingDetails: BillingDetails,
+          PaymentDetails: PaymentDetails,
+          Locale: router.locale,
+          TotalPrice: getCartTotalPrice(props.cartItemsArray),
+          OrderTimeString: new Date().toLocaleString('hr', {timeZone: 'Europe/Zagreb'})
+        });
+        setFormIsValid(true);
+      });
+  };
 
   const resetAllFields = () => {
     enteredCardholderNameReset();
@@ -64,9 +97,12 @@ export default function BankTransferForm(props) {
 
   const getBillingDetails = () => {
     if (isBillingAddressSame) {
-      return props.formData.DeliveryDetails;
+      return {
+        name: enteredCardholderName, ...props.formData.DeliveryDetails,
+      };
     } else {
       return {
+        name: enteredCardholderName,
         Address1: enteredStreet,
         City: enteredCity,
         Zip: enteredZIP,
@@ -92,13 +128,13 @@ export default function BankTransferForm(props) {
         if (res.ok) props.setCartItemsArray([]);
         resetAllFields();
         router.push({
-          pathname: '/checkout/status', query: { success: res.ok }
+          pathname: '/checkout/status', query: {success: res.ok}
         })
       });
     }
   }, [FormIsValid]);
 
-  const { t } = useTranslation(['checkout', 'common']);
+  const {t} = useTranslation(['checkout', 'common']);
 
   return (
     <div className="px-3 sm:px-0 sm:mx-auto sm:w-full sm:max-w-xl">
@@ -114,6 +150,17 @@ export default function BankTransferForm(props) {
           id="payment-form"
           onSubmit={handleFormSubmit}
         >
+          <div className="form-group">
+            <StandardInputField
+              inputLabel={t("cardholder")}
+              typeOfInput={"text"}
+              inputID={"cardholder"}
+              blurHandler={enteredCardholderNameBlurHandler}
+              changeHandler={enteredCardholderNameChangeHandler}
+              hasError={enteredCardholderNamehasError}
+              inputValue={enteredCardholderName}
+            />
+          </div>
           <Switch.Group>
             <div className="flex items-center my-2 md:justify-between">
               <Switch.Label className="mr-2">
@@ -171,17 +218,19 @@ export default function BankTransferForm(props) {
             />
           </div>)}
 
+          <div id="card-element"></div>
+
           <div className="col-span-1 md:col-span-2 justify-center">
             <button type="button"
-              className="flex space-x-10 w-full btn btn-warning rounded-lg"
-              onClick={props.handleGoToPreviousStep}>
-              {t("back", { ns: 'common' })}
+                    className="flex space-x-10 w-full btn btn-warning rounded-lg"
+                    onClick={props.handleGoToPreviousStep}>
+              {t("back", {ns: 'common'})}
             </button>
           </div>
           <div className="col-span-1 md:col-span-2 justify-center">
             <button type="submit"
-              className={classNames("flex space-x-10 w-full btn btn-info rounded-lg", FormIsValid && "loading")}>
-              {t("pay", { ns: 'common' })}
+                    className={classNames("flex space-x-10 w-full btn btn-info rounded-lg", FormIsValid && "loading")}>
+              {t("pay", {ns: 'common'})}
             </button>
           </div>
         </form>
