@@ -27,5 +27,6 @@
   "confirm": "Potvrdi",
   "contactSupport" : "Kontaktirajte podršku",
   "pageNotFound": "Stranica nije pronađena",
-  "404message":  "Stranica koju tražite ne postoji."
+  "404message":  "Stranica koju tražite ne postoji.",
+  "500message": "Problem je u nama. Pokušajte ponovno kasnije."
 }
