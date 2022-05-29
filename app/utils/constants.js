@@ -119,3 +119,4 @@ export const bottleFeatures = [
 
 export const DEFAULT_CURRENCY = "HRK";
 export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }
+export const iconFontSize = {fontSize: '1.5rem'}

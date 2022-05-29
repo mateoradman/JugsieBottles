@@ -2,10 +2,10 @@ import {useTranslation} from "next-i18next";
 import Link from "next/link";
 import {FaFacebook, FaInstagram} from "react-icons/fa";
 import JugsieBottlesLogo from "../../public/Logos/logo";
+import {iconFontSize} from "../../utils/constants";
 
 const Footer = () => {
   const {t} = useTranslation('common')
-  const iconStyling = {fontSize: '1.5rem'}
 
   return (
     <footer className="bg-white p-10 footer text-base-content">
@@ -37,10 +37,10 @@ const Footer = () => {
         <span className="footer-title">{t('social')}</span>
         <div className="flex flex-row space-x-6">
           <Link href="https://www.instagram.com/jugsiebottles/">
-            <a><FaInstagram style={iconStyling}/></a>
+            <a><FaInstagram style={iconFontSize}/></a>
           </Link>
           <Link href="https://www.facebook.com/jugsiebottles/">
-            <a><FaFacebook style={iconStyling}/></a>
+            <a><FaFacebook style={iconFontSize}/></a>
           </Link>
         </div>
       </div>
