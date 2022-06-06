@@ -17,6 +17,7 @@ const inputErrorCheck = (isError) => {
 }
 
 export const Contact = () => {
+  const {t} = useTranslation(['checkout', 'common']);
   const router = useRouter()
   const {
     value: enteredFirstName,
@@ -78,29 +79,16 @@ export const Contact = () => {
     locale: router.locale
   }
 
-  const [success, setSuccess] = useState(null);
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    if (!formIsValid) {
-      setSuccess(false);
+  const [modalMessage, setModalMessage] = useState({
+      title: '',
+      message: '',
     }
-    fetch("/api/contacts", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    }).then(response => {
-      if (response.ok) {
-        setSuccess(true);
-        resetAllFields();
-      } else {
-        setSuccess(false);
-      }
-    })
-    openModal()
-
+  );
+  const errorMessage = {
+    title: t('error', {ns: "common"}),
+    message: t('contactError', {ns: "common"})
   }
 
-  const {t} = useTranslation(['checkout', 'common']);
 
   // Modal related state
   let [isOpen, setIsOpen] = useState(false)
@@ -113,25 +101,34 @@ export const Contact = () => {
     setIsOpen(true)
   }
 
-  function setModalContent() {
-    if (success) {
-      return {
-        title: t('success', {ns: "common"}),
-        message: t('contactSuccess', {ns: "common"})
-      }
-    } else {
-      return {
-        title: t('error', {ns: "common"}),
-        message: t('contactError', {ns: "common"})
-      }
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (!formIsValid) {
+      setModalMessage(errorMessage);
     }
+    else {
+      fetch("/api/contacts", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      }).then(response => {
+        if (response.ok) {
+          setModalMessage({
+            title: t('success', {ns: "common"}),
+            message: t('contactSuccess', {ns: "common"})
+          });
+          resetAllFields();
+        } else {
+          setModalMessage(errorMessage);
+        }
+      })
+    }
+    openModal()
   }
-
   return (
     <div className="bg-transparent">
       <Modal isOpen={isOpen}
              closeModal={closeModal}
-             content={setModalContent()}/>
+             content={modalMessage}/>
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="relative bg-gray-100 shadow-xl">
           <h2 className="sr-only">{t('contactSupport', {ns: 'checkout'})}</h2>
