@@ -2,5 +2,17 @@
     "reviews": "recenzija",
     "add-to-cart": "Dodaj u košaricu",
     "personalization+40kn": "Personalizacija (+ 40kn)",
-    "personalization-placeholder": "Personalizacija (maks. 8 znakova)"
+    "personalization-placeholder": "Personalizacija (maks. 8 znakova)",
+    "technicalSpecifications": "Tehničke specifikacije",
+    "technicalSpecificationsDescription": "Tehničke specifikacije proizvoda",
+    "manufacturingCountry": "Država proizvodnje",
+    "China": "Kina",
+    "material": "Materijal",
+    "stainlessSteel": "Nehrđajući čelik",
+    "dimensions": "Dimenzije",
+    "weight": "Težina",
+    "finish": "Završetak",
+    "finishDescription": "Premaz bojom u prahu",
+    "considerations": "Napomena",
+    "considerationsDescription": "Pranje boce u perilici posuđa može oštetiti boju."
 }

@@ -101,21 +101,6 @@ export const Icons = [
 
 export const LocalStorageCartItems = "JugsieBottlesCartItems";
 
-export const bottleFeatures = [
-  { name: "Manufacturing country", description: "China" },
-  {
-    name: "Material",
-    description: "Stainless steel",
-  },
-  { name: "Dimensions", description: '6.25" x 3.55" x 1.15"' },
-  { name: "Finish", description: "Hand sanded and finished with natural oil" },
-  { name: "Includes", description: "Wood card tray and 3 refill packs" },
-  {
-    name: "Considerations",
-    description:
-      "Washing the bottle in the dishwasher may cause damage to the colour coating.",
-  },
-];
 
 export const DEFAULT_CURRENCY = "HRK";
 export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }

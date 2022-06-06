@@ -2,5 +2,18 @@
     "reviews": "reviews",
     "add-to-cart": "Add to cart",
     "personalization+40kn": "Personalization (+ 40kn)",
-    "personalization-placeholder": "Personalization (max. 8 characters)"
+    "personalization-placeholder": "Personalization (max. 8 characters)",
+    "technicalSpecifications": "Technical Specifications",
+    "technicalSpecificationsDescription": "Technical specifications of the product",
+    "manufacturingCountry": "Manufacturing Country",
+    "China": "China",
+    "material": "Material",
+    "stainlessSteel": "Stainless Steel",
+    "dimensions": "Dimensions",
+    "weight": "Weight",
+    "finish": "Finish",
+    "finishDescription": "Powder colour coating",
+    "considerations": "Considerations",
+    "considerationsDescription": "Washing the bottle in the dishwasher may cause damage to the colour coating."
+
 }
