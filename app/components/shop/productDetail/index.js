@@ -97,26 +97,6 @@ export const ProductCard = ({ product }) => {
               </button>
             </form>
           </div>
-
-          <div
-            className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r
-            lg:border-gray-200 lg:pr-8">
-            {/* Description and details */ }
-            <div>
-
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">{ product.description }</p>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{ product.details }</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
