@@ -46,7 +46,7 @@ const CartProduct = (props) => {
         <div className="sm:justify-end sm:flex">
           { !props.hideRemove ?
             <button type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-indigo-600 hover:text-indigo-500 text-sm"
               onClick={ () => props.onRemove(props.bottle) }
             >
               { t("remove") }
