@@ -1,6 +1,5 @@
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import BottleDisplay from "../components/homePage/bottlePhotos/BottleDisplay";
-import ThreeSixtyCard from "../components/homePage/cards/360Card";
 import HomePageCard from "../components/homePage/cards/HomePageCard";
 import Hero from "../components/homePage/hero";
 import MarqueeRunningText from "../components/homePage/runningText";
