@@ -47,7 +47,7 @@ export const StandardSelectField = (props) => {
           id={props.inputID}
           defaultValue={props.selectedCountry}
           onChange={props.onChange}
-          className="block w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500
+          className="block w-full h-10 border-info rounded-md shadow-sm focus:ring-indigo-500
           focus:border-indigo-500 sm:text-sm">
           {props.options.map((country) => (
             <option key={country.value} value={country.value}>
