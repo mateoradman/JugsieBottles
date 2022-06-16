@@ -60,8 +60,11 @@ export const ProductCard = ({ product }) => {
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1
               className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-              { `${selectedBottle.name} Jugsie Bottle` }
+              { `${selectedBottle.name} Jugsie Bottle (500ml)` }
             </h1>
+            <p className="mt-4 text-gray-500">
+              {t('bottleDescription')}
+            </p>
           </div>
 
           {/* Options */ }
