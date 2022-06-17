@@ -1,7 +1,10 @@
 import {useTranslation} from "next-i18next";
 import {classNames} from "../../utils/general";
 
-export const emptyStringValidation = (stringToValidate) => stringToValidate.trim() !== '';
+export const emptyStringValidation = (stringToValidate) => {
+  const regex = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?\s]/g;
+  return !(!stringToValidate || regex.test(stringToValidate));
+}
 export const emptyEmailValidation = (stringToValidate) => new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/).test(stringToValidate);
 export const emptyPhoneNumberValidation = (stringToValidate) => new RegExp(/^[+0-9]+$/).test(stringToValidate);
 
