@@ -21,5 +21,13 @@
   "thank-you": "Hvala Vam na povjerenju.",
   "payment-failure": "Plaćanje neuspješno!",
   "payment-failure-message": "Pokušajte ponovno ili nas kontaktirajte za pomoć.",
-  "bankTransferAlert": "Trenutno je samo dostupno plaćanje prijenosom na bankovni račun."
+  "bankTransferAlert": "Trenutno je samo dostupno plaćanje prijenosom na bankovni račun.",
+  "subtotal": "Ukupno bez PDV-a",
+  "shipping": "Dostava",
+  "vat": "PDV",
+  "total": "Ukupno",
+  "contactInformation": "Podaci o kupcu",
+  "shippingInformation": "Podaci o dostavi",
+  "deliveryDuration": "5-7 radnih dana",
+  "bankTransfer": "Prijenos na bankovni račun",
 }

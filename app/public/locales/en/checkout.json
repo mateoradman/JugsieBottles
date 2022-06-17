@@ -21,5 +21,14 @@
     "thank-you": "Thank you for shopping with us.",
     "payment-failure": "Payment failed!",
     "payment-failure-message": "Please try again or contact us for help.",
-    "bankTransferAlert": "Bank transfer is the only method of payment currently available."
+    "bankTransferAlert": "Bank transfer is the only method of payment currently available.",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "vat": "VAT",
+    "total": "Total",
+    "contactInformation": "Contact Information",
+    "shippingInformation": "Shipping Information",
+    "deliveryMethod": "Delivery Method",
+    "deliveryDuration": "5-7 Business Days",
+    "bankTransfer": "Bank Transfer",
 }
