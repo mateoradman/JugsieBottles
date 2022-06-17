@@ -1,9 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import CheckoutForm from "../../components/checkout/CheckoutForm";
+import Checkout from "../../components/checkout/Checkout";
 
-const Checkout = () => {
+const CheckoutPage = () => {
   return (
-    <CheckoutForm />
+    <Checkout />
   );
 };
 
@@ -13,4 +13,4 @@ export const getStaticProps = async ({ locale }) => ({
   },
 })
 
-export default Checkout;
+export default CheckoutPage;
