@@ -1,15 +1,15 @@
-import { useTranslation } from "next-i18next";
-import { useState } from "react";
-import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
-import { useCartItems } from "../../../context/Context";
-import { bottleInformation, reviews } from "../../../utils/constants";
-import { getFormattedPrice } from "../../../utils/general";
+import {useTranslation} from "next-i18next";
+import {useState} from "react";
+import {IoStar, IoStarHalf, IoStarOutline} from "react-icons/io5";
+import {useCartItems} from "../../../context/Context";
+import {bottleInformation, reviews} from "../../../utils/constants";
+import {getFormattedPrice} from "../../../utils/general";
 import CartModal from "../../cart/CartModal";
 import ColourPicker from "./ColourPicker";
 import ProductImageGallery from "./ImageGallery";
-import { PersonalizationToggle } from "./Personalization";
+import {PersonalizationToggle} from "./Personalization";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({product}) => {
   const [isOpenCartModal, setOpenCartModal] = useState(false);
 
   const [selectedBottle, setSelectedBottle] = useState(bottleInformation[0]);
@@ -17,7 +17,7 @@ export const ProductCard = ({ product }) => {
     setSelectedBottle(radioPickedBottle);
   }
 
-  const defaultPersonalization = { icon: "", text: "" };
+  const defaultPersonalization = {icon: "", text: ""};
   const [selectedPersonalization, setSelectedPersonalization] = useState(defaultPersonalization);
   const handleSelectedPersonalization = (personalization) => {
     setSelectedPersonalization(personalization);
@@ -28,7 +28,7 @@ export const ProductCard = ({ product }) => {
     }
   }
 
-  const { cartItemsArray, setCartItemsArray } = useCartItems()
+  const {cartItemsArray, setCartItemsArray} = useCartItems()
   const getCompleteBottleObject = () => {
     return {
       ...selectedBottle,
@@ -43,60 +43,61 @@ export const ProductCard = ({ product }) => {
     setOpenCartModal(true);
   }
 
-  const { t } = useTranslation('shop')
+  const {t} = useTranslation('shop')
 
   return (
     <div className="bg-white">
       <div>
-        {/* Image gallery */ }
-        <ProductImageGallery bottle={ selectedBottle }
-          personalization={ selectedPersonalization } />
+        {/* Image gallery */}
+        <ProductImageGallery bottle={selectedBottle}
+                             personalization={selectedPersonalization}/>
 
-        <CartModal isOpen={ isOpenCartModal } setOpen={ setOpenCartModal }
-          bottle={ getCompleteBottleObject() } />
-        {/* Product info */ }
+        <CartModal isOpen={isOpenCartModal} setOpen={setOpenCartModal}
+                   bottle={getCompleteBottleObject()}/>
+        {/* Product info */}
         <div
           className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1
               className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-              { `${selectedBottle.name} Jugsie Bottle (500ml)` }
+              {`${selectedBottle.name} Jugsie Bottle (500ml)`}
             </h1>
-            <p className="mt-4 text-gray-500">
+            <p className="mt-4 text-gray-500 md:w-4/5">
               {t('bottleDescription')}
             </p>
           </div>
 
-          {/* Options */ }
+          {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <p
-              className="text-3xl text-gray-900">{ getFormattedPrice(product.price) }</p>
+            <p className="text-3xl text-gray-900">
+              {getFormattedPrice(product.price)}
+            </p>
 
-            {/* Reviews */ }
+            {/* Reviews */}
             <div className="mt-6">
               <div className="flex items-center">
                 <div className="flex items-center">
-                  { getStarsArray(reviews.average) }
+                  {getStarsArray(reviews.average)}
                 </div>
-                <a href={ reviews.href }
-                  target="_blank"
-                  className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                  { reviews.totalCount } { t('reviews') }
+                <a href={reviews.href}
+                   target="_blank"
+                   className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                  {reviews.totalCount} {t('reviews')}
                 </a>
               </div>
             </div>
 
-            {/* Colour and Personalization Form */ }
-            <form onSubmit={ handleSubmitBottle } className="mt-10">
-              <ColourPicker onBottleChange={ handleSelectedBottle } />
+            {/* Colour and Personalization Form */}
+            <form onSubmit={handleSubmitBottle} className="mt-10">
+              <ColourPicker onBottleChange={handleSelectedBottle}/>
               <PersonalizationToggle
-                defaultPersonalization={ defaultPersonalization }
-                onPersonalizationChange={ handleSelectedPersonalization } />
+                defaultPersonalization={defaultPersonalization}
+                onPersonalizationChange={handleSelectedPersonalization}/>
               <button
                 type="submit"
                 className="mt-10 w-full btn btn-primary"
               >
-                { t('add-to-cart') }
+                {t('add-to-cart')}
               </button>
             </form>
           </div>
@@ -109,11 +110,11 @@ export const ProductCard = ({ product }) => {
 
 
 function getStarsArray(average) {
-  let FullStarsArray = Array.from({ length: parseInt(average) }, (v, i) => i);
+  let FullStarsArray = Array.from({length: parseInt(average)}, (v, i) => i);
 
   let returnArray = FullStarsArray.map((rating) => (
     <IoStar
-      key={ rating }
+      key={rating}
       className="h-5 w-5 flex-shrink-0"
     />
   ));
@@ -121,7 +122,7 @@ function getStarsArray(average) {
   if (average % 1 !== 0) {
     returnArray.push(
       <IoStarHalf
-        key={ returnArray.length }
+        key={returnArray.length}
         className="h-5 w-5 flex-shrink-0"
       />
     );
@@ -130,7 +131,7 @@ function getStarsArray(average) {
   while (returnArray.length < 5) {
     returnArray.push(
       <IoStarOutline
-        key={ returnArray.length }
+        key={returnArray.length}
         className="h-5 w-5 flex-shrink-0"
       />
     );
