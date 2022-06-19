@@ -110,7 +110,7 @@ model Address {
 
 model Faq {
   id       Int    @id @default(autoincrement())
-  question String
+  question String @unique
   answer   String
   section  String
   locale   Locale
