@@ -64,8 +64,9 @@ model Order {
   updatedAt     DateTime      @default(now())
   coupon        Coupon?       @relation(fields: [couponId], references: [id])
   couponId      Int?
-  currency      String
-  paymentOption PaymentOption
+  currency      String        @default("HRK")
+  paymentOption PaymentOption @default(BankTransfer)
+  locale        Locale
 }
 
 model OrderItem {
