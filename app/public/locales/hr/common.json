@@ -31,5 +31,8 @@
   "contactSupport" : "Kontaktirajte podršku",
   "pageNotFound": "Stranica nije pronađena",
   "404message":  "Stranica koju tražite ne postoji.",
-  "500message": "Problem je u nama. Pokušajte ponovno kasnije."
+  "500message": "Problem je u nama. Pokušajte ponovno kasnije.",
+  "hero-message": "tvoj svakodnevni prijatelj.",
+  "buy-now": "kupi sada",
+  "personalize": "Personaliziraj"
 }
