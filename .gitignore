@@ -39,4 +39,4 @@ app/yarn-error.log*
 # vercel
 app/.vercel
 
-app/.env
+.env
