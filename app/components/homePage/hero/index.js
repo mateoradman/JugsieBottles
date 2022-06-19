@@ -3,7 +3,7 @@ import Link from "next/link";
 import HeroPhoto from "../../../public/Hero/Hero.jpg";
 
 const Hero = () => {
-  const { t } = useTranslation('index')
+  const { t } = useTranslation('common');
   return (
     <div
       className="hero h-120 md:h-160"
