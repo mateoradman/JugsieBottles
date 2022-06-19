@@ -262,7 +262,7 @@ const faq_en = [
 async function main() {
   for (const bottle of bottles) {
     await prisma.bottle.upsert({
-      where: {name: bottle.name},
+      where: {colour: bottle.colour},
       update: {},
       create: bottle,
     })
