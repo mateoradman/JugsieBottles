@@ -17,8 +17,6 @@ export default function Layout({ children }) {
           crossOrigin="anonymous" />
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js" />
-      <Script type="text/javascript"
-        src="https://2pay-js.2checkout.com/v1/2pay.js" />
       <CartProvider>
         <Navbar />
         <main>{ children }</main>
