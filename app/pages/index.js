@@ -1,6 +1,6 @@
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import BottleDisplay from "../components/homePage/bottlePhotos/BottleDisplay";
-import HomePageCard from "../components/homePage/cards/HomePageCard";
+import Gallery from '../components/homePage/gallery';
 import Hero from "../components/homePage/hero";
 import MarqueeRunningText from "../components/homePage/runningText";
 
@@ -9,17 +9,23 @@ export default function Home() {
     <div
       className="relative min-h-screen overflow-hidden">
       <Hero/>
-      <MarqueeRunningText/>
-      <BottleDisplay/>
 
-      <div
-        className="pb-16 px-8 pt-8 grid grid-cols-1 gap-y-10 md:px-5 md:pt-2 md:grid-cols-2 md:gap-x-16">
-        <HomePageCard
-          cardImageSrc={"/Images/skateboard.jpg"}
-          cardTitle={"Some Title"}
-          cardBody={"lorem ipsum something else here"}
-        />
+      <MarqueeRunningText/>
+      {/* Message about sustainability */}
+      <div className="bg-transparent">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:pt-12 sm:pb-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mt-1 text-3xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+              Support sustainability
+            </p>
+            <p className="max-w-xl mt-3 sm:mt-5 mx-auto text-xl text-gray-500">
+              and never buy a plastic bottle again.
+            </p>
+          </div>
+        </div>
       </div>
+      <BottleDisplay/>
+      <Gallery/>
     </div>
   )
 }
