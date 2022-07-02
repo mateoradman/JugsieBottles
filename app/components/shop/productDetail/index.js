@@ -81,6 +81,7 @@ export const ProductCard = ({product}) => {
                 </div>
                 <a href={reviews.href}
                    target="_blank"
+                   rel="noreferrer"
                    className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
                   {reviews.totalCount} {t('reviews')}
                 </a>
