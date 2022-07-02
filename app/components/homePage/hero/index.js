@@ -11,11 +11,11 @@ const Hero = () => {
         backgroundImage: `url(${HeroPhoto.src})`,
       } }
     >
-      <div className="hero-overlay bg-opacity-80" />
+      <div className="hero-overlay bg-opacity-50" />
       <div className="hero-content text-neutral-content w-full text-center flex-col">
         <h1
-          className="-mt-8 text-5xl sm:text-6xl pb-2 sm:pb-3 md:text-8xl font-extrabold text-transparent
-          bg-gradient-to-r bg-clip-text from-blue-500 to-green-300 whitespace-nowrap tracking-tight"
+          className="-mt-8 text-5xl sm:text-6xl pb-2 sm:pb-3 md:text-8xl font-extrabold
+           text-black whitespace-nowrap tracking-tight"
         >
           Jugsie Bottle,
         </h1>
