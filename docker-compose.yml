@@ -20,13 +20,11 @@ services:
   db:
     container_name: jugsie_db
     image: postgres:14-alpine
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./db/postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=jugsie
-      - POSTGRES_PASSWORD=jugsie
-      - POSTGRES_DB=jugsie_dev
+    env_file:
+      - .env
     networks:
       - jugsie_network
 
