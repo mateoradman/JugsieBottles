@@ -3,7 +3,7 @@ import {useState} from "react";
 import {IoStar, IoStarHalf, IoStarOutline} from "react-icons/io5";
 import {useCartItems} from "../../../context/Context";
 import {bottleInformation, reviews} from "../../../utils/constants";
-import {getFormattedPrice} from "../../../utils/general";
+import {classNames, getFormattedPrice} from "../../../utils/general";
 import CartModal from "../../cart/CartModal";
 import ColourPicker from "./ColourPicker";
 import ProductImageGallery from "./ImageGallery";
@@ -96,9 +96,9 @@ export const ProductCard = ({product}) => {
                 onPersonalizationChange={handleSelectedPersonalization}/>
               <button
                 type="submit"
-                className="mt-10 w-full btn btn-primary"
+                className={classNames("mt-10 w-full btn", selectedBottle.name === 'Black' ? "btn-disabled" : "btn-primary")}
               >
-                {t('add-to-cart')}
+                {selectedBottle.name === 'Black' ? t('out-of-stock') : t('add-to-cart')}
               </button>
             </form>
           </div>
