@@ -231,14 +231,7 @@ const faq_en = [
   },
   {
     "question": "What is covered by the warranty?",
-    "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product. As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original. General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
-    "section": "Returns",
-    "locale": "en",
-    "icon": "ReceiptRefundIcon"
-  },
-  {
-    "question": "What is covered by the warranty?",
-    "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects for one year from the date of purchase. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product. As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original. General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
+    "answer": "Jugsie bottles are designed to be used for a lifetime. However, if something does go wrong, our warranty covers you against manufacturing defects. All you need is a proof of purchase which can verify the date of purchase and ensure the authenticity of the product. As Jugsie bottles are all about reducing waste, we are proud to say we offer appropriate replacements of faulty parts of Jugsie bottles, rather than replacing a whole bottle for a new one. If the same color is not available, we will do our best to match the original. General wear and tear, such as scratches and dents, are not covered by warranty. Also, damage caused by incorrect cleaning or modifications by third parties is also not included in our warranty.",
     "section": "Returns",
     "locale": "en",
     "icon": "ReceiptRefundIcon"
@@ -252,7 +245,7 @@ const faq_en = [
   },
   {
     "question": "Products that arrive damaged",
-    "answer": "If your order arrives damaged, please do not use it as it will void the warranty. Please contact us with the images of a faulty bottle and we\u2019ll be more than happy to replace it.",
+    "answer": "If your order arrives damaged, please do not use it as it will void the warranty. Please contact us with the images of a faulty bottle and we will be more than happy to replace it.",
     "section": "Returns",
     "locale": "en",
     "icon": "ReceiptRefundIcon"
