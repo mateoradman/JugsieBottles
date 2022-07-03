@@ -14,9 +14,18 @@ export default function FAQPage({ faq }) {
 }
 
 export async function getStaticProps({ locale }) {
-  // TODO: Add translated FAQs
   const prisma = new PrismaClient();
-  const faq = await prisma.faq.findMany();
+  let faq;
+  if (locale === "en") {
+    faq = await prisma.faq.findMany({
+      where: {locale: "en"}
+    })
+  } else {
+    faq = await prisma.faq.findMany({
+      where: {locale: "hr"}
+    })
+  }
+
   return {
     props: {
       faq,
