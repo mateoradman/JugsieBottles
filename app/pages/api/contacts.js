@@ -1,6 +1,8 @@
 import prisma from '../../lib/prisma'
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-export default async function createContact(req, res) {
+export default async function contacts(req, res) {
     if (!req.headers.referer || !req.headers.referer.endsWith("/contact")) {
         return res.status(401).json({ error: "Unauthorized." });
     }
@@ -26,6 +28,14 @@ export default async function createContact(req, res) {
                 },
             },
         });
+        const msg = {
+            to: 'info@jugsie.com',
+            from: 'info@jugsie.com',
+            subject: "Nova poruka s web stranice",
+            text: `Imate novu poruku od ${firstName} ${lastName} (tel: ${phone}). Poruka: "${message}".`,
+        }
+        sgMail.send(msg)
+        // TODO send email to the customer as well using the template
         return res.status(201).json({ contact });
     } else {
         // Method not supported
