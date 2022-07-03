@@ -98,7 +98,7 @@ const faq_en = [
   },
   {
     "question": "Are Jugsie bottles BPA-free?",
-    "answer": "Yes \u2013 Jugsie bottles and lids and BPA-free.",
+    "answer": "Yes - Jugsie bottles and lids and BPA-free.",
     "section": "General",
     "locale": "en",
     "icon": "InformationCircleIcon"
@@ -140,7 +140,7 @@ const faq_en = [
   },
   {
     "question": "Can I personalize my Jugsie bottle?",
-    "answer": "Yes \u2013 for now we offer engraving your Jugsie bottle. Soon, we will offer you some more accessories that will allow for even greater personalization.",
+    "answer": "Yes - for now we offer engraving your Jugsie bottle. Soon, we will offer you some more accessories that will allow for even greater personalization.",
     "section": "General",
     "locale": "en",
     "icon": "InformationCircleIcon"
