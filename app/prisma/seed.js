@@ -428,7 +428,7 @@ const faqs = [
   {
     "question": "Mogu li otkazati narudžbu?",
     "answer": "Nažalost, ne možemo jamčiti mogucnost otkazivanja Vaše narudžbe zbog toga što se velika većina narudžbi odmah priprema za isporuku, ali kontaktirajte nas na info@jugsie.com čim saznate da želite otkazati svoju narudžbu pa će možda biti prilike otkazati je. U slučaju da je moguće otkazati Vašu narudžbu, primit ćete puni povrat novca. Ukoliko to nije moguće, nekorištenu i nepersonaliziranu bocu možete vratiti kroz 30 dana. ",
-    "section": "Returns",
+    "section": "Povrat",
     "locale": "hr",
     "icon": "ReceiptRefundIcon"
   },
