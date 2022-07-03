@@ -27,6 +27,8 @@ services:
       - .env
     networks:
       - jugsie_network
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
