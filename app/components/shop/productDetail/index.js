@@ -111,7 +111,7 @@ export const ProductCard = ({product}) => {
 
 
 function getStarsArray(average) {
-  let FullStarsArray = Array.from({length: parseInt(average)}, (v, i) => i);
+  let FullStarsArray = Array.from({length: parseInt(average)}, (_v, i) => i);
 
   let returnArray = FullStarsArray.map((rating) => (
     <IoStar
