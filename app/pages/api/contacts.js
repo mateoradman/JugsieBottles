@@ -11,7 +11,6 @@ export default async function contacts(req, res) {
         const { firstName, lastName, email, phone, message, locale } = JSON.parse(req.body);
         const contact = await prisma.contact.create({
             data: {
-                phone: phone,
                 message: message,
                 locale: locale,
                 customer: {
@@ -20,6 +19,7 @@ export default async function contacts(req, res) {
                             firstName: firstName,
                             lastName: lastName,
                             email: email,
+                            phone: phone
                         },
                         where: {
                             email: email,

@@ -48,6 +48,7 @@ model Customer {
   firstName String
   lastName  String
   email     String    @unique
+  phone     String
   createdAt DateTime  @default(now())
   Order     Order[]
   Address   Address[]
