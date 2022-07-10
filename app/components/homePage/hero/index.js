@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import HeroPhoto from "../../../public/Hero/Hero.jpg";
+import HeroPhoto from "../../../public/Images/Hero.jpg";
 
 const Hero = () => {
   const { t } = useTranslation('common');
