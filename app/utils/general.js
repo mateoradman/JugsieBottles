@@ -1,4 +1,4 @@
-import { bottleInformation, DEFAULT_CURRENCY, Icons } from "./constants";
+import { bottleInformation, Icons } from "./constants";
 
 export function getBottlePaths(name, noLogo = false) {
   const path = require("path");
@@ -32,26 +32,6 @@ export function getCartTotalPrice(cartItemsArray) {
       .map((item) => item.price)
       .reduce((prev, next) => prev + next);
   } else return 0;
-}
-
-export function getOrderItemsArray(cartItemsArray) {
-  const productCode = process.env.NEXT_PUBLIC_PRODUCT_CODE;
-  let ItemsArray = [];
-  cartItemsArray.forEach((bottle) => {
-    ItemsArray.push({
-      Code: productCode,
-      Price: {
-        Currency: DEFAULT_CURRENCY,
-        Discount: 0,
-        GrossDiscountedPrice: bottle.price,
-        GrossPrice: bottle.price,
-        NetDiscountedPrice: 0.75 * bottle.price,
-        NetPrice: 0.75 * bottle.price,
-        VAT: 0.25 * bottle.price,
-      },
-    });
-  });
-  return ItemsArray;
 }
 
 export function ID() {
