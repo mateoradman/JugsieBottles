@@ -1,8 +1,9 @@
-import prisma from '../../lib/prisma'
+import { withSentry } from '@sentry/nextjs';
+import prisma from '../../lib/prisma';
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-export default async function contacts(req, res) {
+export async function contactHandler(req, res) {
     if (!req.headers.referer || !req.headers.referer.endsWith("/contact")) {
         return res.status(401).json({ error: "Unauthorized." });
     }
@@ -42,3 +43,5 @@ export default async function contacts(req, res) {
         return res.status(405).json({ error: "Method not supported." });
     }
 }
+
+export default withSentry(contactHandler);
