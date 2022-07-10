@@ -9,6 +9,7 @@ COPY prisma ./prisma
 RUN npx prisma generate
 
 ENV NODE_ENV development
+# Disable prisma and next.js telemetry
 ENV CHECKPOINT_DISABLE 1
 ENV NEXT_TELEMETRY_DISABLED 1
 
