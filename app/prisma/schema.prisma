@@ -35,12 +35,12 @@ enum PaymentOption {
 }
 
 model Bottle {
-  id        Int         @id @default(autoincrement())
-  colour    String      @unique
-  name      String
-  price     Int
-  stock     Int         @default(0)
-  OrderItem OrderItem[]
+  id         Int         @id @default(autoincrement())
+  colour     String      @unique
+  name       String
+  price      Int
+  stock      Int         @default(0)
+  orderItems OrderItem[]
 }
 
 model Customer {
@@ -50,9 +50,8 @@ model Customer {
   email     String    @unique
   phone     String
   createdAt DateTime  @default(now())
-  Order     Order[]
-  Address   Address[]
-  Contact   Contact[]
+  orders    Order[]
+  contacts  Contact[]
 }
 
 model Order {
@@ -68,6 +67,8 @@ model Order {
   currency      String        @default("HRK")
   paymentOption PaymentOption @default(BankTransfer)
   locale        Locale
+  address       Address       @relation(fields: [addressId], references: [id])
+  addressId     Int
 }
 
 model OrderItem {
@@ -80,7 +81,7 @@ model OrderItem {
   price               Int
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @default(now())
-  Order               Order?               @relation(fields: [orderId], references: [id])
+  order               Order?               @relation(fields: [orderId], references: [id])
   orderId             Int?
 }
 
@@ -93,13 +94,11 @@ model Coupon {
   uses        Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
-  Order       Order[]
+  orders      Order[]
 }
 
 model Address {
   id         Int      @id @default(autoincrement())
-  customer   Customer @relation(fields: [customerId], references: [id])
-  customerId Int
   street     String
   city       String
   zip        String
@@ -107,6 +106,9 @@ model Address {
   isShipping Boolean
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
+  orders     Order[]
+
+  @@unique(fields: [street, city, zip, country, isShipping], name: "fullAddress")
 }
 
 model Faq {
