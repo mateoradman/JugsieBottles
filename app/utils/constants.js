@@ -20,7 +20,7 @@ import { getBottlePaths } from "./general";
 export const reviews = {
   href: "https://www.trustpilot.com/review/jugsie.com",
   average: 4.4,
-  totalCount: 12,
+  totalCount: 13,
 };
 
 export const bottleInformation = [
@@ -31,6 +31,10 @@ export const bottleInformation = [
     backgroundColor: "bg-bottleBg-white",
     mainPhoto: getBottlePaths("White"),
     emptyPhoto: getBottlePaths("White", true),
+    leftPhoto: 'aaa',
+    centreTopPhoto: 'aaa',
+    centreBottomPhoto: 'aaa',
+
   },
   {
     id: 2,
@@ -100,9 +104,7 @@ export const Icons = [
 ];
 
 export const LocalStorageCartItems = "JugsieBottlesCartItems";
-
-
 export const DEFAULT_CURRENCY = "HRK";
-export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }
-export const iconFontSize = {fontSize: '1.5rem'}
-export const JUGSIE_EMAIL = 'info@jugsie.com'
+export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') };
+export const iconFontSize = {fontSize: '1.5rem'};
+export const JUGSIE_EMAIL = 'Jugsie Bottles <info@jugsie.com>';
