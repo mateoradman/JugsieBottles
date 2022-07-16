@@ -10,7 +10,7 @@ export default function TechnicalSpecs() {
       description: t("stainlessSteel"),
     },
     { name: t("dimensions"), description: '26cm x 7cm' },
-    { name: t("weight"), description: '0.38kg' },
+    { name: t("weight"), description: '380g' },
     { name: t("finish"), description: t("finishDescription") },
     {
       name: t("considerations"),
