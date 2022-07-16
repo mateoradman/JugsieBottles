@@ -10,7 +10,7 @@ const IndividualImage = (props) => {
       objectFit="contain"
       objectPosition="center"
       className={ classNames("w-full h-full", props.className) }
-      priority
+      priority={true}
     />
   )
 }
@@ -23,19 +23,7 @@ const ProductImageGallery = (props) => {
 
   return (
     <div
-      className="mt-4 max-w-2xl mx-auto px-4 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-      <div
-        className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-        <IndividualImage image={ props.bottle.mainPhoto } alt={ "Display of a Jugsie Bottle" } />
-      </div>
-      <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-        <div className="aspect-w-3 aspect-h-2 rounded-xl overflow-hidden">
-          <IndividualImage image={ props.bottle.mainPhoto } alt={ "Display of a Jugsie Bottle" } />
-        </div>
-        <div className="aspect-w-3 aspect-h-2 rounded-xl overflow-hidden">
-          <IndividualImage image={ props.bottle.mainPhoto } alt={ "Display of a Jugsie Bottle" } />
-        </div>
-      </div>
+      className="mt-4 mx-auto px-4 max-w-md lg:px-8">
       <div
         className="aspect-w-4 aspect-h-4 rounded-xl overflow-hidden lg:aspect-w-3 lg:aspect-h-4"
       >
@@ -44,12 +32,12 @@ const ProductImageGallery = (props) => {
             <div className="flex flex-col-reverse z-10">
               <h2
                 className={ classNames(
-                  "text-center mb-15% lg:mb-22% text-sm md:text-base",
+                  "text-center mb-15% lg:mb-22% text-xs",
                   props.bottle.name === 'White' ? 'text-personalization-dark' : 'text-personalization-standard',
                 ) }>{ props.personalization.text }</h2>
               { Icon && <Icon className={ classNames(
-                "self-center h-6 w-6",
-                !props.personalization.text ? 'mb-2' : '',
+                "self-center h-5 w-5",
+                !props.personalization.text ? 'mb-2' : 'mb-1',
                 props.bottle.name === 'White' ? 'fill-personalization-dark' : 'fill-personalization-standard',
               )
               } /> }
