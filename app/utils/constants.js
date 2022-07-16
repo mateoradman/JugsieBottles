@@ -83,20 +83,20 @@ export const bottleInformation = [
 ];
 
 export const Icons = [
-  { name: "aeroplane", icon: Aeroplane },
-  { name: "butterfly", icon: Butterfly },
-  { name: "camera", icon: Camera },
-  { name: "clover", icon: Clover },
-  { name: "crown", icon: Crown },
-  { name: "dumbbell", icon: Dumbbell },
-  { name: "flower", icon: Flower },
-  { name: "heart", icon: Heart },
-  { name: "lipstick", icon: Lipstick },
-  { name: "musical-note", icon: MusicalNote },
-  { name: "paw", icon: Paw },
-  { name: "smile", icon: Smile },
-  { name: "star", icon: Star },
-  { name: "tooth", icon: Tooth },
+  { name: "Aeroplane", icon: Aeroplane },
+  { name: "Butterfly", icon: Butterfly },
+  { name: "Camera", icon: Camera },
+  { name: "Clover", icon: Clover },
+  { name: "Crown", icon: Crown },
+  { name: "Dumbbell", icon: Dumbbell },
+  { name: "Flower", icon: Flower },
+  { name: "Heart", icon: Heart },
+  { name: "Lipstick", icon: Lipstick },
+  { name: "MusicalNote", icon: MusicalNote },
+  { name: "Paw", icon: Paw },
+  { name: "Smile", icon: Smile },
+  { name: "Star", icon: Star },
+  { name: "Tooth", icon: Tooth },
 ];
 
 export const LocalStorageCartItems = "JugsieBottlesCartItems";
@@ -105,3 +105,4 @@ export const LocalStorageCartItems = "JugsieBottlesCartItems";
 export const DEFAULT_CURRENCY = "HRK";
 export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') }
 export const iconFontSize = {fontSize: '1.5rem'}
+export const JUGSIE_EMAIL = 'info@jugsie.com'

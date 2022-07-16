@@ -1,5 +1,6 @@
 import { withSentry } from '@sentry/nextjs';
 import prisma from '../../lib/prisma';
+import { JUGSIE_EMAIL } from '../../utils/constants';
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
@@ -30,8 +31,8 @@ export async function contactHandler(req, res) {
             },
         });
         const msg = {
-            to: 'info@jugsie.com',
-            from: 'info@jugsie.com',
+            to: JUGSIE_EMAIL,
+            from: JUGSIE_EMAIL,
             subject: "Nova poruka s web stranice",
             text: `Imate novu poruku od ${firstName} ${lastName} (tel: ${phone}). Poruka: "${message}".`,
         }

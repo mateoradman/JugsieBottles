@@ -7,7 +7,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { emptyEmailValidation, emptyMessageValidation, emptyPhoneNumberValidation, emptyStringValidation } from '../checkout/FormFields';
 import { MailIcon } from "@heroicons/react/outline";
 import Link from "next/link";
-import { iconFontSize } from "../../utils/constants";
+import { iconFontSize, JUGSIE_EMAIL } from "../../utils/constants";
 import Notification from "../alerts";
 
 const inputErrorCheck = (isError) => {
@@ -228,7 +228,7 @@ export const Contact = () => {
                   </dt>
                   <dd className="flex text-base text-indigo-50">
                     <MailIcon className="flex-shrink-0 w-6 h-6 text-indigo-200" aria-hidden="true" />
-                    <span className="ml-3">info@jugsie.com</span>
+                    <span className="ml-3">{JUGSIE_EMAIL}</span>
                   </dd>
                 </dl>
                 <ul role="list" className="mt-8 flex space-x-12">
