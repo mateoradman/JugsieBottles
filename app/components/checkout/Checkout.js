@@ -1,33 +1,42 @@
-import {useState} from 'react'
-import {RadioGroup} from '@headlessui/react'
-import {CheckCircleIcon, TrashIcon} from '@heroicons/react/solid'
+import { RadioGroup } from '@headlessui/react';
+import { CheckCircleIcon } from '@heroicons/react/solid';
+import { useTranslation } from "next-i18next";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useCartItems } from "../../context/Context";
+import useInput from "../../hooks/useInput";
+import { Croatia, DEFAULT_CURRENCY } from "../../utils/constants";
+import { classNames, getCartTotalPrice } from "../../utils/general";
+import Notification from '../alerts';
+import CartProducts from "../cart/CartProducts";
 import {
   emptyEmailValidation,
   emptyPhoneNumberValidation,
   emptyStringValidation,
   StandardInputField,
   StandardSelectField
-} from './FormFields'
-import {Croatia} from "../../utils/constants";
-import useInput from "../../hooks/useInput";
-import {useTranslation} from "next-i18next";
-import {classNames, getCartTotalPrice, ID} from "../../utils/general";
-import {useCartItems} from "../../context/Context";
-import CartProducts from "../cart/CartProducts";
-
+} from './FormFields';
 
 
 export default function Checkout() {
-  const {t} = useTranslation('checkout');
+  const { t } = useTranslation('checkout');
+  const { locale } = useRouter();
   const deliveryMethods = [
-    {id: 1, title: 'Standard', turnaround: t('deliveryDuration'), price: '0 kn'},
+    { id: 1, title: 'Standard', turnaround: t('deliveryDuration'), price: '0 kn' },
   ]
   const paymentMethods = [
-    {id: 'bank-transfer', title: t('bankTransfer')},
+    { id: 'bank-transfer', title: t('bankTransfer') },
   ]
-  const {cartItemsArray} = useCartItems()
+  const { cartItemsArray, setCartItemsArray } = useCartItems();
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(deliveryMethods[0])
 
+  const [notification, setNotification] = useState({
+    title: t('success', { ns: "common" }),
+    message: t('orderSuccess', { ns: "common" }),
+    success: true,
+    show: false,
+  }
+  );
 
   const [selectedCountry, setSelectedCountry] = useState(Croatia.value);
   const countryOptions = [Croatia];
@@ -103,7 +112,6 @@ export default function Checkout() {
     setSelectedCountry(Croatia.value);
   }
 
-
   const formValidityArray = [enteredFirstNameIsValid, enteredLastNameIsValid, enteredEmailIsValid, enteredPhoneIsValid,
     enteredStreetIsValid, enteredCityIsValid, enteredZIPIsValid];
   let formIsValid = formValidityArray.every(Boolean);
@@ -113,58 +121,41 @@ export default function Checkout() {
     lastName: enteredLastName,
     email: enteredEmail,
     phone: enteredPhone,
-    address: enteredStreet,
+    street: enteredStreet,
     city: enteredCity,
     zip: enteredZIP,
-    countryCode: selectedCountry,
-
-  }
-
-  const [modalMessage, setModalMessage] = useState({
-      title: '',
-      message: '',
-    }
-  );
-  const errorMessage = {
-    title: t('error', {ns: "common"}),
-    message: t('contactError', {ns: "common"})
-  }
-
-
-  // Modal related state
-  let [isOpen, setIsOpen] = useState(false)
-
-  function closeModal() {
-    setIsOpen(false)
-  }
-
-  function openModal() {
-    setIsOpen(true)
+    country: selectedCountry,
+    currency: DEFAULT_CURRENCY,
+    items: cartItemsArray,
+    locale: locale,
   }
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    let requestFailed = true;
     if (formIsValid) {
-      fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      fetch("/api/orders", {
+        method: "POST",
         body: JSON.stringify(formData),
-      })
-        .then(response => {
-          if (response.ok) {
-            setModalMessage({
-              title: t('success', {ns: "common"}),
-              message: t('contactSuccess', {ns: "common"})
-            });
-            resetAllFields();
+      }).then(response => {
+        if (response.ok) {
+          requestFailed = false;
+          resetAllFields();
+          if (requestFailed) {
+            setNotification({
+              title: t('error', { ns: "common" }),
+              message: t('orderError', { ns: "common" }),
+              success: false,
+              show: true,
+            })
           } else {
-            setModalMessage(errorMessage);
+            setNotification({ ...notification, show: true });
+            setCartItemsArray([]);
           }
-        })
+        }
+      })
     } else {
-      setModalMessage(errorMessage);
+      console.log('formValidityArray', formValidityArray)
     }
   }
 
@@ -292,12 +283,12 @@ export default function Checkout() {
                 <RadioGroup.Label className="text-lg font-medium text-gray-900">{t('deliveryMethod')}</RadioGroup.Label>
 
                 <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                  {deliveryMethods.map((deliveryMethod, deliveryMethodIdx) => (
+                  {deliveryMethods.map((deliveryMethod, _) => (
                     <RadioGroup.Option
                       key={deliveryMethod.id}
-                      defaultChecked={deliveryMethodIdx === 0}
+                      defaultChecked={deliveryMethod.id === 1}
                       value={deliveryMethod}
-                      className={({checked, active}) =>
+                      className={({ checked, active }) =>
                         classNames(
                           checked ? 'border-transparent' : 'border-gray-300',
                           active ? 'ring-2 ring-indigo-500' : '',
@@ -305,27 +296,27 @@ export default function Checkout() {
                         )
                       }
                     >
-                      {({checked, active}) => (
+                      {({ checked, active }) => (
                         <>
-                        <span className="flex-1 flex">
+                          <span className="flex-1 flex">
                             <span className="flex flex-col">
-                                <RadioGroup.Label as="span"
-                                                  className="block text-sm font-medium text-gray-900">
-                                    {deliveryMethod.title}
-                                </RadioGroup.Label>
-                                <RadioGroup.Description
-                                  as="span"
-                                  className="mt-1 flex items-center text-sm text-gray-500"
-                                >
-                                    {deliveryMethod.turnaround}
-                                </RadioGroup.Description>
-                                <RadioGroup.Description as="span"
-                                                        className="mt-6 text-sm font-medium text-gray-900">
-                                    {deliveryMethod.price}
-                                </RadioGroup.Description>
+                              <RadioGroup.Label as="span"
+                                className="block text-sm font-medium text-gray-900">
+                                {deliveryMethod.title}
+                              </RadioGroup.Label>
+                              <RadioGroup.Description
+                                as="span"
+                                className="mt-1 flex items-center text-sm text-gray-500"
+                              >
+                                {deliveryMethod.turnaround}
+                              </RadioGroup.Description>
+                              <RadioGroup.Description as="span"
+                                className="mt-6 text-sm font-medium text-gray-900">
+                                {deliveryMethod.price}
+                              </RadioGroup.Description>
                             </span>
-                        </span>
-                          {checked ? <CheckCircleIcon className="h-5 w-5 text-indigo-600" aria-hidden="true"/> : null}
+                          </span>
+                          <CheckCircleIcon className="h-5 w-5 text-indigo-600" aria-hidden="true" />
                           <span
                             className={classNames(
                               active ? 'border' : 'border-2',
@@ -383,9 +374,8 @@ export default function Checkout() {
             <h2 className="text-lg font-medium text-gray-900">{t('orderSummary')}</h2>
 
             <div className="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="sr-only">Items in your cart</h3>
               <div className="m-4">
-                <CartProducts/>
+                <CartProducts />
               </div>
               <dl className="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
                 <div className="flex items-center justify-between">
@@ -413,12 +403,20 @@ export default function Checkout() {
                   font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2
                   focus:ring-offset-gray-50 focus:ring-indigo-500"
                 >
-                  {t("confirm", {ns: "common"})}
+                  {t("confirm", { ns: "common" })}
                 </button>
               </div>
             </div>
           </div>
         </form>
+      </div>
+      <div
+        aria-live="assertive"
+        className="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
+      >
+        <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
+          <Notification notification={notification} setNotification={setNotification} />
+        </div>
       </div>
     </div>
   )
