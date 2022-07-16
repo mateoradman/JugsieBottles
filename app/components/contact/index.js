@@ -228,7 +228,7 @@ export const Contact = () => {
                   </dt>
                   <dd className="flex text-base text-indigo-50">
                     <MailIcon className="flex-shrink-0 w-6 h-6 text-indigo-200" aria-hidden="true" />
-                    <span className="ml-3">{JUGSIE_EMAIL}</span>
+                    <span className="ml-3">info@jugsie.com</span>
                   </dd>
                 </dl>
                 <ul role="list" className="mt-8 flex space-x-12">
