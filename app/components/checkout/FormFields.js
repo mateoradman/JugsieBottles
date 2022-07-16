@@ -2,7 +2,7 @@ import {useTranslation} from "next-i18next";
 import {classNames} from "../../utils/general";
 
 export const emptyStringValidation = (stringToValidate) => {
-  const regex = /[~`!#$%^&*+=\-\[\]\\';,/{}|":<>?]/g;
+  const regex = /[~`!#$%^&*+=\[\]\\';,{}|":<>?]/g;
   return !(!stringToValidate || regex.test(stringToValidate));
 }
 export const emptyMessageValidation = (stringToValidate) => {
