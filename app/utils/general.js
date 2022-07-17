@@ -1,6 +1,5 @@
+import * as path from 'path';
 import { bottleInformation, Icons } from "./constants";
-
-const path = require("path");
 
 export function getBottlePaths(name, noLogo = false) {
   if (noLogo) {
