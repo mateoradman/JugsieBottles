@@ -14,7 +14,7 @@ export function PersonalizationToggle(props) {
 
   const { t } = useTranslation('shop')
   return (
-    <div className="mt-10">
+    <div className="mt-4">
       <div className="p-3 card bordered">
         <div className="form-control">
           <label className="cursor-pointer label">
