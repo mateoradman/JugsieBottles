@@ -89,8 +89,8 @@ const Navbar = () => {
                 </div>
                 <div onClick={async () => close()}>
                   <NavbarLinks
-                      buttonStyling="btn btn-outline btn-primary"
-                      divStyling="p-4 space-y-4 flex flex-col"
+                      buttonStyling="block rounded-md py-2 px-3 text-base font-medium"
+                      divStyling="p-4 mt-2 space-y-4 flex flex-col"
                   />
                 </div>
               </div>
