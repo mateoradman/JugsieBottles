@@ -11,15 +11,15 @@ const Hero = () => {
         backgroundImage: `url(${HeroPhoto.src})`,
       } }
     >
-      <div className="hero-overlay bg-opacity-50" />
+      <div className="hero-overlay" />
       <div className="hero-content text-neutral-content w-full text-center flex-col">
         <h1
-          className="-mt-8 text-5xl sm:text-6xl pb-2 sm:pb-3 md:text-8xl font-extrabold
-           text-black whitespace-nowrap tracking-tight"
+          className="-mt-8 text-5xl sm:text-6xl pb-2 sm:pb-3 md:text-8xl font-bold
+           text-gray-200 whitespace-nowrap tracking-tight"
         >
-          Jugsie Bottle,
+          Jugsie Bottle
         </h1>
-        <p className="mb-3 sm:mb-5 -mt-2 text-2xl sm:text-3xl md:text-6xl font-extrabold text-white">
+        <p className="mb-3 sm:mb-5 -mt-2 text-2xl sm:text-3xl md:text-6xl text-gray-300">
           { t("hero-message") }
         </p>
         <Link href="/shop">
