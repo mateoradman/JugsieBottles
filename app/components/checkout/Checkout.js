@@ -155,7 +155,12 @@ export default function Checkout() {
         }
       })
     } else {
-      console.log('formValidityArray', formValidityArray)
+      setNotification({
+        title: t('error', { ns: "common" }),
+        message: t('formValidationError', { ns: "common" }),
+        success: false,
+        show: true,
+      })
     }
   }
 

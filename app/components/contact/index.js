@@ -110,6 +110,13 @@ export const Contact = () => {
           }
         }
       })
+    } else {
+      setNotification({
+        title: t('error', { ns: "common" }),
+        message: t('formValidationError', { ns: "common" }),
+        success: false,
+        show: true,
+      })
     }
   }
 
