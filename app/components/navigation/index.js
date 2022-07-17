@@ -18,7 +18,7 @@ const Navbar = () => {
   const { cartItemsArray } = useCartItems();
 
   return (
-    <div className="relative pb-8 bg-white mx-auto">
+    <div className="relative pb-4 bg-white mx-auto">
       <Popover>
         <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
           <nav
