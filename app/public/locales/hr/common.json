@@ -30,6 +30,7 @@
   "contactError": "Poruka nije poslana. Molimo osvježite stranicu i pokušajte ponovno.",
   "orderSuccess": "Narudžba je uspješno poslana.",
   "orderError": "Narudžba nije uspjela. Molimo osvježite stranicu i pokušajte ponovno.",
+  "formValidationError": "Obrazac nije valjan. Molimo provjerite unos i pokušajte ponovno.",
   "confirm": "Potvrdi",
   "submit": "Pošalji",
   "contactText": "Molimo koristite ovaj formular kako biste nas kontaktirali. Odgovorit ćemo u najkraćem mogućem periodu.",

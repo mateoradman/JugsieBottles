@@ -31,6 +31,7 @@
   "contactError": "An error occurred while sending your message. Please refresh the page and try again.",
   "orderSuccess": "Your order is successfully submitted.",
   "orderError": "An error occurred while submitting your order. Please refresh the page and try again.",
+  "formValidationError": "Form is invalid. Please check your input and try again.",
   "submit": "Submit",
   "contactText": "Please use this form to contact us. We will reply as soon as possible.",
   "confirm": "Confirm",
