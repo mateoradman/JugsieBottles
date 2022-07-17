@@ -124,7 +124,6 @@ model Contact {
   id         Int      @id @default(autoincrement())
   customer   Customer @relation(fields: [customerId], references: [id])
   customerId Int
-  phone      String
   message    String
   locale     Locale
   createdAt  DateTime @default(now())
