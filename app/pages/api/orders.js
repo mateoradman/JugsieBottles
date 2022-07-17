@@ -1,7 +1,7 @@
 import { withSentry } from "@sentry/nextjs";
 import { DateTime } from "luxon";
 import { nanoid } from "nanoid";
-import { emptyPhoneNumberValidation, emptyStringValidation } from "../../components/checkout/FormFields";
+import { emptyEmailValidation, emptyPhoneNumberValidation, emptyStringValidation } from "../../components/checkout/FormFields";
 import prisma from '../../lib/prisma';
 import { JUGSIE_EMAIL } from "../../utils/constants";
 import { getCartTotalPrice } from '../../utils/general';
