@@ -1,4 +1,4 @@
-import countryList from 'react-select-country-list';
+import countryList from "react-select-country-list";
 import {
   Aeroplane,
   Butterfly,
@@ -13,7 +13,7 @@ import {
   Paw,
   Smile,
   Star,
-  Tooth
+  Tooth,
 } from "../public/personalizationIcons";
 import { getBottlePaths } from "./general";
 
@@ -31,10 +31,9 @@ export const bottleInformation = [
     backgroundColor: "bg-bottleBg-white",
     mainPhoto: getBottlePaths("White"),
     emptyPhoto: getBottlePaths("White", true),
-    leftPhoto: 'aaa',
-    centreTopPhoto: 'aaa',
-    centreBottomPhoto: 'aaa',
-
+    leftPhoto: "aaa",
+    centreTopPhoto: "aaa",
+    centreBottomPhoto: "aaa",
   },
   {
     id: 2,
@@ -105,6 +104,9 @@ export const Icons = [
 
 export const LocalStorageCartItems = "JugsieBottlesCartItems";
 export const DEFAULT_CURRENCY = "HRK";
-export const Croatia = { value: countryList().getValue('Croatia'), label: countryList().getLabel('HR') };
-export const iconFontSize = {fontSize: '1.5rem'};
-export const JUGSIE_EMAIL = 'Jugsie Bottles <info@jugsie.com>';
+export const Croatia = {
+  value: countryList().getValue("Croatia"),
+  label: countryList().getLabel("HR"),
+};
+export const iconFontSize = { fontSize: "1.5rem" };
+export const JUGSIE_EMAIL = "Jugsie Bottles <info@jugsie.com>";

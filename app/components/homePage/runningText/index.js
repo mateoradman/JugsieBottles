@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next";
 
 const MarqueeRunningText = () => {
   return (
@@ -10,8 +10,7 @@ const MarqueeRunningText = () => {
         <RunningText />
       </div>
 
-      <div
-        className="mt-5 md:mt-10 absolute top-0 py-6 md:py-12 animate-marquee2">
+      <div className="mt-5 md:mt-10 absolute top-0 py-6 md:py-12 animate-marquee2">
         <RunningText />
         <RunningText />
         <RunningText />
@@ -23,11 +22,13 @@ const MarqueeRunningText = () => {
 
 const RunningText = () => {
   return (
-    <span className="mx-5 whitespace-nowrap text-5xl tracking-wide md:text-9xl text-transparent
-    font-extrabold bg-gradient-to-r bg-clip-text from-blue-500 to-red-500">
+    <span
+      className="mx-5 whitespace-nowrap text-5xl tracking-wide md:text-9xl text-transparent
+    font-extrabold bg-gradient-to-r bg-clip-text from-blue-500 to-red-500"
+    >
       24h cold 12h hot.
     </span>
-  )
-}
+  );
+};
 
 export default MarqueeRunningText;

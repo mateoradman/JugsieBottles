@@ -2,16 +2,16 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
 const ContinueShoppingButton = (props) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   return (
-    <Link href='/shop'>
+    <Link href="/shop">
       <button
         type="button"
         className="text-indigo-600 font-medium hover:text-indigo-500"
-        onClick={ props.handleOnClose }
+        onClick={props.handleOnClose}
       >
-        { t('continueShopping') }
+        {t("continueShopping")}
         <span aria-hidden="true"> &rarr;</span>
       </button>
     </Link>

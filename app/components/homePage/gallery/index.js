@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 
 export default function Gallery() {
-  const {t} = useTranslation('common')
+  const { t } = useTranslation("common");
   return (
     <div className="bg-transparent">
       <div className="max-w-2xl mx-auto px-4 py-12 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -41,5 +41,5 @@ export default function Gallery() {
         </section>
       </div>
     </div>
-  )
+  );
 }

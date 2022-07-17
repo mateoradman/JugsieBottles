@@ -12,16 +12,18 @@ export default function Layout({ children }) {
         <link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg" />
         <link rel="icon" type="image/png" href="/Favicon/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect"
+        <link
+          rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin="anonymous" />
+          crossOrigin="anonymous"
+        />
       </Head>
       <Script src="https://scripts.sirv.com/sirv.js" />
       <CartProvider>
         <Navbar />
-        <main>{ children }</main>
+        <main>{children}</main>
       </CartProvider>
       <Footer />
     </div>
-  )
+  );
 }

@@ -15,10 +15,12 @@ export const ProductCard = ({ product }) => {
   const [selectedBottle, setSelectedBottle] = useState(bottleInformation[0]);
   const handleSelectedBottle = (radioPickedBottle) => {
     setSelectedBottle(radioPickedBottle);
-  }
+  };
 
   const defaultPersonalization = { icon: "", text: "" };
-  const [selectedPersonalization, setSelectedPersonalization] = useState(defaultPersonalization);
+  const [selectedPersonalization, setSelectedPersonalization] = useState(
+    defaultPersonalization
+  );
   const handleSelectedPersonalization = (personalization) => {
     setSelectedPersonalization(personalization);
     if (personalization.icon || personalization.text) {
@@ -26,39 +28,42 @@ export const ProductCard = ({ product }) => {
     } else {
       product.price = 130;
     }
-  }
+  };
 
-  const { cartItemsArray, setCartItemsArray } = useCartItems()
+  const { cartItemsArray, setCartItemsArray } = useCartItems();
   const getCompleteBottleObject = () => {
     return {
       ...selectedBottle,
       ...selectedPersonalization,
-      price: product.price
+      price: product.price,
     };
-  }
+  };
 
   const handleSubmitBottle = (e) => {
     e.preventDefault();
     setCartItemsArray([...cartItemsArray, getCompleteBottleObject()]);
     setOpenCartModal(true);
-  }
+  };
 
-  const { t } = useTranslation('shop')
+  const { t } = useTranslation("shop");
 
   return (
     <div className="bg-white">
-      <CartModal isOpen={isOpenCartModal} setOpen={setOpenCartModal}
-        bottle={getCompleteBottleObject()} />
-      <div
-        className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+      <CartModal
+        isOpen={isOpenCartModal}
+        setOpen={setOpenCartModal}
+        bottle={getCompleteBottleObject()}
+      />
+      <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
         <div className="lg:border-r lg:border-gray-200">
-          <ProductImageGallery bottle={selectedBottle}
-            personalization={selectedPersonalization} />
+          <ProductImageGallery
+            bottle={selectedBottle}
+            personalization={selectedPersonalization}
+          />
         </div>
         {/* Options */}
         <div className="mt-4 lg:mt-0 lg:row-span-3">
-          <h1
-            className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+          <h1 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
             {`${selectedBottle.name} (500ml)`}
           </h1>
           <p className="text-xl sm:text-3xl text-gray-900">
@@ -71,11 +76,13 @@ export const ProductCard = ({ product }) => {
               <div className="flex items-center">
                 {getStarsArray(reviews.average)}
               </div>
-              <a href={reviews.href}
+              <a
+                href={reviews.href}
                 target="_blank"
                 rel="noreferrer"
-                className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                {reviews.totalCount} {t('reviews')}
+                className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+              >
+                {reviews.totalCount} {t("reviews")}
               </a>
             </div>
           </div>
@@ -85,38 +92,36 @@ export const ProductCard = ({ product }) => {
             <ColourPicker onBottleChange={handleSelectedBottle} />
             <PersonalizationToggle
               defaultPersonalization={defaultPersonalization}
-              onPersonalizationChange={handleSelectedPersonalization} />
+              onPersonalizationChange={handleSelectedPersonalization}
+            />
             <button
               type="submit"
-              className={classNames("mt-8 w-full btn", selectedBottle.name === 'Black' ? "btn-disabled" : "btn-primary")}
+              className={classNames(
+                "mt-8 w-full btn",
+                selectedBottle.name === "Black" ? "btn-disabled" : "btn-primary"
+              )}
             >
-              {selectedBottle.name === 'Black' ? t('out-of-stock') : t('add-to-cart')}
+              {selectedBottle.name === "Black"
+                ? t("out-of-stock")
+                : t("add-to-cart")}
             </button>
           </form>
         </div>
       </div>
     </div>
-  )
-
-}
-
+  );
+};
 
 function getStarsArray(average) {
   let FullStarsArray = Array.from({ length: parseInt(average) }, (_v, i) => i);
 
   let returnArray = FullStarsArray.map((rating) => (
-    <IoStar
-      key={rating}
-      className="h-5 w-5 flex-shrink-0"
-    />
+    <IoStar key={rating} className="h-5 w-5 flex-shrink-0" />
   ));
 
   if (average % 1 !== 0) {
     returnArray.push(
-      <IoStarHalf
-        key={returnArray.length}
-        className="h-5 w-5 flex-shrink-0"
-      />
+      <IoStarHalf key={returnArray.length} className="h-5 w-5 flex-shrink-0" />
     );
   }
 

@@ -1,4 +1,4 @@
-import * as path from 'path';
+import * as path from "path";
 import { bottleInformation, Icons } from "./constants";
 
 export function getBottlePaths(name, noLogo = false) {
@@ -8,8 +8,6 @@ export function getBottlePaths(name, noLogo = false) {
     return path.join("/bottles", `${name}.png`);
   }
 }
-
-
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

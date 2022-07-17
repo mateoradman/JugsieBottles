@@ -4,15 +4,15 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { FAQTab } from "../components/faq/FAQTab";
 
 export default function FAQPage({ faq }) {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation("common");
   return (
     <div className="mx-auto">
       <h1 className="prose-lg sm:prose-xl text-center font-extrabold mb-4 md:mb-6">
-        {t('faq')}
+        {t("faq")}
       </h1>
       <FAQTab faq={faq} />
     </div>
-  )
+  );
 }
 
 export async function getStaticProps({ locale }) {
@@ -20,18 +20,18 @@ export async function getStaticProps({ locale }) {
   let faq;
   if (locale === "en") {
     faq = await prisma.faq.findMany({
-      where: { locale: "en" }
-    })
+      where: { locale: "en" },
+    });
   } else {
     faq = await prisma.faq.findMany({
-      where: { locale: "hr" }
-    })
+      where: { locale: "hr" },
+    });
   }
 
   return {
     props: {
       faq,
-      ...await serverSideTranslations(locale, ['common']),
-    }
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
   };
 }

@@ -1,14 +1,12 @@
-import {BiShoppingBag} from "react-icons/bi";
+import { BiShoppingBag } from "react-icons/bi";
 
 const CartIcon = (props) => {
   return (
     <div className="cursor-pointer indicator">
-      <div
-        className="-m-1 indicator-item badge badge-info">{props.numberOfCartItems || 0}
+      <div className="-m-1 indicator-item badge badge-info">
+        {props.numberOfCartItems || 0}
       </div>
-      <BiShoppingBag
-        className={"h-7 w-7"}
-      />
+      <BiShoppingBag className={"h-7 w-7"} />
     </div>
   );
 };

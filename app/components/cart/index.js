@@ -1,14 +1,14 @@
-import {Dialog, Transition} from "@headlessui/react";
-import {XIcon} from "@heroicons/react/outline";
-import {useTranslation} from "next-i18next";
+import { Dialog, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import {Fragment} from "react";
-import {getCartTotalPrice} from "../../utils/general";
+import { Fragment } from "react";
+import { getCartTotalPrice } from "../../utils/general";
 import CartProducts from "./CartProducts";
 import ContinueShoppingButton from "./ContinueShoppingButton";
 
 export default function Cart(props) {
-  const {t} = useTranslation('common')
+  const { t } = useTranslation("common");
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
@@ -26,7 +26,7 @@ export default function Cart(props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
+            <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
@@ -52,21 +52,21 @@ export default function Cart(props) {
                           className="-m-2 p-2 text-gray-400 hover:text-gray-500"
                           onClick={props.onClose}
                         >
-                          <XIcon className="h-6 w-6" aria-hidden="true"/>
+                          <XIcon className="h-6 w-6" aria-hidden="true" />
                         </button>
                       </div>
                     </div>
 
-                    <CartProducts/>
+                    <CartProducts />
                   </div>
 
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
-                      <p>{t('subtotal')}</p>
+                      <p>{t("subtotal")}</p>
                       <p>{`${getCartTotalPrice(props.cartItemsArray)} kn`}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">
-                      {t('shipping')}
+                      {t("shipping")}
                     </p>
                     <div className="mt-6">
                       <Link href="/cart">
@@ -74,14 +74,14 @@ export default function Cart(props) {
                           className="flex w-3/4 mx-auto justify-center btn rounded-md"
                           onClick={props.onClose}
                         >
-                          {t('viewCart')}
+                          {t("viewCart")}
                         </button>
                       </Link>
                     </div>
                     <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
                       <p>
                         or{" "}
-                        <ContinueShoppingButton handleOnClose={props.onClose}/>
+                        <ContinueShoppingButton handleOnClose={props.onClose} />
                       </p>
                     </div>
                   </div>

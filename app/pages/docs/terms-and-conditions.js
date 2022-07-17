@@ -1,17 +1,16 @@
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function TermsAndConditionsPage() {
-    return (
-
-        <div className={ "container mx-auto p-10" }>
-            <h1 className="text-xl font-bold">UVJETI KORIŠTENJA</h1>
-            <br />
-            <h2 className="text-lg font-bold">
-                UVJETI PRODAJE I POVRAT ROBE PUTEM INTERNET TRGOVINE JUGSIE
-            </h2>
-            <br />
-            <p className="prose-sm">
-                {`Nositelj svih prava na internet stranici jugsie.com je trgovačko društvo Kožul d.o.o. putem navedene stranice pruža uslugu prodaje putem svog servisa – Jugsie Bottles Shop webshopa. Korištenjem usluge navedenog webshopa i svih pridruženih stranica i servisa na jugsie.com domeni smatra se da su potrošači u svakom trenutku upoznati s ovim Uvjetima prodaje (dalje u tekstu: Uvjeti), te da ih u cijelosti razumiju i prihvaćaju. Ovi Uvjeti primjenjuju se na prava i obveze koja se odnose na kupnju proizvoda ili usluga putem Jugsie webshopa  te prava i obveze koje proizlaze iz sklapanja Ugovora o prodaji na daljinu (dalje u tekstu: Ugovor) između potrošača kao krajnjeg kupca i Jugsie webshopa, smatraju se sastavnim dijelom takvih ugovora.
+  return (
+    <div className={"container mx-auto p-10"}>
+      <h1 className="text-xl font-bold">UVJETI KORIŠTENJA</h1>
+      <br />
+      <h2 className="text-lg font-bold">
+        UVJETI PRODAJE I POVRAT ROBE PUTEM INTERNET TRGOVINE JUGSIE
+      </h2>
+      <br />
+      <p className="prose-sm">
+        {`Nositelj svih prava na internet stranici jugsie.com je trgovačko društvo Kožul d.o.o. putem navedene stranice pruža uslugu prodaje putem svog servisa – Jugsie Bottles Shop webshopa. Korištenjem usluge navedenog webshopa i svih pridruženih stranica i servisa na jugsie.com domeni smatra se da su potrošači u svakom trenutku upoznati s ovim Uvjetima prodaje (dalje u tekstu: Uvjeti), te da ih u cijelosti razumiju i prihvaćaju. Ovi Uvjeti primjenjuju se na prava i obveze koja se odnose na kupnju proizvoda ili usluga putem Jugsie webshopa  te prava i obveze koje proizlaze iz sklapanja Ugovora o prodaji na daljinu (dalje u tekstu: Ugovor) između potrošača kao krajnjeg kupca i Jugsie webshopa, smatraju se sastavnim dijelom takvih ugovora.
 
                 Pružatelj usluge internet prodaje putem Jugsie webshopa je Kožul d.o.o., Vinogradska 2G, 35000 Slavonski Brod, OIB: 99080771351.
                 Korisnike upućujemo da se prije kupnje upoznaju s ovim Uvjetima te da iste redovito provjeravaju, kako bi bili upoznati sa svim vašim pravima i obvezama.
@@ -24,22 +23,23 @@ export default function TermsAndConditionsPage() {
                 Korištenje usluga Jugsie webshopa odobrava se isključivo punoljetnim osobama. Uporaba i korištenje Jugsie webshopa od strane djece ili maloljetnih osoba nije dozvoljena, te su roditelji i/ili skrbnici dužni o tome voditi računa, u protivnom preuzimaju sva prava i obveze nastale takvim korištenjem, a Kožul d.o.o.  ne odgovara za eventualne posljedice takvog korištenja.
                 Jugsie webshop se u potpunosti odriče bilo kakve odgovornosti za točnost i/ili potpunost svih informacija i sadržaja koji se nalaze na www.jugsie.com. Jugsie webshop zadržava pravo pogreške u opisu i slici proizvoda.
                 `}
-            </p>
-            <br />
-            <h2 className="text-lg font-bold">
-                NAPOMENA
-            </h2>
-            <br />
-            <p className="prose-sm">
-                Slike proizvoda na Jugsie webshopu su ilustrativne prirode. Slika koja ilustrira proizvod na internetskoj stranici www.jugsie.com ne mora u potpunosti odgovarati stvarnom izgledu i sadržaju proizvoda te kupac takve prozvode ne može reklamirati s te osnove. Jugsie će nastojati na web stranicama www.jugsie.com objavljivati točne i aktualne podatke, ali ne preuzima odgovornost za točnost i potpunost istih.
-            </p>
-            <br />
-            <h2 className="text-lg font-bold">
-                1. UVJETI PRODAJE
-            </h2>
-            <br />
-            <p className="prose-sm">
-                {`I) Sklapanje i raskid ugovora o prodaji
+      </p>
+      <br />
+      <h2 className="text-lg font-bold">NAPOMENA</h2>
+      <br />
+      <p className="prose-sm">
+        Slike proizvoda na Jugsie webshopu su ilustrativne prirode. Slika koja
+        ilustrira proizvod na internetskoj stranici www.jugsie.com ne mora u
+        potpunosti odgovarati stvarnom izgledu i sadržaju proizvoda te kupac
+        takve prozvode ne može reklamirati s te osnove. Jugsie će nastojati na
+        web stranicama www.jugsie.com objavljivati točne i aktualne podatke, ali
+        ne preuzima odgovornost za točnost i potpunost istih.
+      </p>
+      <br />
+      <h2 className="text-lg font-bold">1. UVJETI PRODAJE</h2>
+      <br />
+      <p className="prose-sm">
+        {`I) Sklapanje i raskid ugovora o prodaji
                 Ovi Uvjeti kao i pojedini uvjeti prodaje naznačeni uz informacije o određenim proizvodima predstavljaju ponudu tvrtke Kožul d.o.o. za sklapanje Ugovora te korisnik kao kupac svojom registracijom, zaključivanjem narudžbe ili na drugi način utvrđen ovim Uvjetima iste prihvaća čime se smatra da je zaključen Ugovor između korisnika i tvrtke Kožul d.o.o, a prema uvjetima prodaje navedenim u ovim Uvjetima.
                 Predmet i komercijalna svrha Ugovora je kupnja odabranog proizvoda ili usluge putem Jugsie webshopa uz plaćanje odgovarajuće naknade – cijene toga proizvoda ili usluge. Ugovor se zaključuje sredstvima daljinske komunikacije (Ugovor sklopljen na daljinu) i to putem: tiskanih promidžbenih poruka s narudžbenicom, telefona s ljudskim posredovanjem i bez njega te Interneta.
 
@@ -61,15 +61,12 @@ export default function TermsAndConditionsPage() {
                 Korisnik je dužan robu predati ili je poslati na adresu Kožul d.o.o  (Jugsie), Vinogradska 2G, 35000 Slavonski Brod, bez nepotrebnog odgađanja, a u svakom slučaju najkasnije u roku od 14 (četrnaest) dana od dana kada je Kožul d.o.o., odnosno Jugsie uputio svoju odluku o jednostranom raskidu Ugovora. Izravne troškove povrata robe korisnik snosi sam. Korisnik se moli da se prije raskida Ugovora javi na info@jugsie.com kako bi mu bio objašnjen postupak vraćanja robe.
                 Korisnik je odgovoran za svako umanjenje vrijednosti robe koje je rezultat rukovanja robom, osim onog koje je bilo potrebno za utvrđivanje prirode, obilježja i funkcionalnosti robe. U slučaju oštećenja originalne ambalaže iznos povrata bit će umanjen za postotak sukladan vrijednosti robe. U tom slučaju bit će te obaviješteni.
                 Ako je na zahtjev korisnika izvršavanje usluge započelo tijekom roka za jednostrani raskid Ugovora, korisnik je dužan platiti tvrtci Kožul d.o.o. iznos koji je razmjeran onom što je isporučeno do trenutka kada je korisnik obavijestio Kožul d.o.o.  o jednostranom raskidu Ugovora.`}
-            </p>
-            <br />
-            <h2 className="text-lg font-bold">
-                II) Uvjeti i postupak kupnje
-
-            </h2>
-            <br />
-            <p className="prose-sm">
-               {`Glavne karakteristike proizvoda, način uporabe, cijene, posebne akcije i pogodnosti, načini plaćanja i dostave odnose se na one koji su važeći u trenutku zaključene narudžbe. Navedeni podaci će biti naznačeni uz svaki proizvod.
+      </p>
+      <br />
+      <h2 className="text-lg font-bold">II) Uvjeti i postupak kupnje</h2>
+      <br />
+      <p className="prose-sm">
+        {`Glavne karakteristike proizvoda, način uporabe, cijene, posebne akcije i pogodnosti, načini plaćanja i dostave odnose se na one koji su važeći u trenutku zaključene narudžbe. Navedeni podaci će biti naznačeni uz svaki proizvod.
                 Cijena proizvoda, u koju je uključen iznos PDV-a i trošak dostave, vidljivi su u košarici za kupnju prije zaključenja narudžbe. Trošak dostave može biti vidljiv još i na nekim drugim dijelovima stranice. Sve informacije o potvrdi kupnje temeljem elektronske narudžbe dostavit će se na adresu elektroničke pošte kupca navedenu u postupku registracije/narudžbe ili u košarici za kupnju pri unosu podataka prilikom zaključivanja narudžbe. Sve cijene su izražene u hrvatskim kunama (HRK). U sve cijene je uračunat PDV.
                 Ukoliko kupac ne zaprimi obavijest o potvrdi narudžbe, postoji mogućnost da je pogrešno unio adresu svoje elektronske pošte. U tom slučaju molimo kupca da nas kontaktira na: info@jugsie.com kako bi naša služba za korisnike provjerila je li narudžba zaprimljena.
                 III) Dostava i uvjeti dostave
@@ -200,35 +197,54 @@ export default function TermsAndConditionsPage() {
                 c) Plaćanje internet bankarstvom. Proizvodi za koje je zaključena narudžba mogu se plaćati putem internet bankarstva bilo koje banke u kojoj je otvorena mogućnost takvog načina plaćanja. Nakon potvrde narudžbe, Jugsie prosljeđuje e-mailom sve potrebne podatke za izvršenje plaćanja.
                 e) Za proizvode na akciji ostvaruje se akcijski popust na sve oblike paćanja.
                 f) Popusti se ne zbrajaju s drugim popustima. `}
-
-            </p>
-            <br />
-            <h2 className="text-lg font-bold">
-                2. ZAŠTITA PODATAKA PRI KUPNJI
-            </h2>
-            <br />
-            <p className="prose-sm">
-                Jugsie se obvezuje poštivati anonimnost i privatnost korisnika Jugsie webshopa te će podatke koristiti i obrađivati isključivo u svrhu i namjenu određenu ovim Uvjetima. Jugsie može prikupljati osobne podatke korisnika, kao što su ime, adresa, OIB, telefonski broj ili e-mail adresa samo ako iste korisnik dobrovoljno dostavi Jugsieu.
-                Jugsie će navedene podatke koristiti isključivo u svrhu ispunjena ugovornih obveza te što boljeg uvida i razumijevanja pojedinačnih potreba, navika i zahtjeva korisnika kao i daljnjeg razvijanja te kvalitetnijeg pružanja svih usluga Jugsiea. Jugsie prikuplja, obrađuje i objavljuje podatke o korisnicima koji se odnose na način uporabe Jugsie webshopa bez otkrivanja identiteta korisnika i/ili osobnih podataka koji omogućuju otkrivanje identiteta korisnika.
-                Jugsie prikuplja i bilježi podatke o IP-adresi (Internet ProtocolAddress) korisnika ili o lokaciji računala za potrebe sistemskog administriranja, rješavanja kvarova, potvrde preuzimanja sadržaja ili unapređivanja tehničkih aspekata internetskog servisa. Jugsie će automatizirano bilježiti podatke o navikama korištenja Jugsiea od strane korisnika, među ostalim i zapisničku datoteku o posjećenosti određenih stranica i/ili sadržaja. Takve podatke Jugsie će koristiti isključivo u svrhu unapređivanja svoje usluge te prilagodbe i individualizacije promotivnih aktivnosti prema potrebama pojedinog korisnika.
-                Jugsie ne bilježi broj vaše kreditne kartice niti pohranjuje transakcijske podatke. Jugsie za naplatu kreditnih kartica koristi usluge treće strane, ovlaštene banke, koja enkripcijom štiti vaše podatke.
-            </p>
-            <br />
-            <h2 className="text-lg font-bold">
-                3. KOMUNIKACIJA JUGSIE-a S KORISNICIMA
-
-            </h2>
-            <br />
-            <p className="prose-sm">
-                Registracijom i kupovinom dajete suglasnost da vas Jugsie u svrhu promocije usluge i proizvoda može putem elektroničke pošte obaviještavati o promjenama ili dodavanja sadržaja stranicama, popustima, akcijama, proizvodima ili promjeni načina pružanja usluge. Korisnik može u svakom trenutku opozvati navedenu suglasnost.
-            </p>
-        </div>
-
-    )
+      </p>
+      <br />
+      <h2 className="text-lg font-bold">2. ZAŠTITA PODATAKA PRI KUPNJI</h2>
+      <br />
+      <p className="prose-sm">
+        Jugsie se obvezuje poštivati anonimnost i privatnost korisnika Jugsie
+        webshopa te će podatke koristiti i obrađivati isključivo u svrhu i
+        namjenu određenu ovim Uvjetima. Jugsie može prikupljati osobne podatke
+        korisnika, kao što su ime, adresa, OIB, telefonski broj ili e-mail
+        adresa samo ako iste korisnik dobrovoljno dostavi Jugsieu. Jugsie će
+        navedene podatke koristiti isključivo u svrhu ispunjena ugovornih obveza
+        te što boljeg uvida i razumijevanja pojedinačnih potreba, navika i
+        zahtjeva korisnika kao i daljnjeg razvijanja te kvalitetnijeg pružanja
+        svih usluga Jugsiea. Jugsie prikuplja, obrađuje i objavljuje podatke o
+        korisnicima koji se odnose na način uporabe Jugsie webshopa bez
+        otkrivanja identiteta korisnika i/ili osobnih podataka koji omogućuju
+        otkrivanje identiteta korisnika. Jugsie prikuplja i bilježi podatke o
+        IP-adresi (Internet ProtocolAddress) korisnika ili o lokaciji računala
+        za potrebe sistemskog administriranja, rješavanja kvarova, potvrde
+        preuzimanja sadržaja ili unapređivanja tehničkih aspekata internetskog
+        servisa. Jugsie će automatizirano bilježiti podatke o navikama
+        korištenja Jugsiea od strane korisnika, među ostalim i zapisničku
+        datoteku o posjećenosti određenih stranica i/ili sadržaja. Takve podatke
+        Jugsie će koristiti isključivo u svrhu unapređivanja svoje usluge te
+        prilagodbe i individualizacije promotivnih aktivnosti prema potrebama
+        pojedinog korisnika. Jugsie ne bilježi broj vaše kreditne kartice niti
+        pohranjuje transakcijske podatke. Jugsie za naplatu kreditnih kartica
+        koristi usluge treće strane, ovlaštene banke, koja enkripcijom štiti
+        vaše podatke.
+      </p>
+      <br />
+      <h2 className="text-lg font-bold">
+        3. KOMUNIKACIJA JUGSIE-a S KORISNICIMA
+      </h2>
+      <br />
+      <p className="prose-sm">
+        Registracijom i kupovinom dajete suglasnost da vas Jugsie u svrhu
+        promocije usluge i proizvoda može putem elektroničke pošte
+        obaviještavati o promjenama ili dodavanja sadržaja stranicama,
+        popustima, akcijama, proizvodima ili promjeni načina pružanja usluge.
+        Korisnik može u svakom trenutku opozvati navedenu suglasnost.
+      </p>
+    </div>
+  );
 }
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common']),
+    ...(await serverSideTranslations(locale, ["common"])),
   },
-})
+});
