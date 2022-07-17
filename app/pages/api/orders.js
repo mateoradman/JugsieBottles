@@ -1,9 +1,10 @@
 import { withSentry } from "@sentry/nextjs";
-import { getCartTotalPrice } from '../../utils/general';
+import { DateTime } from "luxon";
+import { nanoid } from "nanoid";
+import { emptyPhoneNumberValidation, emptyStringValidation } from "../../components/checkout/FormFields";
 import prisma from '../../lib/prisma';
 import { JUGSIE_EMAIL } from "../../utils/constants";
-import { DateTime } from "luxon";
-import {nanoid} from "nanoid";
+import { getCartTotalPrice } from '../../utils/general';
 
 const UUIDlength = 12;
 
@@ -24,7 +25,6 @@ export async function orderHandler(req, res) {
         ...parsedBody,
         orderUUID: nanoid(UUIDlength),
         timestamp: DateTime.now().setZone("Europe/Zagreb").toFormat('dd.MM.yyyy HH:MM'),
-        dateFormat: "DD.MM.YYYY. hh:mm:ss",
         total: totalPrice,
         subtotal: 0.75 * totalPrice,
         vat: 0.25 * totalPrice
@@ -102,11 +102,17 @@ export async function orderHandler(req, res) {
             },
         },
         {
-            to: 'radmanmateo@gmail.com',
-            cc: 'guberacantonela@gmail.com',
+            to: process.env.ADMIN_EMAIL,
+            cc: process.env.SECOND_ADMIN_EMAIL,
             from: JUGSIE_EMAIL,
             subject: "Nova narudzba s web stranice.",
-            text: `${requestBody.firstName} ${requestBody.lastName} naručio/la je novu bocu. Narudzba se sastoji od sljedecih proizvoda: ${requestBody.items}`,
+            text: `Detalji o narudžbi:
+            Ime: ${requestBody.firstName}
+            Prezime: ${requestBody.lastName}
+            Adresa: ${requestBody.street}, ${requestBody.zip} ${requestBody.city}, ${requestBody.country}
+            Broj telefona: ${requestBody.phone}
+            Narudžba se sastoji od sljedećih proizvoda: ${JSON.stringify(requestBody.items)}.
+            Ukupno: ${requestBody.total}`,
         },
     ];
     sgMail.send(emails);
@@ -114,11 +120,14 @@ export async function orderHandler(req, res) {
 }
 
 const isBodyValid = async (body) => {
+    // Backend validation
     return (
-        body.firstName &&
-        body.lastName &&
-        body.email &&
-        body.orderUUID.length === UUIDlength
+        emptyStringValidation(body.firstName) &&
+        emptyStringValidation(body.lastName) &&
+        emptyEmailValidation(body.email) &&
+        body.orderUUID.length === UUIDlength &&
+        emptyStringValidation(body.street) &&
+        emptyPhoneNumberValidation(body.phone)
     )
 };
 
