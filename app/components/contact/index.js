@@ -123,7 +123,7 @@ export const Contact = () => {
   return (
     <>
       <div className="bg-transparent">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="relative bg-gray-100 shadow-xl">
             <h2 className="sr-only">{t('contactSupport', { ns: 'checkout' })}</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3">
