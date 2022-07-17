@@ -10,7 +10,7 @@ const IndividualImage = (props) => {
       objectFit="contain"
       objectPosition="center"
       className={ classNames("w-full h-full", props.className) }
-      priority={true}
+      priority={props.preload}
     />
   )
 }
@@ -23,7 +23,7 @@ const ProductImageGallery = (props) => {
 
   return (
     <div
-      className="mt-4 mx-auto px-4 max-w-md lg:px-8">
+      className="mx-auto px-4 max-w-md lg:px-8">
       <div
         className="aspect-w-4 aspect-h-4 rounded-xl overflow-hidden lg:aspect-w-3 lg:aspect-h-4"
       >
@@ -42,10 +42,10 @@ const ProductImageGallery = (props) => {
               )
               } /> }
             </div>
-            <IndividualImage image={ props.bottle.emptyPhoto } />
+            <IndividualImage image={ props.bottle.emptyPhoto } preload={false}/>
           </>
           :
-          <IndividualImage image={ props.bottle.mainPhoto } />
+          <IndividualImage image={ props.bottle.mainPhoto } preload={true}/>
         }
       </div>
     </div>
