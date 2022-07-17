@@ -1,9 +1,9 @@
 import {useTranslation} from "next-i18next";
 
-const ThreeSixtyCard = (props) => {
+const ThreeSixtyCard = () => {
   const {t} = useTranslation('shop')
   return (
-    <div className="h-3/4">
+    <div className="h-3/4 pt-8 sm:pt-0">
       <h2
         className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-center">
         {t('360DegreeView')}
