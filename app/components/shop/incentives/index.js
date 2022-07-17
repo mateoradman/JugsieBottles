@@ -11,8 +11,8 @@ export default function Incentives() {
           <div className="max-w-xs mx-auto px-4 flex items-center lg:max-w-none lg:px-8">
             <CalendarIcon height={30} />
             <div className="ml-4 flex-auto flex flex-col-reverse">
-              <p className="text-2xs text-gray-500"><sup>1</sup>{t('incentiveDisclaimerOne')}</p>
-              <h3 className="font-medium text-gray-900">{t('incentiveTitleOne')}<sup>1</sup></h3>
+              <p className="text-2xs text-gray-500">{t('incentiveDisclaimerOne')}</p>
+              <h3 className="font-medium text-gray-900">{t('incentiveTitleOne')}</h3>
               <p className="text-sm text-gray-500">{t('incentiveSubtitleOne')}</p>
             </div>
           </div>
@@ -21,8 +21,8 @@ export default function Incentives() {
           <div className="max-w-xs mx-auto px-4 flex items-center lg:max-w-none lg:px-8">
             <RefreshIcon height={30} />
             <div className="ml-4 flex-auto flex flex-col-reverse">
-              <p className="text-2xs text-gray-500"><sup>2</sup>{t('incentiveDisclaimerTwo')}</p>
-              <h3 className="font-medium text-gray-900">{t('incentiveTitleTwo')}<sup>2</sup></h3>
+              <p className="text-2xs text-gray-500">{t('incentiveDisclaimerTwo')}</p>
+              <h3 className="font-medium text-gray-900">{t('incentiveTitleTwo')}</h3>
               <p className="text-sm text-gray-500">{t('incentiveSubtitleTwo')}</p>
             </div>
           </div>
@@ -31,8 +31,8 @@ export default function Incentives() {
           <div className="max-w-xs mx-auto px-4 flex items-center lg:max-w-none lg:px-8">
             <TruckIcon height={30} />
             <div className="ml-4 flex-auto flex flex-col-reverse">
-              <p className="text-2xs text-gray-500"><sup>3</sup>{t('incentiveDisclaimerThree')}</p>
-              <h3 className="font-medium text-gray-900">{t('incentiveTitleThree')}<sup>3</sup></h3>
+              <p className="text-2xs text-gray-500">{t('incentiveDisclaimerThree')}</p>
+              <h3 className="font-medium text-gray-900">{t('incentiveTitleThree')}</h3>
               <p className="text-sm text-gray-500">{t('incentiveSubtitleThree')}</p>
             </div>
           </div>
