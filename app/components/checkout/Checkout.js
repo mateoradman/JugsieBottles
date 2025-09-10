@@ -424,23 +424,23 @@ export default function Checkout() {
                 <div className="flex items-center justify-between">
                   <dt className="text-sm">{t("subtotal")}</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    {getCartTotalPrice(cartItemsArray) * 0.75} kn
+                    {getCartTotalPrice(cartItemsArray) * 0.75} €
                   </dd>
                 </div>
                 <div className="flex items-center justify-between">
                   <dt className="text-sm">{t("shipping")}</dt>
-                  <dd className="text-sm font-medium text-gray-900">0 kn</dd>
+                  <dd className="text-sm font-medium text-gray-900">0 €</dd>
                 </div>
                 <div className="flex items-center justify-between">
                   <dt className="text-sm">{t("vat")}</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    {getCartTotalPrice(cartItemsArray) * 0.25} kn
+                    {getCartTotalPrice(cartItemsArray) * 0.25} €
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                   <dt className="text-base font-medium">{t("total")}</dt>
                   <dd className="text-base font-medium text-gray-900">
-                    {getCartTotalPrice(cartItemsArray)} kn
+                    {getCartTotalPrice(cartItemsArray)} €
                   </dd>
                 </div>
               </dl>

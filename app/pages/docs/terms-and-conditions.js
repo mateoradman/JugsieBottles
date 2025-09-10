@@ -73,7 +73,7 @@ export default function TermsAndConditionsPage() {
                 •    trošak dostave obračunava se automatski prilikom kupnje proizvoda i izdaje vam se račun na kojem se nalazi cijena kupljenih proizvoda i cijena dostave
                 •    trošak dostave bit će iskazan u košarici uz cijenu proizvoda
                 •    trošak dostave na području Republike Hrvatske je besplatna bez obzira na težinu, volumen ili adresu kupca
-                •    za iznos narudžbe iznad 100,00 kn trošak dostave u cijelosti snosi Jugsie
+                •    za iznos narudžbe iznad 10,00 € trošak dostave u cijelosti snosi Jugsie
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na zalihi, na području cijele Hrvatske je 5 do 7 radnih dana od dana zaključene narudžbe, izuzev proizvoda s posebnom napomenom (nije lagerski artikal)
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na lageru, na hrvatske otoke je 7 do 10 radnih dana
                 •    u slučaju promjene roka dostave ili bilo koje druge važne okolnosti za izvršenje narudžbe, kupca će o tome odmah obavijestiti naša služba za korisnike
@@ -106,7 +106,7 @@ export default function TermsAndConditionsPage() {
                 •    trošak dostave obračunava se automatski prilikom kupnje proizvoda i izdaje vam se račun na kojem se nalazi cijena kupljenih proizvoda i cijena dostave
                 •    trošak dostave bit će iskazan u košarici uz cijenu proizvoda
                 •    trošak dostave na području Republike Hrvatske je besplatna bez obzira na težinu, volumen ili adresu kupca
-                •    za iznos narudžbe iznad 100,00 kn trošak dostave u cijelosti snosi Jugsie
+                •    za iznos narudžbe iznad 10 € trošak dostave u cijelosti snosi Jugsie
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na zalihi, na području cijele Hrvatske je 5 do 7 radnih dana od dana zaključene narudžbe, izuzev proizvoda s posebnom napomenom (nije lagerski artikal)
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na lageru, na hrvatske otoke je 7 do 10 radnih dana
                 •    u slučaju promjene roka dostave ili bilo koje druge važne okolnosti za izvršenje narudžbe, kupca će o tome odmah obavijestiti naša služba za korisnike
@@ -139,7 +139,7 @@ export default function TermsAndConditionsPage() {
                 •    trošak dostave obračunava se automatski prilikom kupnje proizvoda i izdaje vam se račun na kojem se nalazi cijena kupljenih proizvoda i cijena dostave
                 •    trošak dostave bit će iskazan u košarici uz cijenu proizvoda
                 •    trošak dostave na području Republike Hrvatske je besplatna bez obzira na težinu, volumen ili adresu kupca
-                •    za iznos narudžbe iznad 100,00 kn trošak dostave u cijelosti snosi Jugsie
+                •    za iznos narudžbe iznad 10 € trošak dostave u cijelosti snosi Jugsie
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na zalihi, na području cijele Hrvatske je 5 do 7 radnih dana od dana zaključene narudžbe, izuzev proizvoda s posebnom napomenom (nije lagerski artikal)
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na lageru, na hrvatske otoke je 7 do 10 radnih dana
                 •    u slučaju promjene roka dostave ili bilo koje druge važne okolnosti za izvršenje narudžbe, kupca će o tome odmah obavijestiti naša služba za korisnike
@@ -172,7 +172,7 @@ export default function TermsAndConditionsPage() {
                 •    trošak dostave obračunava se automatski prilikom kupnje proizvoda i izdaje vam se račun na kojem se nalazi cijena kupljenih proizvoda i cijena dostave
                 •    trošak dostave bit će iskazan u košarici uz cijenu proizvoda
                 •    trošak dostave na području Republike Hrvatske je besplatna bez obzira na težinu, volumen ili adresu kupca
-                •    za iznos narudžbe iznad 100,00 kn trošak dostave u cijelosti snosi Jugsie
+                •    za iznos narudžbe iznad 10 € trošak dostave u cijelosti snosi Jugsie
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na zalihi, na području cijele Hrvatske je 5 do 7 radnih dana od dana zaključene narudžbe, izuzev proizvoda s posebnom napomenom (nije lagerski artikal)
                 •    rok isporuke proizvoda, kod kojih je navedeno da se nalaze na lageru, na hrvatske otoke je 7 do 10 radnih dana
                 •    u slučaju promjene roka dostave ili bilo koje druge važne okolnosti za izvršenje narudžbe, kupca će o tome odmah obavijestiti naša služba za korisnike

@@ -13,7 +13,7 @@ export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function getFormattedPrice(price, currency = "kn") {
+export function getFormattedPrice(price, currency = "€") {
   return `${price} ${currency}`;
 }
 
