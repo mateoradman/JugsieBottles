@@ -25,7 +25,7 @@ export default function Checkout() {
       id: 1,
       title: "Standard",
       turnaround: t("deliveryDuration"),
-      price: "0 kn",
+      price: "0 €",
     },
   ];
   const paymentMethods = [{ id: "bank-transfer", title: t("bankTransfer") }];
